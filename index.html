@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mir Floristería — Flores con alma. Bodas, eventos y talleres florales.</title>
+  <meta name="description" content="Mir Floristería, florista artística en Madrid. Ramos de novia únicos, decoración de bodas y eventos, talleres florales. Hablamos de tus flores." />
+  <link rel="canonical" href="https://mirflores.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mir Floristería — Flores con alma." />
+  <meta property="og:description" content="Florista artística especializada en bodas, eventos y talleres florales." />
+  <meta property="og:image" content="https://mirflores.com/assets/hero.jpg" />
+  <meta property="og:url" content="https://mirflores.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Mir Floristería",
+    "alternateName": "Mirienda la florista",
+    "url": "https://mirflores.com",
+    "email": "atelier@mirflores.com",
+    "telephone": "+34661256194",
+    "image": "https://mirflores.com/assets/hero.jpg",
+    "description": "Floristería artística especializada en bodas, eventos y talleres florales.",
+    "sameAs": ["https://www.instagram.com/mirflores"]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --crema:    #F7F3EE;
+      --crema-2:  #EDE6DA;
+      --tierra:   #C4A882;
+      --carbon:   #2A2420;
+      --gris:     #8C7B6E;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--crema);
+      color: var(--carbon);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* ─── STEM SVG (tablet+) ─────────────────────────────── */
+    #stem-svg {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 48px;
+      height: 100vh;
+      z-index: 10;
+      pointer-events: none;
+    }
+    @media (min-width: 480px) {
+      #stem-svg { display: block; }
+    }
+    #stem-path {
+      fill: none;
+      stroke: var(--tierra);
+      stroke-width: 1.5;
+      opacity: 0.35;
+      stroke-linecap: round;
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    #nav.scrolled {
+      background: rgba(247, 243, 238, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(196,168,130,0.2);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+    .nav-logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+    .nav-logo-sub {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--gris);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 2rem;
+      list-style: none;
+    }
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--carbon);
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--tierra);
+      transition: width 0.3s var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--tierra); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: none;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--tierra);
+      color: var(--tierra);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--tierra); color: var(--crema); }
+    @media (min-width: 768px) { .nav-cta { display: block; } }
+
+    /* Burger */
+    .burger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      z-index: 200;
+      position: relative;
+    }
+    @media (min-width: 768px) { .burger { display: none; } }
+    .burger span {
+      display: block;
+      width: 26px; height: 1.5px;
+      background: var(--carbon);
+      transition: transform 0.4s var(--ease-out), opacity 0.3s;
+      transform-origin: center;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile menu overlay */
+    #mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--crema);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      transform: translateX(100%);
+      transition: transform 0.5s var(--ease-out);
+    }
+    #mobile-menu.open { transform: translateX(0); }
+    #mobile-menu a {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2rem, 8vw, 3rem);
+      color: var(--carbon);
+      letter-spacing: 0.02em;
+      transition: color 0.3s;
+    }
+    #mobile-menu a:hover { color: var(--tierra); }
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      font-size: 1.8rem;
+      color: var(--gris);
+      line-height: 1;
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      min-height: 560px;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+    }
+    .hero-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(42, 36, 32, 0.70) 0%,
+        rgba(42, 36, 32, 0.20) 50%,
+        rgba(42, 36, 32, 0.05) 100%
+      );
+    }
+    .hero-content {
+      position: absolute;
+      bottom: clamp(2.5rem, 8vw, 5rem);
+      left: clamp(1.5rem, 6vw, 6rem);
+      color: var(--crema);
+      max-width: 680px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3rem, 14vw, 7rem);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+    .hero-sub {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      letter-spacing: 0.04em;
+      color: rgba(247,243,238,0.80);
+      margin-bottom: 2rem;
+      max-width: 380px;
+    }
+    .btn-outline-white {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 1px solid rgba(247,243,238,0.7);
+      color: var(--crema);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.35s, border-color 0.35s, color 0.35s;
+    }
+    .btn-outline-white:hover {
+      background: rgba(247,243,238,0.15);
+      border-color: var(--crema);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(247,243,238,0.5);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(247,243,238,0.4);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 0.4; }
+      50% { transform: scaleY(0.4); opacity: 0.9; }
+    }
+
+    /* ─── SECTIONS SHARED ───────────────────────────────── */
+    section { position: relative; }
+    .section-label {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tierra);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--carbon);
+    }
+    .section-title-lg {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+    }
+    .section-title-md {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+    }
+
+    /* ─── SOBRE MÍ ───────────────────────────────────────── */
+    #sobre {
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+    }
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .sobre-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .sobre-grid {
+        grid-template-columns: 5fr 4fr;
+      }
+    }
+    .sobre-img-wrap {
+      position: relative;
+    }
+    .sobre-img-frame {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .sobre-img-frame img {
+      transition: transform 0.7s var(--ease-out);
+    }
+    .sobre-img-frame:hover img { transform: scale(1.04); }
+    .sobre-badge {
+      position: absolute;
+      bottom: -1.2rem;
+      right: -1rem;
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: var(--tierra);
+      color: var(--crema);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.1;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(196,168,130,0.4);
+    }
+    .sobre-badge span { font-size: 0.6rem; font-style: normal; font-family: var(--font-body); letter-spacing: 0.08em; }
+    .sobre-text { padding-top: 1rem; }
+    .sobre-text .section-title { margin-bottom: 1.5rem; }
+    .sobre-body {
+      color: var(--gris);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .sobre-body p + p { margin-top: 1rem; }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.8rem;
+      background: var(--tierra);
+      color: var(--crema);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .btn-wa:hover { background: #b0946e; transform: translateY(-1px); }
+    .btn-wa svg { flex-shrink: 0; }
+
+    /* ─── SERVICIOS ──────────────────────────────────────── */
+    #servicios {
+      background: var(--crema-2);
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+    }
+    .servicios-header {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 3.5rem;
+    }
+    .servicios-header .section-title { margin-bottom: 1rem; }
+    .servicios-header p { color: var(--gris); font-size: 0.95rem; }
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (min-width: 600px) {
+      .servicios-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .servicios-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .servicio-card {
+      background: var(--crema);
+      overflow: hidden;
+      border-radius: 3px;
+      box-shadow: 0 2px 20px rgba(42,36,32,0.06);
+      transition: box-shadow 0.4s, transform 0.4s;
+    }
+    .servicio-card:hover {
+      box-shadow: 0 8px 40px rgba(42,36,32,0.12);
+      transform: translateY(-3px);
+    }
+    .servicio-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .servicio-img img {
+      transition: transform 0.7s var(--ease-out);
+    }
+    .servicio-card:hover .servicio-img img { transform: scale(1.04); }
+    .servicio-body {
+      padding: 1.5rem;
+    }
+    .servicio-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tierra);
+      border: 1px solid var(--tierra);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+    .servicio-body h3 {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+    .servicio-body p {
+      font-size: 0.88rem;
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    /* ─── GALERÍA ────────────────────────────────────────── */
+    #galeria {
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+    }
+    .galeria-header {
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+    .masonry {
+      columns: 2;
+      column-gap: 0.75rem;
+    }
+    @media (min-width: 900px) {
+      .masonry { columns: 3; column-gap: 1rem; }
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+    @media (min-width: 900px) { .masonry-item { margin-bottom: 1rem; } }
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.7s var(--ease-out), filter 0.4s;
+    }
+    .masonry-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.9);
+    }
+    .masonry-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(42,36,32,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.4s;
+    }
+    .masonry-item:hover .masonry-item-overlay { background: rgba(42,36,32,0.2); }
+    .masonry-item-overlay svg { opacity: 0; transition: opacity 0.4s; }
+    .masonry-item:hover .masonry-item-overlay svg { opacity: 1; }
+
+    /* ─── LIGHTBOX ───────────────────────────────────────── */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(42, 36, 32, 0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s;
+    }
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #lightbox img {
+      max-width: min(90vw, 900px);
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 2px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      color: rgba(247,243,238,0.7);
+      font-size: 2rem;
+      line-height: 1;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s;
+      padding: 0.5rem;
+    }
+    .lightbox-close:hover { color: var(--crema); }
+    .lightbox-prev, .lightbox-next {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      color: rgba(247,243,238,0.6);
+      font-size: 2.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 1rem;
+      transition: color 0.3s;
+      line-height: 1;
+    }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-prev:hover, .lightbox-next:hover { color: var(--crema); }
+
+    /* ─── TALLERES ───────────────────────────────────────── */
+    #talleres {
+      background: var(--carbon);
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+    }
+    .talleres-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (min-width: 900px) {
+      .talleres-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    }
+    .talleres-left .section-label { color: var(--tierra); }
+    .talleres-left .section-title { color: var(--crema); margin-bottom: 0.75rem; }
+    .talleres-desc {
+      color: rgba(247,243,238,0.55);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .taller-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .taller-item {
+      border-top: 1px solid rgba(196,168,130,0.15);
+      padding: 1.1rem 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .taller-item:last-child { border-bottom: 1px solid rgba(196,168,130,0.15); }
+    .taller-item:hover { border-top-color: var(--tierra); }
+    .taller-item:hover .taller-nombre { color: var(--tierra); }
+    .taller-nombre {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.2rem;
+      color: var(--crema);
+      transition: color 0.3s;
+      line-height: 1.2;
+    }
+    .taller-nombre small {
+      display: block;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 0.72rem;
+      color: rgba(247,243,238,0.4);
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
+    }
+    .taller-duracion {
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--tierra);
+      text-align: right;
+      padding-top: 0.2rem;
+    }
+    /* Formulario */
+    .form-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.6rem;
+      color: var(--crema);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    #form-talleres {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,243,238,0.5);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(247,243,238,0.06);
+      border: 1px solid rgba(196,168,130,0.25);
+      border-radius: 2px;
+      color: var(--crema);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.75rem 1rem;
+      transition: border-color 0.3s, background 0.3s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(247,243,238,0.3); }
+    .form-group select { color: rgba(247,243,238,0.85); cursor: pointer; }
+    .form-group select option { background: var(--carbon); color: var(--crema); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--tierra);
+      background: rgba(196,168,130,0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+    .form-error {
+      font-size: 0.75rem;
+      color: #e07070;
+      display: none;
+    }
+    .form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    @media (min-width: 480px) { .form-actions { flex-direction: row; } }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      background: var(--tierra);
+      color: var(--crema);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.3s;
+      flex: 1;
+      text-align: center;
+    }
+    .btn-primary:hover { background: #b0946e; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      background: transparent;
+      color: rgba(247,243,238,0.7);
+      border: 1px solid rgba(196,168,130,0.4);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: border-color 0.3s, color 0.3s;
+      flex: 1;
+      text-align: center;
+    }
+    .btn-secondary:hover { border-color: var(--tierra); color: var(--tierra); }
+
+    /* ─── FLORES TEMPORADA ───────────────────────────────── */
+    #temporada {
+      background: var(--crema-2);
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+    }
+    .temporada-header {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 3rem;
+    }
+    .temporada-header p { color: var(--gris); font-size: 0.9rem; margin-top: 0.75rem; }
+    .flores-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (min-width: 600px) { .flores-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 900px) { .flores-grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; } }
+    .flor-card {
+      background: var(--crema);
+      border-radius: 3px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(42,36,32,0.05);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .flor-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(42,36,32,0.1); }
+    .flor-img {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+    .flor-img img { transition: transform 0.7s var(--ease-out); }
+    .flor-card:hover .flor-img img { transform: scale(1.06); }
+    .flor-info {
+      padding: 0.9rem 0.75rem 1rem;
+    }
+    .flor-nombre {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--carbon);
+      margin-bottom: 0.3rem;
+    }
+    .flor-temporada {
+      font-size: 0.67rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tierra);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    #footer {
+      background: var(--carbon);
+      padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 6vw, 6rem);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 768px) {
+      .footer-inner { grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; }
+    }
+    .footer-brand .nav-logo-text { color: var(--crema); font-size: 1.2rem; }
+    .footer-brand .nav-logo-sub { color: rgba(247,243,238,0.4); }
+    .footer-tagline {
+      margin-top: 1rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(247,243,238,0.5);
+      line-height: 1.4;
+    }
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(196,168,130,0.3);
+      border-radius: 50%;
+      color: rgba(247,243,238,0.5);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .footer-social a:hover { border-color: var(--tierra); color: var(--tierra); }
+    .footer-col-title {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tierra);
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(247,243,238,0.55);
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--tierra); }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .footer-contact-item a {
+      font-size: 0.88rem;
+      color: rgba(247,243,238,0.55);
+      transition: color 0.3s;
+    }
+    .footer-contact-item a:hover { color: var(--tierra); }
+    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--tierra); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(196,168,130,0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+    @media (min-width: 600px) {
+      .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+    .footer-bottom p {
+      font-size: 0.75rem;
+      color: rgba(247,243,238,0.3);
+      letter-spacing: 0.04em;
+    }
+    .footer-bottom a { color: rgba(196,168,130,0.6); transition: color 0.3s; }
+    .footer-bottom a:hover { color: var(--tierra); }
+
+    /* ─── WA FLOTANTE ────────────────────────────────────── */
+    .wa-float {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.5rem;
+      z-index: 90;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      transition: transform 0.35s var(--ease-out), box-shadow 0.35s;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.55);
+    }
+    .wa-float svg { color: #fff; }
+
+    /* ─── FOCUS VISIBLE ──────────────────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--tierra);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── STEM SVG botánico ────────────────────────────── -->
+  <svg id="stem-svg" viewBox="0 0 48 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <path id="stem-path" d="
+      M24,0
+      C24,40 18,80 22,120
+      C26,160 30,200 24,240
+      C18,280 14,300 20,340
+      C26,380 28,420 22,460
+      C16,500 20,540 24,580
+      C28,620 26,660 22,700
+      C18,740 24,770 24,800
+    " />
+    <!-- hojitas -->
+    <ellipse cx="14" cy="160" rx="8" ry="4" fill="var(--tierra)" opacity="0.25" transform="rotate(-30 14 160)" />
+    <ellipse cx="34" cy="300" rx="8" ry="4" fill="var(--tierra)" opacity="0.25" transform="rotate(25 34 300)" />
+    <ellipse cx="12" cy="440" rx="8" ry="4" fill="var(--tierra)" opacity="0.25" transform="rotate(-20 12 440)" />
+    <ellipse cx="32" cy="580" rx="8" ry="4" fill="var(--tierra)" opacity="0.25" transform="rotate(30 32 580)" />
+    <ellipse cx="16" cy="700" rx="8" ry="4" fill="var(--tierra)" opacity="0.25" transform="rotate(-25 16 700)" />
+  </svg>
+
+  <!-- ── NAV ──────────────────────────────────────────── -->
+  <nav id="nav" role="navigation" aria-label="Navegación principal">
+    <a href="#" class="nav-logo" aria-label="Mir Floristería — Inicio">
+      <!-- Logo dachshund ilustrado -->
+      <div class="nav-logo-img" style="background:var(--crema-2);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" aria-hidden="true" style="display:block;">
+          <!-- Cuerpo del perro salchicha -->
+          <ellipse cx="52" cy="58" rx="28" ry="13" stroke="#2A2420" stroke-width="2.2" fill="none"/>
+          <!-- Cabeza -->
+          <ellipse cx="76" cy="52" rx="11" ry="9" stroke="#2A2420" stroke-width="2.2" fill="none"/>
+          <!-- Orejas caídas -->
+          <path d="M70 47 Q64 36 68 32 Q73 30 78 40" stroke="#2A2420" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Hocico -->
+          <ellipse cx="84" cy="55" rx="5" ry="3" stroke="#2A2420" stroke-width="1.8" fill="none"/>
+          <!-- Ojo -->
+          <circle cx="78" cy="49" r="1.5" fill="#2A2420"/>
+          <!-- Patitas -->
+          <path d="M36 68 Q34 78 30 80" stroke="#2A2420" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M46 70 Q44 80 40 82" stroke="#2A2420" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M56 70 Q54 80 50 82" stroke="#2A2420" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M65 68 Q64 78 60 80" stroke="#2A2420" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- Cola curvada -->
+          <path d="M24 58 Q14 50 16 42 Q18 35 24 38" stroke="#2A2420" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Florecitas en el cuerpo -->
+          <circle cx="44" cy="56" r="2.5" fill="#C4A882"/>
+          <circle cx="52" cy="54" r="2" fill="#C4A882"/>
+          <circle cx="60" cy="57" r="2.5" fill="#C4A882"/>
+          <!-- Pétalos pequeños -->
+          <circle cx="44" cy="53" r="1.2" fill="#EDE6DA"/>
+          <circle cx="41" cy="56" r="1.2" fill="#EDE6DA"/>
+          <circle cx="44" cy="59" r="1.2" fill="#EDE6DA"/>
+          <circle cx="47" cy="56" r="1.2" fill="#EDE6DA"/>
+          <circle cx="60" cy="54" r="1.2" fill="#EDE6DA"/>
+          <circle cx="57" cy="57" r="1.2" fill="#EDE6DA"/>
+          <circle cx="60" cy="60" r="1.2" fill="#EDE6DA"/>
+          <circle cx="63" cy="57" r="1.2" fill="#EDE6DA"/>
+        </svg>
+      </div>
+      <div>
+        <span class="nav-logo-text">mirflores</span>
+        <span class="nav-logo-sub">Mirienda la florista</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#talleres">Talleres</a></li>
+      <li><a href="#temporada">Flores</a></li>
+    </ul>
+    <a href="#talleres" class="nav-cta">Reservar taller</a>
+    <button class="burger" id="burger-btn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── MOBILE MENU ──────────────────────────────────── -->
+  <div id="mobile-menu" role="dialog" aria-label="Menú de navegación" aria-modal="true">
+    <button class="mobile-close" id="mobile-close" aria-label="Cerrar menú">✕</button>
+    <a href="#sobre" class="mobile-link">Sobre mí</a>
+    <a href="#servicios" class="mobile-link">Servicios</a>
+    <a href="#galeria" class="mobile-link">Galería</a>
+    <a href="#talleres" class="mobile-link">Talleres</a>
+    <a href="#temporada" class="mobile-link">Flores</a>
+  </div>
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section id="hero" aria-label="Hero — portada">
+    <div class="hero-img">
+      <img
+        src="assets/hero-ramo-novia.jpg"
+        alt="Ramo de novia en cascada de flores blancas, obra de Mir Floristería"
+        fetchpriority="high"
+        loading="eager"
+      />
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Flores<br>con alma.</h1>
+      <p class="hero-sub">Cada ramo cuenta una historia.<br>La tuya.</p>
+      <a href="#servicios" class="btn-outline-white">Ver servicios</a>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ── SOBRE MÍ ──────────────────────────────────────── -->
+  <section id="sobre" aria-labelledby="sobre-title">
+    <div class="sobre-grid">
+      <div class="sobre-img-wrap reveal">
+        <div class="sobre-img-frame">
+          <img
+            src="assets/floristas-escalera.webp"
+            alt="Mirienda y su equipo trabajando entre flores en una escalera de mármol"
+            loading="lazy"
+          />
+        </div>
+        <div class="sobre-badge" aria-label="Más de 10 años de experiencia">
+          +10<span>años</span>
+        </div>
+      </div>
+      <div class="sobre-text">
+        <span class="section-label reveal">Nuestra historia</span>
+        <h2 id="sobre-title" class="section-title section-title-lg reveal">Siempre fui<br><em>la chica de<br>las flores.</em></h2>
+        <div class="sobre-body reveal">
+          <p>Soy Mirienda. Empecé este camino rodeada de peonías en un pequeño taller y de un salchicha muy metiche que siempre acababa dentro de los cubos de flores. Esa energía impredecible, tierna y curiosa es la misma que pongo en cada encargo.</p>
+          <p>Mir Floristería nació de la convicción de que las flores no son solo decoración —son emoción en forma vegetal. Cada ramo de novia, cada centro de mesa, cada corona, es un gesto irrepetible que merece ser pensado con calma y ejecutado con pasión.</p>
+          <p>Trabajamos con flores de temporada, productores locales y una estética orgánica y poética. Sin fórmulas. Sin catálogos. Solo flores con alma.</p>
+        </div>
+        <a
+          href="https://wa.me/34661256194?text=Hola%20Mirienda%2C%20me%20gustar%C3%ADa%20hablar%20de%20mis%20flores%20%F0%9F%8C�"
+          class="btn-wa reveal"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contactar por WhatsApp"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+          Hablamos de tus flores
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICIOS ─────────────────────────────────────── -->
+  <section id="servicios" aria-labelledby="servicios-title">
+    <div class="servicios-header">
+      <span class="section-label reveal">Lo que hacemos</span>
+      <h2 id="servicios-title" class="section-title section-title-lg reveal">Cada ocasión<br><em>merece sus flores.</em></h2>
+      <p class="reveal">Diseñamos propuestas florales a medida para los momentos que importan. Sin fórmulas, sin catálogos.</p>
+    </div>
+    <div class="servicios-grid">
+      <article class="servicio-card reveal" style="transition-delay:0s">
+        <div class="servicio-img">
+          <img src="assets/servicio-bodas.jpg" alt="Ramo de novia en cascada de calas blancas y ramas" loading="lazy" />
+        </div>
+        <div class="servicio-body">
+          <span class="servicio-tag">Bodas</span>
+          <h3>Bodas & Ceremonia</h3>
+          <p>Desde el ramo de novia hasta la decoración completa del altar, los centros de mesa y el peinado floral. Cada detalle coordinado con tu estilo, tu historia.</p>
+        </div>
+      </article>
+      <article class="servicio-card reveal" style="transition-delay:0.1s">
+        <div class="servicio-img">
+          <img src="assets/servicio-eventos.jpg" alt="Centros de mesa con alliums sobre musgo en evento especial" loading="lazy" />
+        </div>
+        <div class="servicio-body">
+          <span class="servicio-tag">Eventos</span>
+          <h3>Eventos & Celebraciones</h3>
+          <p>Cumpleaños íntimos, aniversarios, bautizos, cenas corporativas. Creamos ambientes florales que transforman cualquier espacio en algo memorable.</p>
+        </div>
+      </article>
+      <article class="servicio-card reveal" style="transition-delay:0.2s">
+        <div class="servicio-img">
+          <img src="assets/servicio-ramos.jpg" alt="Bouquet silvestre con flores lilas y verdor" loading="lazy" />
+        </div>
+        <div class="servicio-body">
+          <span class="servicio-tag">Ramos especiales</span>
+          <h3>Ramos a medida</h3>
+          <p>Para regalar, para ti misma, para decir algo con flores. Cada ramo es único. Trabajamos con flores de temporada y escuchamos lo que quieres transmitir.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── GALERÍA ────────────────────────────────────────── -->
+  <section id="galeria" aria-labelledby="galeria-title">
+    <div class="galeria-header">
+      <span class="section-label reveal">Portfolio</span>
+      <h2 id="galeria-title" class="section-title section-title-lg reveal">Un poco de<br><em>lo que hacemos.</em></h2>
+    </div>
+    <div class="masonry" id="masonry-grid" role="list" aria-label="Galería de trabajos florales">
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 1">
+        <img src="assets/galeria-01.jpg" alt="Composición floral artística en bodas" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 2" style="transition-delay:0.05s">
+        <img src="assets/galeria-02.jpg" alt="Ramo nupcial de peonías rosas y eucalipto" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 3" style="transition-delay:0.1s">
+        <img src="assets/galeria-03.jpg" alt="Decoración floral de iglesia con ramas y flores blancas" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 4" style="transition-delay:0.15s">
+        <img src="assets/galeria-04.jpg" alt="Centro de mesa con rosas blancas runner" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 5" style="transition-delay:0.2s">
+        <img src="assets/galeria-05.jpg" alt="Detalle de corona de flores para novia" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 6" style="transition-delay:0.25s">
+        <img src="assets/galeria-06.jpg" alt="Taller floral en espacio íntimo con participantes" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 7" style="transition-delay:0.3s">
+        <img src="assets/galeria-07.jpg" alt="Ramo de anémona y ranúnculo en tonos morados" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 8" style="transition-delay:0.35s">
+        <img src="assets/galeria-08.jpg" alt="Instalación floral para evento corporativo" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 9" style="transition-delay:0.4s">
+        <img src="assets/galeria-09.jpg" alt="Bouquet silvestre con flores de campo y gypsophila" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 10" style="transition-delay:0.45s">
+        <img src="assets/galeria-10.jpg" alt="Detalle de dahlia naranja en arreglo otoñal" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 11" style="transition-delay:0.5s">
+        <img src="assets/galeria-11.jpg" alt="Mesa nupcial con flores blancas y velas" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 12" style="transition-delay:0.55s">
+        <img src="assets/galeria-12.jpg" alt="Arreglo floral para recepción de boda" loading="lazy" />
+        <div class="masonry-item-overlay" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── TALLERES ──────────────────────────────────────── -->
+  <section id="talleres" aria-labelledby="talleres-title">
+    <div class="talleres-grid">
+      <!-- Lista talleres -->
+      <div class="talleres-left">
+        <span class="section-label reveal">Aprende con nosotras</span>
+        <h2 id="talleres-title" class="section-title section-title-lg reveal">Talleres<br><em>florales.</em></h2>
+        <p class="talleres-desc reveal">Sesiones íntimas donde aprender, crear y dejarse llevar por las flores. Sin experiencia previa. Solo ganas de ensuciarse las manos.</p>
+        <ul class="taller-list reveal">
+          <li class="taller-item">
+            <div class="taller-nombre">
+              Taller de ramos
+              <small>Técnicas de composición, estructura y paleta de color</small>
+            </div>
+            <div class="taller-duracion">2h</div>
+          </li>
+          <li class="taller-item">
+            <div class="taller-nombre">
+              Corona de flores
+              <small>Diseña tu propia corona o tocado floral</small>
+            </div>
+            <div class="taller-duracion">2.5h</div>
+          </li>
+          <li class="taller-item">
+            <div class="taller-nombre">
+              Centro de mesa
+              <small>Arreglos para eventos y celebraciones propias</small>
+            </div>
+            <div class="taller-duracion">3h</div>
+          </li>
+          <li class="taller-item">
+            <div class="taller-nombre">
+              Taller privado
+              <small>Sesión personalizada para grupos de hasta 8 personas</small>
+            </div>
+            <div class="taller-duracion">A medida</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Formulario -->
+      <div class="talleres-right reveal" style="transition-delay:0.15s">
+        <p class="form-title">Reserva tu plaza</p>
+        <form id="form-talleres" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-nombre">Nombre *</label>
+              <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required />
+              <span class="form-error" id="err-nombre">Por favor, escribe tu nombre.</span>
+            </div>
+            <div class="form-group">
+              <label for="f-email">Email *</label>
+              <input type="email" id="f-email" name="email" placeholder="tu@email.com" autocomplete="email" required />
+              <span class="form-error" id="err-email">Email no válido.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-taller">Taller de interés *</label>
+            <select id="f-taller" name="taller" required>
+              <option value="" disabled selected>Elige un taller</option>
+              <option value="Taller de ramos (2h)">Taller de ramos (2h)</option>
+              <option value="Corona de flores (2.5h)">Corona de flores (2.5h)</option>
+              <option value="Centro de mesa (3h)">Centro de mesa (3h)</option>
+              <option value="Taller privado">Taller privado</option>
+            </select>
+            <span class="form-error" id="err-taller">Elige un taller.</span>
+          </div>
+          <div class="form-group">
+            <label for="f-mensaje">Cuéntame algo</label>
+            <textarea id="f-mensaje" name="mensaje" placeholder="Fecha preferida, número de personas, cualquier duda..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+              Enviar por WhatsApp
+            </button>
+            <a
+              href="https://wa.me/34661256194"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-secondary"
+              aria-label="Contactar directamente por WhatsApp"
+            >
+              Chat directo
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FLORES DE TEMPORADA ───────────────────────────── -->
+  <section id="temporada" aria-labelledby="temporada-title">
+    <div class="temporada-header">
+      <span class="section-label reveal">Nuestra selección</span>
+      <h2 id="temporada-title" class="section-title section-title-lg reveal">Flores de<br><em>temporada.</em></h2>
+      <p class="reveal">Trabajamos con flores frescas de temporada y productores locales. Menos huella, más calidad.</p>
+    </div>
+    <div class="flores-grid">
+      <div class="flor-card reveal" style="transition-delay:0s">
+        <div class="flor-img">
+          <img src="assets/flor-peonia.jpg" alt="Peonía rosa de temporada" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Peonía</p>
+          <p class="flor-temporada">May — Jun</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.06s">
+        <div class="flor-img">
+          <img src="assets/flor-cala.jpg" alt="Cala blanca elegante" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Cala</p>
+          <p class="flor-temporada">Ene — Jun</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.12s">
+        <div class="flor-img">
+          <img src="assets/flor-anemona.jpg" alt="Anémona morada en flor" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Anémona</p>
+          <p class="flor-temporada">Feb — Abr</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.18s">
+        <div class="flor-img">
+          <img src="assets/flor-rosa.jpg" alt="Rosa clásica en tono crema" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Rosa</p>
+          <p class="flor-temporada">Todo el año</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.24s">
+        <div class="flor-img">
+          <img src="assets/flor-ranunculo.jpg" alt="Ranúnculo amarillo y coral" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Ranúnculo</p>
+          <p class="flor-temporada">Feb — May</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.3s">
+        <div class="flor-img">
+          <img src="assets/flor-tulipan.jpg" alt="Tulipán rojo de temporada" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Tulipán</p>
+          <p class="flor-temporada">Mar — May</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.36s">
+        <div class="flor-img">
+          <img src="assets/flor-dalia.jpg" alt="Dalia naranja voluminosa" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Dalia</p>
+          <p class="flor-temporada">Jul — Oct</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.42s">
+        <div class="flor-img">
+          <img src="assets/flor-gypsophila.jpg" alt="Gypsophila blanca nube" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Gypsophila</p>
+          <p class="flor-temporada">May — Sep</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.48s">
+        <div class="flor-img">
+          <img src="assets/flor-allium.jpg" alt="Allium morado esférico" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Allium</p>
+          <p class="flor-temporada">May — Jul</p>
+        </div>
+      </div>
+      <div class="flor-card reveal" style="transition-delay:0.54s">
+        <div class="flor-img">
+          <img src="assets/flor-celosia.jpg" alt="Celósia roja con textura aterciopelada" loading="lazy" />
+        </div>
+        <div class="flor-info">
+          <p class="flor-nombre">Celósia</p>
+          <p class="flor-temporada">Ago — Nov</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────── -->
+  <footer id="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div style="width:40px;height:40px;background:rgba(247,243,238,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <svg width="28" height="28" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+              <ellipse cx="52" cy="58" rx="28" ry="13" stroke="rgba(247,243,238,0.6)" stroke-width="2.2" fill="none"/>
+              <ellipse cx="76" cy="52" rx="11" ry="9" stroke="rgba(247,243,238,0.6)" stroke-width="2.2" fill="none"/>
+              <path d="M70 47 Q64 36 68 32 Q73 30 78 40" stroke="rgba(247,243,238,0.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <ellipse cx="84" cy="55" rx="5" ry="3" stroke="rgba(247,243,238,0.6)" stroke-width="1.8" fill="none"/>
+              <circle cx="78" cy="49" r="1.5" fill="rgba(247,243,238,0.6)"/>
+              <path d="M36 68 Q34 78 30 80" stroke="rgba(247,243,238,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M46 70 Q44 80 40 82" stroke="rgba(247,243,238,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M56 70 Q54 80 50 82" stroke="rgba(247,243,238,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M65 68 Q64 78 60 80" stroke="rgba(247,243,238,0.6)" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M24 58 Q14 50 16 42 Q18 35 24 38" stroke="rgba(247,243,238,0.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="44" cy="56" r="2.5" fill="var(--tierra)"/>
+              <circle cx="52" cy="54" r="2" fill="var(--tierra)"/>
+              <circle cx="60" cy="57" r="2.5" fill="var(--tierra)"/>
+            </svg>
+          </div>
+          <div>
+            <span class="nav-logo-text">mirflores</span>
+            <span class="nav-logo-sub">Mirienda la florista</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Hablamos de tus flores.<br>Siempre hay una flor para cada momento.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/mirflores" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Mir Floristería (@mirflores)">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/34661256194" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Mir Floristería">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Navegación</p>
+        <ul class="footer-links">
+          <li><a href="#sobre">Sobre mí</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#talleres">Talleres</a></li>
+          <li><a href="#temporada">Flores de temporada</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Contacto</p>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 011.03 1.18 2 2 0 013 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:+34661256194" aria-label="Llamar al 661 256 194">661 256 194</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:atelier@mirflores.com" aria-label="Email atelier@mirflores.com">atelier@mirflores.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <a href="https://www.instagram.com/mirflores" target="_blank" rel="noopener noreferrer" aria-label="Instagram @mirflores">@mirflores</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mir Floristería — Todos los derechos reservados</p>
+      <p>Diseño web <a href="https://nocta-studio.vercel.app" target="_blank" rel="noopener noreferrer">Nocta Studio</a></p>
+    </div>
+  </footer>
+
+  <!-- ── LIGHTBOX ──────────────────────────────────────── -->
+  <div id="lightbox" role="dialog" aria-label="Visor de imagen" aria-modal="true">
+    <button class="lightbox-close" id="lb-close" aria-label="Cerrar visor">✕</button>
+    <button class="lightbox-prev" id="lb-prev" aria-label="Imagen anterior">&#8249;</button>
+    <img id="lb-img" src="" alt="" />
+    <button class="lightbox-next" id="lb-next" aria-label="Imagen siguiente">&#8250;</button>
+  </div>
+
+  <!-- ── WA FLOTANTE ───────────────────────────────────── -->
+  <a
+    href="https://wa.me/34661256194?text=Hola%20Mirienda%2C%20me%20gustar%C3%ADa%20hablar%20de%20mis%20flores%20%F0%9F%8C8"
+    class="wa-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+  >
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+    </svg>
+  </a>
+
+  <script>
+  (function() {
+    'use strict';
+
+    /* ── NAV scroll blur ──────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 60) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }, { passive: true });
+
+    /* ── Burger menu ──────────────────────────────── */
+    const burgerBtn = document.getElementById('burger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+    const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
+
+    function openMenu() {
+      burgerBtn.classList.add('open');
+      mobileMenu.classList.add('open');
+      burgerBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      mobileClose.focus();
+    }
+    function closeMenu() {
+      burgerBtn.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      burgerBtn.focus();
+    }
+    burgerBtn.addEventListener('click', function() {
+      if (mobileMenu.classList.contains('open')) closeMenu();
+      else openMenu();
+    });
+    mobileClose.addEventListener('click', closeMenu);
+    mobileLinks.forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+    });
+
+    /* ── IntersectionObserver reveal ─────────────── */
+    var revealEls = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el) { observer.observe(el); });
+
+    /* ── Galería lightbox ─────────────────────────── */
+    var galleryItems = Array.from(document.querySelectorAll('.masonry-item'));
+    var lightbox = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lb-img');
+    var lbClose = document.getElementById('lb-close');
+    var lbPrev = document.getElementById('lb-prev');
+    var lbNext = document.getElementById('lb-next');
+    var currentLbIndex = 0;
+
+    function getLbImages() {
+      return galleryItems.map(function(item) {
+        var img = item.querySelector('img');
+        return { src: img.src, alt: img.alt };
+      });
+    }
+
+    function openLightbox(index) {
+      var images = getLbImages();
+      if (!images[index]) return;
+      currentLbIndex = index;
+      lbImg.src = images[index].src;
+      lbImg.alt = images[index].alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      if (galleryItems[currentLbIndex]) {
+        galleryItems[currentLbIndex].focus();
+      }
+    }
+
+    function prevLb() {
+      var images = getLbImages();
+      currentLbIndex = (currentLbIndex - 1 + images.length) % images.length;
+      lbImg.src = images[currentLbIndex].src;
+      lbImg.alt = images[currentLbIndex].alt;
+    }
+    function nextLb() {
+      var images = getLbImages();
+      currentLbIndex = (currentLbIndex + 1) % images.length;
+      lbImg.src = images[currentLbIndex].src;
+      lbImg.alt = images[currentLbIndex].alt;
+    }
+
+    galleryItems.forEach(function(item, idx) {
+      item.addEventListener('click', function() { openLightbox(idx); });
+      item.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); }
+      });
+    });
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', prevLb);
+    lbNext.addEventListener('click', nextLb);
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevLb();
+      if (e.key === 'ArrowRight') nextLb();
+    });
+
+    /* ── Formulario talleres → WhatsApp ───────────── */
+    var form = document.getElementById('form-talleres');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var nombre = document.getElementById('f-nombre').value.trim();
+      var email = document.getElementById('f-email').value.trim();
+      var taller = document.getElementById('f-taller').value;
+      var mensaje = document.getElementById('f-mensaje').value.trim();
+      var valid = true;
+
+      // Validación
+      var errNombre = document.getElementById('err-nombre');
+      var errEmail = document.getElementById('err-email');
+      var errTaller = document.getElementById('err-taller');
+
+      if (!nombre) {
+        errNombre.style.display = 'block';
+        document.getElementById('f-nombre').focus();
+        valid = false;
+      } else { errNombre.style.display = 'none'; }
+
+      var emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailReg.test(email)) {
+        errEmail.style.display = 'block';
+        if (valid) { document.getElementById('f-email').focus(); valid = false; }
+      } else { errEmail.style.display = 'none'; }
+
+      if (!taller) {
+        errTaller.style.display = 'block';
+        if (valid) { document.getElementById('f-taller').focus(); valid = false; }
+      } else { errTaller.style.display = 'none'; }
+
+      if (!valid) return;
+
+      var text = 'Hola Mirienda! Me gustaría reservar una plaza en un taller 🌸\n\n' +
+        '*Nombre:* ' + nombre + '\n' +
+        '*Email:* ' + email + '\n' +
+        '*Taller:* ' + taller + '\n' +
+        (mensaje ? '*Mensaje:* ' + mensaje : '');
+
+      var waUrl = 'https://wa.me/34661256194?text=' + encodeURIComponent(text);
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    });
+
+    /* ── SVG stem scroll animation ────────────────── */
+    var stemPath = document.getElementById('stem-path');
+    if (stemPath && window.innerWidth >= 480) {
+      var pathLength = stemPath.getTotalLength ? stemPath.getTotalLength() : 800;
+      stemPath.style.strokeDasharray = pathLength;
+      stemPath.style.strokeDashoffset = pathLength;
+
+      window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var scrollPct = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+        stemPath.style.strokeDashoffset = pathLength * (1 - scrollPct);
+      }, { passive: true });
+    }
+
+  })();
+  </script>
+</body>
+</html>
