@@ -38,11 +38,14 @@
   <style>
     /* ─── TOKENS ─────────────────────────────────────────── */
     :root {
-      --crema:    #F7F3EE;
-      --crema-2:  #EDE6DA;
-      --tierra:   #C4A882;
+      --crema:    #FAF6F0;   /* fondo hueso/crema — deja respirar las fotos */
+      --crema-2:  #F0EAE3;   /* banda de sección, un punto más cálida */
+      --tierra:   #C17F86;   /* acento rosa envejecido, más saturado */
+      --tierra-rgb: 193,127,134;
+      --tierra-2: #96565E;   /* rosa profundo — hover y énfasis fuerte */
+      --tierra-soft: rgba(193,127,134,0.12); /* tinte suave para rellenos */
       --carbon:   #2A2420;
-      --gris:     #8C7B6E;
+      --gris:     #8B8079;   /* texto secundario, gris suave */
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body:    'DM Sans', system-ui, sans-serif;
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -117,7 +120,7 @@
       background: rgba(247, 243, 238, 0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 1px 0 rgba(196,168,130,0.2);
+      box-shadow: 0 1px 0 rgba(193,127,134,0.2);
     }
 
     .nav-logo {
@@ -343,15 +346,27 @@
     /* ─── SECTIONS SHARED ───────────────────────────────── */
     section { position: relative; }
     .section-label {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
       font-family: var(--font-body);
       font-weight: 300;
       font-size: 0.7rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--tierra);
+      color: var(--tierra-2);
       margin-bottom: 0.75rem;
     }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--tierra);
+      flex-shrink: 0;
+    }
+    .servicios-header .section-label,
+    .temporada-header .section-label { justify-content: center; }
     .section-title {
       font-family: var(--font-display);
       font-style: italic;
@@ -365,6 +380,8 @@
     .section-title-md {
       font-size: clamp(1.8rem, 4vw, 2.8rem);
     }
+    /* Acento rosa en el énfasis de los títulos */
+    .section-title em { color: var(--tierra-2); }
 
     /* ─── SOBRE MÍ ───────────────────────────────────────── */
     #sobre {
@@ -419,7 +436,7 @@
       font-weight: 400;
       line-height: 1.1;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(196,168,130,0.4);
+      box-shadow: 0 4px 20px rgba(193,127,134,0.4);
     }
     .sobre-badge span { font-size: 0.6rem; font-style: normal; font-family: var(--font-body); letter-spacing: 0.08em; }
     .sobre-text { padding-top: 1rem; }
@@ -445,7 +462,7 @@
       border-radius: 2px;
       transition: background 0.3s, transform 0.3s;
     }
-    .btn-wa:hover { background: #b0946e; transform: translateY(-1px); }
+    .btn-wa:hover { background: var(--tierra-2); transform: translateY(-1px); }
     .btn-wa svg { flex-shrink: 0; }
 
     /* ─── SERVICIOS ──────────────────────────────────────── */
@@ -500,9 +517,10 @@
       font-size: 0.65rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--tierra);
+      color: var(--tierra-2);
+      background: var(--tierra-soft);
       border: 1px solid var(--tierra);
-      padding: 0.2rem 0.6rem;
+      padding: 0.25rem 0.7rem;
       border-radius: 20px;
       margin-bottom: 0.75rem;
     }
@@ -563,7 +581,7 @@
       justify-content: center;
       transition: background 0.4s;
     }
-    .masonry-item:hover .masonry-item-overlay { background: rgba(42,36,32,0.2); }
+    .masonry-item:hover .masonry-item-overlay { background: rgba(var(--tierra-rgb),0.35); }
     .masonry-item-overlay svg { opacity: 0; transition: opacity 0.4s; }
     .masonry-item:hover .masonry-item-overlay svg { opacity: 1; }
 
@@ -605,7 +623,7 @@
       transition: color 0.3s;
       padding: 0.5rem;
     }
-    .lightbox-close:hover { color: var(--crema); }
+    .lightbox-close:hover { color: var(--tierra); }
     .lightbox-prev, .lightbox-next {
       position: absolute;
       top: 50%; transform: translateY(-50%);
@@ -620,7 +638,7 @@
     }
     .lightbox-prev { left: 1rem; }
     .lightbox-next { right: 1rem; }
-    .lightbox-prev:hover, .lightbox-next:hover { color: var(--crema); }
+    .lightbox-prev:hover, .lightbox-next:hover { color: var(--tierra); }
 
     /* ─── TALLERES ───────────────────────────────────────── */
     #talleres {
@@ -652,7 +670,7 @@
       gap: 0;
     }
     .taller-item {
-      border-top: 1px solid rgba(196,168,130,0.15);
+      border-top: 1px solid rgba(193,127,134,0.15);
       padding: 1.1rem 0;
       display: flex;
       align-items: flex-start;
@@ -661,7 +679,7 @@
       cursor: pointer;
       transition: border-color 0.3s;
     }
-    .taller-item:last-child { border-bottom: 1px solid rgba(196,168,130,0.15); }
+    .taller-item:last-child { border-bottom: 1px solid rgba(193,127,134,0.15); }
     .taller-item:hover { border-top-color: var(--tierra); }
     .taller-item:hover .taller-nombre { color: var(--tierra); }
     .taller-nombre {
@@ -720,7 +738,7 @@
     .form-group select,
     .form-group textarea {
       background: rgba(247,243,238,0.06);
-      border: 1px solid rgba(196,168,130,0.25);
+      border: 1px solid rgba(193,127,134,0.25);
       border-radius: 2px;
       color: var(--crema);
       font-family: var(--font-body);
@@ -739,7 +757,7 @@
     .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--tierra);
-      background: rgba(196,168,130,0.08);
+      background: rgba(193,127,134,0.08);
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -774,7 +792,7 @@
       flex: 1;
       text-align: center;
     }
-    .btn-primary:hover { background: #b0946e; transform: translateY(-1px); }
+    .btn-primary:hover { background: var(--tierra-2); transform: translateY(-1px); }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
@@ -783,7 +801,7 @@
       padding: 0.85rem 1.8rem;
       background: transparent;
       color: rgba(247,243,238,0.7);
-      border: 1px solid rgba(196,168,130,0.4);
+      border: 1px solid rgba(193,127,134,0.4);
       font-family: var(--font-body);
       font-weight: 300;
       font-size: 0.82rem;
@@ -831,6 +849,8 @@
     }
     .flor-img img { transition: transform 0.7s var(--ease-out); }
     .flor-card:hover .flor-img img { transform: scale(1.06); }
+    .flor-card:hover .flor-nombre { color: var(--tierra-2); }
+    .flor-nombre { transition: color 0.3s; }
     .flor-info {
       padding: 0.9rem 0.75rem 1rem;
     }
@@ -884,12 +904,12 @@
       align-items: center;
       justify-content: center;
       width: 36px; height: 36px;
-      border: 1px solid rgba(196,168,130,0.3);
+      border: 1px solid rgba(193,127,134,0.3);
       border-radius: 50%;
       color: rgba(247,243,238,0.5);
-      transition: border-color 0.3s, color 0.3s;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
     }
-    .footer-social a:hover { border-color: var(--tierra); color: var(--tierra); }
+    .footer-social a:hover { border-color: var(--tierra); background: var(--tierra); color: var(--crema); }
     .footer-col-title {
       font-family: var(--font-body);
       font-weight: 300;
@@ -928,7 +948,7 @@
       max-width: 1100px;
       margin: 3rem auto 0;
       padding-top: 1.5rem;
-      border-top: 1px solid rgba(196,168,130,0.12);
+      border-top: 1px solid rgba(193,127,134,0.12);
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
@@ -942,7 +962,7 @@
       color: rgba(247,243,238,0.3);
       letter-spacing: 0.04em;
     }
-    .footer-bottom a { color: rgba(196,168,130,0.6); transition: color 0.3s; }
+    .footer-bottom a { color: rgba(193,127,134,0.6); transition: color 0.3s; }
     .footer-bottom a:hover { color: var(--tierra); }
 
     /* ─── WA FLOTANTE ────────────────────────────────────── */
@@ -1019,9 +1039,9 @@
           <!-- Cola curvada -->
           <path d="M24 58 Q14 50 16 42 Q18 35 24 38" stroke="#2A2420" stroke-width="2" fill="none" stroke-linecap="round"/>
           <!-- Florecitas en el cuerpo -->
-          <circle cx="44" cy="56" r="2.5" fill="#C4A882"/>
-          <circle cx="52" cy="54" r="2" fill="#C4A882"/>
-          <circle cx="60" cy="57" r="2.5" fill="#C4A882"/>
+          <circle cx="44" cy="56" r="2.5" fill="#C9A0A0"/>
+          <circle cx="52" cy="54" r="2" fill="#C9A0A0"/>
+          <circle cx="60" cy="57" r="2.5" fill="#C9A0A0"/>
           <!-- Pétalos pequeños -->
           <circle cx="44" cy="53" r="1.2" fill="#EDE6DA"/>
           <circle cx="41" cy="56" r="1.2" fill="#EDE6DA"/>
@@ -1073,7 +1093,7 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <h1 class="hero-title">Flores<br>con alma.</h1>
+      <h1 class="hero-title">Flores<br>con alma</h1>
       <p class="hero-sub">Cada ramo cuenta una historia.<br>La tuya.</p>
       <a href="#servicios" class="btn-outline-white">Ver servicios</a>
     </div>
@@ -1100,7 +1120,7 @@
       </div>
       <div class="sobre-text">
         <span class="section-label reveal">Nuestra historia</span>
-        <h2 id="sobre-title" class="section-title section-title-lg reveal">Siempre fui<br><em>la chica de<br>las flores.</em></h2>
+        <h2 id="sobre-title" class="section-title section-title-lg reveal">Siempre fui<br><em>la chica de<br>las flores</em></h2>
         <div class="sobre-body reveal">
           <p>Soy Mirienda. Empecé este camino rodeada de peonías en un pequeño taller y de un salchicha muy metiche que siempre acababa dentro de los cubos de flores. Esa energía impredecible, tierna y curiosa es la misma que pongo en cada encargo.</p>
           <p>Mir Floristería nació de la convicción de que las flores no son solo decoración —son emoción en forma vegetal. Cada ramo de novia, cada centro de mesa, cada corona, es un gesto irrepetible que merece ser pensado con calma y ejecutado con pasión.</p>
@@ -1124,7 +1144,7 @@
   <section id="servicios" aria-labelledby="servicios-title">
     <div class="servicios-header">
       <span class="section-label reveal">Lo que hacemos</span>
-      <h2 id="servicios-title" class="section-title section-title-lg reveal">Cada ocasión<br><em>merece sus flores.</em></h2>
+      <h2 id="servicios-title" class="section-title section-title-lg reveal">Cada ocasión<br><em>merece sus flores</em></h2>
       <p class="reveal">Diseñamos propuestas florales a medida para los momentos que importan. Sin fórmulas, sin catálogos.</p>
     </div>
     <div class="servicios-grid">
@@ -1165,7 +1185,7 @@
   <section id="galeria" aria-labelledby="galeria-title">
     <div class="galeria-header">
       <span class="section-label reveal">Portfolio</span>
-      <h2 id="galeria-title" class="section-title section-title-lg reveal">Un poco de<br><em>lo que hacemos.</em></h2>
+      <h2 id="galeria-title" class="section-title section-title-lg reveal">Un poco de<br><em>lo que hacemos</em></h2>
     </div>
     <div class="masonry" id="masonry-grid" role="list" aria-label="Galería de trabajos florales">
 
@@ -1262,7 +1282,7 @@
       <!-- Lista talleres -->
       <div class="talleres-left">
         <span class="section-label reveal">Aprende con nosotras</span>
-        <h2 id="talleres-title" class="section-title section-title-lg reveal">Talleres<br><em>florales.</em></h2>
+        <h2 id="talleres-title" class="section-title section-title-lg reveal">Talleres<br><em>florales</em></h2>
         <p class="talleres-desc reveal">Sesiones íntimas donde aprender, crear y dejarse llevar por las flores. Sin experiencia previa. Solo ganas de ensuciarse las manos.</p>
         <ul class="taller-list reveal">
           <li class="taller-item">
@@ -1351,7 +1371,7 @@
   <section id="temporada" aria-labelledby="temporada-title">
     <div class="temporada-header">
       <span class="section-label reveal">Nuestra selección</span>
-      <h2 id="temporada-title" class="section-title section-title-lg reveal">Flores de<br><em>temporada.</em></h2>
+      <h2 id="temporada-title" class="section-title section-title-lg reveal">Flores de<br><em>temporada</em></h2>
       <p class="reveal">Trabajamos con flores frescas de temporada y productores locales. Menos huella, más calidad.</p>
     </div>
     <div class="flores-grid">
