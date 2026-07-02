@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mir Floristería — Flores con alma. Bodas, eventos y talleres florales.</title>
-  <meta name="description" content="Mir Floristería, florista artística en Madrid. Ramos de novia únicos, decoración de bodas y eventos, talleres florales. Hablamos de tus flores." />
+  <title>MirFlores Atelier — Flores con alma. Bodas, eventos y talleres florales.</title>
+  <meta name="description" content="MirFlores Atelier, florista artística en Madrid. Ramos de novia únicos, decoración de bodas y eventos, talleres florales. Hablamos de tus flores." />
   <link rel="canonical" href="https://mirflores.com" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Mir Floristería — Flores con alma." />
+  <meta property="og:title" content="MirFlores Atelier — Flores con alma." />
   <meta property="og:description" content="Florista artística especializada en bodas, eventos y talleres florales." />
   <meta property="og:image" content="https://mirflores.com/assets/hero.jpg" />
   <meta property="og:url" content="https://mirflores.com" />
@@ -19,14 +19,14 @@
   {
     "@context": "https://schema.org",
     "@type": "Florist",
-    "name": "Mir Floristería",
-    "alternateName": "Mirienda la florista",
+    "name": "MirFlores Atelier",
+    "alternateName": "La chica de las flores",
     "url": "https://mirflores.com",
     "email": "atelier@mirflores.com",
-    "telephone": "+34661256194",
+    "telephone": "+34722421637",
     "image": "https://mirflores.com/assets/hero.jpg",
     "description": "Floristería artística especializada en bodas, eventos y talleres florales.",
-    "sameAs": ["https://www.instagram.com/mirflores"]
+    "sameAs": ["https://www.instagram.com/mirfloresatelier"]
   }
   </script>
 
@@ -71,6 +71,17 @@
     }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* ─── ANTI-HUÉRFANAS ─────────────────────────────────── */
+    h1, h2, h3,
+    .taller-nombre,
+    .nav-logo-text,
+    #mobile-menu a {
+      text-wrap: balance;
+    }
+    p, .footer-tagline {
+      text-wrap: pretty;
+    }
 
     /* ─── STEM SVG (tablet+) ─────────────────────────────── */
     #stem-svg {
@@ -708,6 +719,43 @@
       text-align: right;
       padding-top: 0.2rem;
     }
+
+    /* Tabs de talleres */
+    .taller-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 2rem 0 1.5rem;
+    }
+    .taller-tab {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: rgba(247,243,238,0.6);
+      border: 1px solid rgba(193,127,134,0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .taller-tab:hover { border-color: var(--tierra); color: var(--crema); }
+    .taller-tab.active {
+      background: var(--tierra);
+      border-color: var(--tierra);
+      color: var(--crema);
+    }
+    .taller-panel-desc {
+      color: rgba(247,243,238,0.55);
+      font-size: 0.85rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .taller-item-placeholder { cursor: default; }
+    .taller-item-placeholder .taller-nombre { color: rgba(247,243,238,0.55); }
+    .taller-item-placeholder .taller-nombre small { font-style: italic; color: var(--tierra); }
+    .taller-item-placeholder:hover { border-top-color: rgba(193,127,134,0.15); }
+    .taller-item-placeholder:hover .taller-nombre { color: rgba(247,243,238,0.55); }
+
     /* Formulario */
     .form-title {
       font-family: var(--font-display);
@@ -868,6 +916,124 @@
       text-transform: uppercase;
       color: var(--tierra);
     }
+    .flor-trigger { cursor: pointer; }
+    .flor-toggle-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px; height: 20px;
+      margin: 0.6rem auto 0;
+      border: 1px solid var(--tierra);
+      border-radius: 50%;
+      color: var(--tierra);
+      font-size: 0.8rem;
+      line-height: 1;
+      transition: transform 0.35s var(--ease-out), background 0.3s, color 0.3s;
+    }
+    .flor-trigger[aria-expanded="true"] .flor-toggle-icon {
+      transform: rotate(45deg);
+      background: var(--tierra);
+      color: var(--crema);
+    }
+    .flor-detail {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s var(--ease-out);
+    }
+    .flor-detail-inner { overflow: hidden; }
+    .flor-detail-inner p {
+      padding: 0 0.9rem 1rem;
+      font-size: 0.8rem;
+      color: var(--gris);
+      line-height: 1.6;
+      text-align: left;
+    }
+    .flor-card.open .flor-detail { grid-template-rows: 1fr; }
+
+    /* ─── RESEÑAS ────────────────────────────────────────── */
+    #resenas {
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 6rem);
+    }
+    .resenas-header {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 3rem;
+    }
+    .resenas-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (min-width: 700px) {
+      .resenas-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .resena-card {
+      background: var(--crema-2);
+      border-radius: 3px;
+      padding: 1.8rem 1.6rem;
+      position: relative;
+    }
+    .resena-card::before {
+      content: '“';
+      display: block;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 2.6rem;
+      line-height: 1;
+      color: var(--tierra);
+      margin-bottom: 0.5rem;
+    }
+    .resena-texto {
+      font-size: 0.9rem;
+      color: var(--gris);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .resena-autor {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--carbon);
+    }
+    .resenas-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .resenas-cta .btn-primary {
+      display: inline-flex;
+      flex: none;
+    }
+
+    /* ─── FABRICA TU RAMO (próximamente) ──────────────────── */
+    .proximamente-section {
+      background: var(--crema-2);
+      padding: clamp(3.5rem, 9vw, 7rem) clamp(1.5rem, 6vw, 6rem);
+      text-align: center;
+    }
+    .proximamente-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .proximamente-inner .section-label { justify-content: center; }
+    .proximamente-text {
+      color: var(--gris);
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+    .badge-proximamente {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tierra-2);
+      background: var(--tierra-soft);
+      border: 1px solid var(--tierra);
+      border-radius: 20px;
+    }
 
     /* ─── FOOTER ─────────────────────────────────────────── */
     #footer {
@@ -1017,7 +1183,7 @@
 
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav id="nav" role="navigation" aria-label="Navegación principal">
-    <a href="#" class="nav-logo" aria-label="Mir Floristería — Inicio">
+    <a href="#" class="nav-logo" aria-label="MirFlores Atelier — Inicio">
       <!-- Logo dachshund ilustrado -->
       <div class="nav-logo-img" style="background:var(--crema-2);display:flex;align-items:center;justify-content:center;overflow:hidden;">
         <svg width="34" height="34" viewBox="0 0 100 100" fill="none" aria-hidden="true" style="display:block;">
@@ -1054,18 +1220,19 @@
         </svg>
       </div>
       <div>
-        <span class="nav-logo-text">mirflores</span>
-        <span class="nav-logo-sub">Mirienda la florista</span>
+        <span class="nav-logo-text">MirFlores</span>
+        <span class="nav-logo-sub">Atelier</span>
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#sobre">Sobre&nbsp;mí</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#talleres">Talleres</a></li>
       <li><a href="#temporada">Flores</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
     </ul>
-    <a href="#talleres" class="nav-cta">Reservar taller</a>
+    <a href="#talleres" class="nav-cta">Reservar&nbsp;taller</a>
     <button class="burger" id="burger-btn" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -1074,11 +1241,12 @@
   <!-- ── MOBILE MENU ──────────────────────────────────── -->
   <div id="mobile-menu" role="dialog" aria-label="Menú de navegación" aria-modal="true">
     <button class="mobile-close" id="mobile-close" aria-label="Cerrar menú">✕</button>
-    <a href="#sobre" class="mobile-link">Sobre mí</a>
+    <a href="#sobre" class="mobile-link">Sobre&nbsp;mí</a>
     <a href="#servicios" class="mobile-link">Servicios</a>
     <a href="#galeria" class="mobile-link">Galería</a>
     <a href="#talleres" class="mobile-link">Talleres</a>
     <a href="#temporada" class="mobile-link">Flores</a>
+    <a href="#resenas" class="mobile-link">Reseñas</a>
   </div>
 
   <!-- ── HERO ─────────────────────────────────────────── -->
@@ -1086,7 +1254,7 @@
     <div class="hero-img">
       <img
         src="assets/hero-ramo-novia.jpg"
-        alt="Ramo de novia en cascada de flores blancas, obra de Mir Floristería"
+        alt="Ramo de novia en cascada de flores blancas, obra de MirFlores Atelier"
         fetchpriority="high"
         loading="eager"
       />
@@ -1094,8 +1262,8 @@
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <h1 class="hero-title">Flores<br>con alma</h1>
-      <p class="hero-sub">Cada ramo cuenta una historia.<br>La tuya.</p>
-      <a href="#servicios" class="btn-outline-white">Ver servicios</a>
+      <p class="hero-sub">Cada ramo cuenta una&nbsp;historia.<br>La&nbsp;tuya.</p>
+      <a href="#servicios" class="btn-outline-white">Ver&nbsp;servicios</a>
     </div>
     <div class="hero-scroll" aria-hidden="true">
       <div class="hero-scroll-line"></div>
@@ -1110,7 +1278,7 @@
         <div class="sobre-img-frame">
           <img
             src="assets/floristas-escalera.webp"
-            alt="Mirienda y su equipo trabajando entre flores en una escalera de mármol"
+            alt="La chica de las flores y su equipo trabajando entre flores en una escalera de mármol"
             loading="lazy"
           />
         </div>
@@ -1120,21 +1288,21 @@
       </div>
       <div class="sobre-text">
         <span class="section-label reveal">Nuestra historia</span>
-        <h2 id="sobre-title" class="section-title section-title-lg reveal">Siempre fui<br><em>la chica de<br>las flores</em></h2>
+        <h2 id="sobre-title" class="section-title section-title-lg reveal">Siempre fui<br><em>la chica&nbsp;de<br>las flores</em></h2>
         <div class="sobre-body reveal">
-          <p>Soy Mirienda. Empecé este camino rodeada de peonías en un pequeño taller y de un salchicha muy metiche que siempre acababa dentro de los cubos de flores. Esa energía impredecible, tierna y curiosa es la misma que pongo en cada encargo.</p>
-          <p>Mir Floristería nació de la convicción de que las flores no son solo decoración —son emoción en forma vegetal. Cada ramo de novia, cada centro de mesa, cada corona, es un gesto irrepetible que merece ser pensado con calma y ejecutado con pasión.</p>
-          <p>Trabajamos con flores de temporada, productores locales y una estética orgánica y poética. Sin fórmulas. Sin catálogos. Solo flores con alma.</p>
+          <p>Soy la chica de las flores. Empecé este camino rodeada de peonías en un pequeño taller y de un salchicha muy metiche que siempre acababa dentro de los cubos de flores. Esa energía impredecible, tierna y curiosa es la misma que pongo en cada&nbsp;encargo.</p>
+          <p>MirFlores Atelier nació de la convicción de que las flores no son solo decoración —son emoción en forma vegetal. Cada ramo de novia, cada centro de mesa, cada corona, es un gesto irrepetible que merece ser pensado con calma y ejecutado con&nbsp;pasión.</p>
+          <p>Trabajamos con flores de temporada, productores locales y una estética orgánica y poética. Sin fórmulas. Sin catálogos. Solo flores con&nbsp;alma.</p>
         </div>
         <a
-          href="https://wa.me/34661256194?text=Hola%20Mirienda%2C%20me%20gustar%C3%ADa%20hablar%20de%20mis%20flores%20%F0%9F%8C�"
+          href="https://wa.me/34722421637?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20de%20mis%20flores%20%F0%9F%8C%B8"
           class="btn-wa reveal"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contactar por WhatsApp"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
-          Hablamos de tus flores
+          Hablamos de tus&nbsp;flores
         </a>
       </div>
     </div>
@@ -1144,8 +1312,8 @@
   <section id="servicios" aria-labelledby="servicios-title">
     <div class="servicios-header">
       <span class="section-label reveal">Lo que hacemos</span>
-      <h2 id="servicios-title" class="section-title section-title-lg reveal">Cada ocasión<br><em>merece sus flores</em></h2>
-      <p class="reveal">Diseñamos propuestas florales a medida para los momentos que importan. Sin fórmulas, sin catálogos.</p>
+      <h2 id="servicios-title" class="section-title section-title-lg reveal">Cada ocasión<br><em>merece sus&nbsp;flores</em></h2>
+      <p class="reveal">Diseñamos propuestas florales a medida para los momentos que importan. Sin fórmulas, sin&nbsp;catálogos.</p>
     </div>
     <div class="servicios-grid">
       <article class="servicio-card reveal" style="transition-delay:0s">
@@ -1154,8 +1322,8 @@
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Bodas</span>
-          <h3>Bodas & Ceremonia</h3>
-          <p>Desde el ramo de novia hasta la decoración completa del altar, los centros de mesa y el peinado floral. Cada detalle coordinado con tu estilo, tu historia.</p>
+          <h3>Bodas &amp;&nbsp;Ceremonia</h3>
+          <p>Desde el ramo de novia hasta la decoración completa del altar, los centros de mesa y el peinado floral. Cada detalle coordinado con tu estilo, tu&nbsp;historia.</p>
         </div>
       </article>
       <article class="servicio-card reveal" style="transition-delay:0.1s">
@@ -1164,8 +1332,8 @@
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Eventos</span>
-          <h3>Eventos & Celebraciones</h3>
-          <p>Cumpleaños íntimos, aniversarios, bautizos, cenas corporativas. Creamos ambientes florales que transforman cualquier espacio en algo memorable.</p>
+          <h3>Eventos &amp;&nbsp;Celebraciones</h3>
+          <p>Cumpleaños íntimos, aniversarios, bautizos, cenas corporativas. Creamos ambientes florales que transforman cualquier espacio en algo&nbsp;memorable.</p>
         </div>
       </article>
       <article class="servicio-card reveal" style="transition-delay:0.2s">
@@ -1174,8 +1342,8 @@
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Ramos especiales</span>
-          <h3>Ramos a medida</h3>
-          <p>Para regalar, para ti misma, para decir algo con flores. Cada ramo es único. Trabajamos con flores de temporada y escuchamos lo que quieres transmitir.</p>
+          <h3>Ramos a&nbsp;medida</h3>
+          <p>Para regalar, para ti misma, para decir algo con flores. Cada ramo es único. Trabajamos con flores de temporada y escuchamos lo que quieres&nbsp;transmitir.</p>
         </div>
       </article>
     </div>
@@ -1185,7 +1353,7 @@
   <section id="galeria" aria-labelledby="galeria-title">
     <div class="galeria-header">
       <span class="section-label reveal">Portfolio</span>
-      <h2 id="galeria-title" class="section-title section-title-lg reveal">Un poco de<br><em>lo que hacemos</em></h2>
+      <h2 id="galeria-title" class="section-title section-title-lg reveal">Un poco&nbsp;de<br><em>lo que&nbsp;hacemos</em></h2>
     </div>
     <div class="masonry" id="masonry-grid" role="list" aria-label="Galería de trabajos florales">
 
@@ -1283,42 +1451,92 @@
       <div class="talleres-left">
         <span class="section-label reveal">Aprende con nosotras</span>
         <h2 id="talleres-title" class="section-title section-title-lg reveal">Talleres<br><em>florales</em></h2>
-        <p class="talleres-desc reveal">Sesiones íntimas donde aprender, crear y dejarse llevar por las flores. Sin experiencia previa. Solo ganas de ensuciarse las manos.</p>
-        <ul class="taller-list reveal">
-          <li class="taller-item">
-            <div class="taller-nombre">
-              Taller de ramos
-              <small>Técnicas de composición, estructura y paleta de color</small>
-            </div>
-            <div class="taller-duracion">2h</div>
-          </li>
-          <li class="taller-item">
-            <div class="taller-nombre">
-              Corona de flores
-              <small>Diseña tu propia corona o tocado floral</small>
-            </div>
-            <div class="taller-duracion">2.5h</div>
-          </li>
-          <li class="taller-item">
-            <div class="taller-nombre">
-              Centro de mesa
-              <small>Arreglos para eventos y celebraciones propias</small>
-            </div>
-            <div class="taller-duracion">3h</div>
-          </li>
-          <li class="taller-item">
-            <div class="taller-nombre">
-              Taller privado
-              <small>Sesión personalizada para grupos de hasta 8 personas</small>
-            </div>
-            <div class="taller-duracion">A medida</div>
-          </li>
-        </ul>
+        <p class="talleres-desc reveal">Sesiones íntimas donde aprender, crear y dejarse llevar por las&nbsp;flores. Sin experiencia previa. Solo ganas de ensuciarse las&nbsp;manos.</p>
+
+        <div class="taller-tabs reveal" role="tablist" aria-label="Tipos de taller">
+          <button type="button" class="taller-tab active" role="tab" aria-selected="true" aria-controls="panel-atelier" id="tab-atelier">Talleres en el&nbsp;Atelier</button>
+          <button type="button" class="taller-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel-medida" id="tab-medida">Taller a tu&nbsp;Medida</button>
+          <button type="button" class="taller-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel-compartido" id="tab-compartido">Taller&nbsp;Compartido</button>
+          <button type="button" class="taller-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel-experiencias" id="tab-experiencias">Experiencias</button>
+        </div>
+
+        <div class="taller-panels reveal">
+          <div class="taller-panel" id="panel-atelier" role="tabpanel" aria-labelledby="tab-atelier">
+            <p class="taller-panel-desc">Fecha y plaza fijadas por MirFlores&nbsp;Atelier. Reserva tu sitio en nuestras próximas&nbsp;convocatorias.</p>
+            <ul class="taller-list">
+              <li class="taller-item">
+                <div class="taller-nombre">
+                  Taller de ramos
+                  <small>Técnicas de composición, estructura y paleta de&nbsp;color</small>
+                </div>
+                <div class="taller-duracion">2h</div>
+              </li>
+              <li class="taller-item">
+                <div class="taller-nombre">
+                  Corona de flores
+                  <small>Diseña tu propia corona o tocado&nbsp;floral</small>
+                </div>
+                <div class="taller-duracion">2.5h</div>
+              </li>
+              <li class="taller-item">
+                <div class="taller-nombre">
+                  Centro de mesa
+                  <small>Arreglos para eventos y celebraciones&nbsp;propias</small>
+                </div>
+                <div class="taller-duracion">3h</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="taller-panel" id="panel-medida" role="tabpanel" aria-labelledby="tab-medida" hidden>
+            <p class="taller-panel-desc">Tú eliges la fecha y nosotras diseñamos el taller a tu ritmo. Ideal para grupos reducidos o encuentros muy&nbsp;personales.</p>
+            <ul class="taller-list">
+              <li class="taller-item">
+                <div class="taller-nombre">
+                  Taller a tu Medida
+                  <small>Sesión personalizada para grupos de hasta 8&nbsp;personas</small>
+                </div>
+                <div class="taller-duracion">A&nbsp;medida</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="taller-panel" id="panel-compartido" role="tabpanel" aria-labelledby="tab-compartido" hidden>
+            <p class="taller-panel-desc">Propón tú la fecha y crea tu propio taller: invita a quien quieras y que se vayan&nbsp;uniendo.</p>
+            <ul class="taller-list">
+              <li class="taller-item">
+                <div class="taller-nombre">
+                  Taller Compartido
+                  <small>Fija fecha y aforo; nosotras nos encargamos de las&nbsp;flores</small>
+                </div>
+                <div class="taller-duracion">Consultar</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="taller-panel" id="panel-experiencias" role="tabpanel" aria-labelledby="tab-experiencias" hidden>
+            <p class="taller-panel-desc">Experiencias para combinar con tus flores — próximamente, a definir por la&nbsp;floristería.</p>
+            <ul class="taller-list taller-list-placeholder">
+              <li class="taller-item taller-item-placeholder">
+                <div class="taller-nombre">Cata de vino<small>Próximamente</small></div>
+              </li>
+              <li class="taller-item taller-item-placeholder">
+                <div class="taller-nombre">Cata de quesos<small>Próximamente</small></div>
+              </li>
+              <li class="taller-item taller-item-placeholder">
+                <div class="taller-nombre">Brunch floral<small>Próximamente</small></div>
+              </li>
+              <li class="taller-item taller-item-placeholder">
+                <div class="taller-nombre">Cerámica<small>Próximamente</small></div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <!-- Formulario -->
       <div class="talleres-right reveal" style="transition-delay:0.15s">
-        <p class="form-title">Reserva tu plaza</p>
+        <p class="form-title">Reserva tu&nbsp;plaza</p>
         <form id="form-talleres" novalidate>
           <div class="form-row">
             <div class="form-group">
@@ -1336,10 +1554,12 @@
             <label for="f-taller">Taller de interés *</label>
             <select id="f-taller" name="taller" required>
               <option value="" disabled selected>Elige un taller</option>
-              <option value="Taller de ramos (2h)">Taller de ramos (2h)</option>
-              <option value="Corona de flores (2.5h)">Corona de flores (2.5h)</option>
-              <option value="Centro de mesa (3h)">Centro de mesa (3h)</option>
-              <option value="Taller privado">Taller privado</option>
+              <option value="Taller de ramos (2h) — Talleres en el Atelier">Taller de ramos (2h)</option>
+              <option value="Corona de flores (2.5h) — Talleres en el Atelier">Corona de flores (2.5h)</option>
+              <option value="Centro de mesa (3h) — Talleres en el Atelier">Centro de mesa (3h)</option>
+              <option value="Taller a tu Medida">Taller a tu Medida</option>
+              <option value="Taller Compartido">Taller Compartido</option>
+              <option value="Experiencia (a consultar)">Experiencia (a consultar)</option>
             </select>
             <span class="form-error" id="err-taller">Elige un taller.</span>
           </div>
@@ -1350,16 +1570,16 @@
           <div class="form-actions">
             <button type="submit" class="btn-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
-              Enviar por WhatsApp
+              Enviar por&nbsp;WhatsApp
             </button>
             <a
-              href="https://wa.me/34661256194"
+              href="https://wa.me/34722421637"
               target="_blank"
               rel="noopener noreferrer"
               class="btn-secondary"
               aria-label="Contactar directamente por WhatsApp"
             >
-              Chat directo
+              Chat&nbsp;directo
             </a>
           </div>
         </form>
@@ -1371,100 +1591,217 @@
   <section id="temporada" aria-labelledby="temporada-title">
     <div class="temporada-header">
       <span class="section-label reveal">Nuestra selección</span>
-      <h2 id="temporada-title" class="section-title section-title-lg reveal">Flores de<br><em>temporada</em></h2>
-      <p class="reveal">Trabajamos con flores frescas de temporada y productores locales. Menos huella, más calidad.</p>
+      <h2 id="temporada-title" class="section-title section-title-lg reveal">Flores&nbsp;de<br><em>temporada</em></h2>
+      <p class="reveal">Trabajamos con flores frescas de temporada y productores locales. Menos huella, más&nbsp;calidad.</p>
     </div>
     <div class="flores-grid">
       <div class="flor-card reveal" style="transition-delay:0s">
-        <div class="flor-img">
-          <img src="assets/flor-peonia.jpg" alt="Peonía rosa de temporada" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-peonia" aria-label="Ver más sobre la peonía">
+          <div class="flor-img">
+            <img src="assets/flor-peonia.jpg" alt="Peonía rosa de temporada" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Peonía</p>
+            <p class="flor-temporada">May&nbsp;— Jun</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Peonía</p>
-          <p class="flor-temporada">May — Jun</p>
+        <div class="flor-detail" id="flor-detail-peonia" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto de la peonía — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.06s">
-        <div class="flor-img">
-          <img src="assets/flor-cala.jpg" alt="Cala blanca elegante" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-cala" aria-label="Ver más sobre la cala">
+          <div class="flor-img">
+            <img src="assets/flor-cala.jpg" alt="Cala blanca elegante" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Cala</p>
+            <p class="flor-temporada">Ene&nbsp;— Jun</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Cala</p>
-          <p class="flor-temporada">Ene — Jun</p>
+        <div class="flor-detail" id="flor-detail-cala" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto de la cala — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.12s">
-        <div class="flor-img">
-          <img src="assets/flor-anemona.jpg" alt="Anémona morada en flor" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-anemona" aria-label="Ver más sobre la anémona">
+          <div class="flor-img">
+            <img src="assets/flor-anemona.jpg" alt="Anémona morada en flor" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Anémona</p>
+            <p class="flor-temporada">Feb&nbsp;— Abr</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Anémona</p>
-          <p class="flor-temporada">Feb — Abr</p>
+        <div class="flor-detail" id="flor-detail-anemona" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto de la anémona — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.18s">
-        <div class="flor-img">
-          <img src="assets/flor-rosa.jpg" alt="Rosa clásica en tono crema" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-rosa" aria-label="Ver más sobre la rosa">
+          <div class="flor-img">
+            <img src="assets/flor-rosa.jpg" alt="Rosa clásica en tono crema" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Rosa</p>
+            <p class="flor-temporada">Todo el&nbsp;año</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Rosa</p>
-          <p class="flor-temporada">Todo el año</p>
+        <div class="flor-detail" id="flor-detail-rosa" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto de la rosa — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.24s">
-        <div class="flor-img">
-          <img src="assets/flor-ranunculo.jpg" alt="Ranúnculo amarillo y coral" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-ranunculo" aria-label="Ver más sobre el ranúnculo">
+          <div class="flor-img">
+            <img src="assets/flor-ranunculo.jpg" alt="Ranúnculo amarillo y coral" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Ranúnculo</p>
+            <p class="flor-temporada">Feb&nbsp;— May</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Ranúnculo</p>
-          <p class="flor-temporada">Feb — May</p>
+        <div class="flor-detail" id="flor-detail-ranunculo" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto del ranúnculo — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.3s">
-        <div class="flor-img">
-          <img src="assets/flor-tulipan.jpg" alt="Tulipán rojo de temporada" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-tulipan" aria-label="Ver más sobre el tulipán">
+          <div class="flor-img">
+            <img src="assets/flor-tulipan.jpg" alt="Tulipán rojo de temporada" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Tulipán</p>
+            <p class="flor-temporada">Mar&nbsp;— May</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Tulipán</p>
-          <p class="flor-temporada">Mar — May</p>
+        <div class="flor-detail" id="flor-detail-tulipan" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto del tulipán — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.36s">
-        <div class="flor-img">
-          <img src="assets/flor-dalia.jpg" alt="Dalia naranja voluminosa" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-dalia" aria-label="Ver más sobre la dalia">
+          <div class="flor-img">
+            <img src="assets/flor-dalia.jpg" alt="Dalia naranja voluminosa" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Dalia</p>
+            <p class="flor-temporada">Jul&nbsp;— Oct</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Dalia</p>
-          <p class="flor-temporada">Jul — Oct</p>
+        <div class="flor-detail" id="flor-detail-dalia" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto de la dalia — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.42s">
-        <div class="flor-img">
-          <img src="assets/flor-gypsophila.jpg" alt="Gypsophila blanca nube" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-gypsophila" aria-label="Ver más sobre la gypsophila">
+          <div class="flor-img">
+            <img src="assets/flor-gypsophila.jpg" alt="Gypsophila blanca nube" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Gypsophila</p>
+            <p class="flor-temporada">May&nbsp;— Sep</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Gypsophila</p>
-          <p class="flor-temporada">May — Sep</p>
+        <div class="flor-detail" id="flor-detail-gypsophila" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto de la gypsophila — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.48s">
-        <div class="flor-img">
-          <img src="assets/flor-allium.jpg" alt="Allium morado esférico" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-allium" aria-label="Ver más sobre el allium">
+          <div class="flor-img">
+            <img src="assets/flor-allium.jpg" alt="Allium morado esférico" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Allium</p>
+            <p class="flor-temporada">May&nbsp;— Jul</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Allium</p>
-          <p class="flor-temporada">May — Jul</p>
+        <div class="flor-detail" id="flor-detail-allium" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto del allium — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
       <div class="flor-card reveal" style="transition-delay:0.54s">
-        <div class="flor-img">
-          <img src="assets/flor-celosia.jpg" alt="Celósia roja con textura aterciopelada" loading="lazy" />
+        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-celosia" aria-label="Ver más sobre la celósia">
+          <div class="flor-img">
+            <img src="assets/flor-celosia.jpg" alt="Celósia roja con textura aterciopelada" loading="lazy" />
+          </div>
+          <div class="flor-info">
+            <p class="flor-nombre">Celósia</p>
+            <p class="flor-temporada">Ago&nbsp;— Nov</p>
+            <span class="flor-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-        <div class="flor-info">
-          <p class="flor-nombre">Celósia</p>
-          <p class="flor-temporada">Ago — Nov</p>
+        <div class="flor-detail" id="flor-detail-celosia" aria-hidden="true">
+          <div class="flor-detail-inner">
+            <p>Aquí irá la descripción y el contexto de la celósia — texto pendiente de la&nbsp;floristería.</p>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── RESEÑAS ───────────────────────────────────────── -->
+  <section id="resenas" aria-labelledby="resenas-title">
+    <div class="resenas-header">
+      <span class="section-label reveal">Lo que dicen</span>
+      <h2 id="resenas-title" class="section-title section-title-lg reveal">Palabras que<br><em>nos&nbsp;emocionan</em></h2>
+    </div>
+    <div class="resenas-grid">
+      <!-- PLACEHOLDER: reseñas destacadas — rellenar a mano con las que elija la floristería -->
+      <blockquote class="resena-card reveal" style="transition-delay:0s">
+        <p class="resena-texto">"Texto placeholder de la reseña — pendiente de rellenar por la floristería."</p>
+        <footer class="resena-autor">— Nombre&nbsp;Apellido</footer>
+      </blockquote>
+      <blockquote class="resena-card reveal" style="transition-delay:0.1s">
+        <p class="resena-texto">"Texto placeholder de la reseña — pendiente de rellenar por la floristería."</p>
+        <footer class="resena-autor">— Nombre&nbsp;Apellido</footer>
+      </blockquote>
+      <blockquote class="resena-card reveal" style="transition-delay:0.2s">
+        <p class="resena-texto">"Texto placeholder de la reseña — pendiente de rellenar por la floristería."</p>
+        <footer class="resena-autor">— Nombre&nbsp;Apellido</footer>
+      </blockquote>
+    </div>
+    <div class="resenas-cta reveal">
+      <!-- TODO: sustituir href="#" por el enlace real de Google Reviews y añadir target="_blank" rel="noopener noreferrer" -->
+      <a href="#resenas" class="btn-primary">Déjanos tu&nbsp;reseña</a>
+    </div>
+  </section>
+
+  <!-- ── FABRICA TU RAMO (próximamente) ─────────────────── -->
+  <section id="fabrica-ramo" aria-labelledby="fabrica-ramo-title" class="proximamente-section">
+    <div class="proximamente-inner">
+      <span class="section-label reveal">Muy pronto</span>
+      <h2 id="fabrica-ramo-title" class="section-title section-title-lg reveal">Fabrica tu<br><em>ramo</em></h2>
+      <p class="proximamente-text reveal">Estamos preparando un configurador para que crees tu ramo a tu&nbsp;gusto.</p>
+      <span class="badge-proximamente reveal">Próximamente</span>
     </div>
   </section>
 
@@ -1491,16 +1828,16 @@
             </svg>
           </div>
           <div>
-            <span class="nav-logo-text">mirflores</span>
-            <span class="nav-logo-sub">Mirienda la florista</span>
+            <span class="nav-logo-text">MirFlores</span>
+            <span class="nav-logo-sub">Atelier</span>
           </div>
         </div>
-        <p class="footer-tagline">Hablamos de tus flores.<br>Siempre hay una flor para cada momento.</p>
+        <p class="footer-tagline">Hablamos de tus&nbsp;flores.<br>Siempre hay una flor para cada&nbsp;momento.</p>
         <div class="footer-social">
-          <a href="https://www.instagram.com/mirflores" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Mir Floristería (@mirflores)">
+          <a href="https://www.instagram.com/mirfloresatelier" target="_blank" rel="noopener noreferrer" aria-label="Instagram de MirFlores Atelier (@mirfloresatelier)">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
-          <a href="https://wa.me/34661256194" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Mir Floristería">
+          <a href="https://wa.me/34722421637" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de MirFlores Atelier">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
           </a>
         </div>
@@ -1508,18 +1845,19 @@
       <div>
         <p class="footer-col-title">Navegación</p>
         <ul class="footer-links">
-          <li><a href="#sobre">Sobre mí</a></li>
+          <li><a href="#sobre">Sobre&nbsp;mí</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#galeria">Galería</a></li>
           <li><a href="#talleres">Talleres</a></li>
-          <li><a href="#temporada">Flores de temporada</a></li>
+          <li><a href="#temporada">Flores de&nbsp;temporada</a></li>
+          <li><a href="#resenas">Reseñas</a></li>
         </ul>
       </div>
       <div>
         <p class="footer-col-title">Contacto</p>
         <div class="footer-contact-item">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 011.03 1.18 2 2 0 013 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          <a href="tel:+34661256194" aria-label="Llamar al 661 256 194">661 256 194</a>
+          <a href="tel:+34722421637" aria-label="Llamar al 722 421 637">722 421 637</a>
         </div>
         <div class="footer-contact-item">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1527,12 +1865,12 @@
         </div>
         <div class="footer-contact-item">
           <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          <a href="https://www.instagram.com/mirflores" target="_blank" rel="noopener noreferrer" aria-label="Instagram @mirflores">@mirflores</a>
+          <a href="https://www.instagram.com/mirfloresatelier" target="_blank" rel="noopener noreferrer" aria-label="Instagram @mirfloresatelier">@mirfloresatelier</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Mir Floristería — Todos los derechos reservados</p>
+      <p>© 2025 MirFlores&nbsp;Atelier — Todos los derechos&nbsp;reservados</p>
       <p>Diseño web <a href="https://nocta-studio.vercel.app" target="_blank" rel="noopener noreferrer">Nocta Studio</a></p>
     </div>
   </footer>
@@ -1547,7 +1885,7 @@
 
   <!-- ── WA FLOTANTE ───────────────────────────────────── -->
   <a
-    href="https://wa.me/34661256194?text=Hola%20Mirienda%2C%20me%20gustar%C3%ADa%20hablar%20de%20mis%20flores%20%F0%9F%8C8"
+    href="https://wa.me/34722421637?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20de%20mis%20flores%20%F0%9F%8C%B8"
     class="wa-float"
     target="_blank"
     rel="noopener noreferrer"
@@ -1680,6 +2018,49 @@
       if (e.key === 'ArrowRight') nextLb();
     });
 
+    /* ── Flores de temporada — acordeón ───────────── */
+    var florTriggers = document.querySelectorAll('.flor-trigger');
+    function toggleFlor(trigger) {
+      var card = trigger.closest('.flor-card');
+      var detail = document.getElementById(trigger.getAttribute('aria-controls'));
+      var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+      if (detail) detail.setAttribute('aria-hidden', String(isOpen));
+      card.classList.toggle('open', !isOpen);
+    }
+    florTriggers.forEach(function(trigger) {
+      trigger.addEventListener('click', function() { toggleFlor(trigger); });
+      trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFlor(trigger); }
+      });
+    });
+
+    /* ── Talleres — tabs ───────────────────────────── */
+    var tallerTabs = Array.from(document.querySelectorAll('.taller-tab'));
+    function selectTallerTab(tab) {
+      tallerTabs.forEach(function(t) {
+        var isActive = t === tab;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-selected', String(isActive));
+        t.setAttribute('tabindex', isActive ? '0' : '-1');
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !isActive;
+      });
+    }
+    tallerTabs.forEach(function(tab, idx) {
+      tab.addEventListener('click', function() { selectTallerTab(tab); });
+      tab.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          var next = e.key === 'ArrowRight'
+            ? tallerTabs[(idx + 1) % tallerTabs.length]
+            : tallerTabs[(idx - 1 + tallerTabs.length) % tallerTabs.length];
+          next.focus();
+          selectTallerTab(next);
+        }
+      });
+    });
+
     /* ── Formulario talleres → WhatsApp ───────────── */
     var form = document.getElementById('form-talleres');
     form.addEventListener('submit', function(e) {
@@ -1714,13 +2095,13 @@
 
       if (!valid) return;
 
-      var text = 'Hola Mirienda! Me gustaría reservar una plaza en un taller 🌸\n\n' +
+      var text = 'Hola! Me gustaría reservar una plaza en un taller 🌸\n\n' +
         '*Nombre:* ' + nombre + '\n' +
         '*Email:* ' + email + '\n' +
         '*Taller:* ' + taller + '\n' +
         (mensaje ? '*Mensaje:* ' + mensaje : '');
 
-      var waUrl = 'https://wa.me/34661256194?text=' + encodeURIComponent(text);
+      var waUrl = 'https://wa.me/34722421637?text=' + encodeURIComponent(text);
       window.open(waUrl, '_blank', 'noopener,noreferrer');
     });
 
