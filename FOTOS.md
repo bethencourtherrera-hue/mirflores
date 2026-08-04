@@ -2,6 +2,12 @@
 
 Coloca cada foto en la carpeta `assets/` con el nombre exacto indicado.
 
+> **Estado (4 ago 2026):** hero, servicios (bodas/eventos/ramos) y las 12 de galería ya están
+> rellenas con fotos reales que la dueña mandó por WhatsApp (boda + gerberas + centros de mesa).
+> Originales sin recortar en `assets/raw-whatsapp-2026-08-03/` (incluye `NOTAS-CLIENTA.md` con
+> los textos que ella escribió para la web). Solo quedan pendientes `floristas-escalera.webp`
+> (stock) y las 10 `flor-*.jpg` (macros de flor suelta — no había ninguna así en su envío).
+
 ## Fotos principales
 
 | Archivo             | Descripción                                      |

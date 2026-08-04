@@ -10,7 +10,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="MirFlores Atelier — Flores con alma." />
   <meta property="og:description" content="Florista artística especializada en bodas, eventos y talleres florales." />
-  <meta property="og:image" content="https://mirflores.com/assets/hero.jpg" />
+  <meta property="og:image" content="https://mirflores.com/assets/hero-ramo-novia.jpg" />
   <meta property="og:url" content="https://mirflores.com" />
   <meta property="og:type" content="website" />
 
@@ -24,7 +24,7 @@
     "url": "https://mirflores.com",
     "email": "atelier@mirflores.com",
     "telephone": "+34722421637",
-    "image": "https://mirflores.com/assets/hero.jpg",
+    "image": "https://mirflores.com/assets/hero-ramo-novia.jpg",
     "description": "Floristería artística especializada en bodas, eventos y talleres florales.",
     "sameAs": ["https://www.instagram.com/mirfloresatelier"]
   }
@@ -1006,33 +1006,345 @@
       flex: none;
     }
 
-    /* ─── FABRICA TU RAMO (próximamente) ──────────────────── */
-    .proximamente-section {
+    /* ─── DISEÑA TU RAMO (configurador) ───────────────────── */
+    #disena-tu-ramo {
       background: var(--crema-2);
-      padding: clamp(3.5rem, 9vw, 7rem) clamp(1.5rem, 6vw, 6rem);
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.25rem, 6vw, 6rem);
+    }
+    .ramo-header {
       text-align: center;
-    }
-    .proximamente-inner {
       max-width: 560px;
+      margin: 0 auto 3rem;
+    }
+    .ramo-header .section-label { justify-content: center; }
+    .ramo-header p { color: var(--gris); font-size: 0.95rem; margin-top: 0.75rem; }
+
+    .ramo-wizard {
+      max-width: 760px;
       margin: 0 auto;
+      background: var(--crema);
+      border-radius: 8px;
+      box-shadow: 0 10px 50px rgba(42,36,32,0.08);
+      padding: clamp(1.75rem, 4.5vw, 3rem);
     }
-    .proximamente-inner .section-label { justify-content: center; }
-    .proximamente-text {
+
+    /* Indicador de pasos */
+    .ramo-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .ramo-step-dot {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(193,127,134,0.35);
+      background: var(--crema);
       color: var(--gris);
-      font-size: 0.95rem;
-      margin-top: 1rem;
-    }
-    .badge-proximamente {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.4rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
       font-size: 0.7rem;
-      letter-spacing: 0.14em;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+    .ramo-step-dot.active {
+      background: var(--tierra);
+      border-color: var(--tierra);
+      color: var(--crema);
+    }
+    .ramo-step-dot.done {
+      background: var(--tierra-soft);
+      border-color: var(--tierra);
+      color: var(--tierra-2);
+    }
+    .ramo-step-line {
+      width: clamp(14px, 5vw, 40px);
+      height: 1px;
+      background: rgba(193,127,134,0.25);
+      flex-shrink: 1;
+    }
+    .ramo-step-caption {
+      text-align: center;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--tierra-2);
-      background: var(--tierra-soft);
-      border: 1px solid var(--tierra);
+      margin-top: 0.7rem;
+      margin-bottom: 2.25rem;
+    }
+
+    /* Paneles */
+    .ramo-panel-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      color: var(--carbon);
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
+    }
+    .ramo-panel-title:focus { outline: none; }
+    .ramo-panel-desc {
+      color: var(--gris);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Paso 1 — Ocasión (chips) */
+    .ramo-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .ramo-chip {
+      width: auto;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.8rem;
+      color: var(--carbon);
+      background: var(--crema-2);
+      border: 1px solid rgba(193,127,134,0.3);
+      padding: 0.65rem 1.15rem;
       border-radius: 20px;
+      transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
+    }
+    .ramo-chip:hover { border-color: var(--tierra); color: var(--tierra-2); }
+    .ramo-chip.selected {
+      background: var(--tierra);
+      border-color: var(--tierra);
+      color: var(--crema);
+    }
+
+    /* Insignia de selección (tarjetas) */
+    .ramo-check-badge {
+      position: absolute;
+      top: 0.55rem; right: 0.55rem;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--tierra);
+      color: var(--crema);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.25s, transform 0.25s var(--ease-out);
+      z-index: 1;
+    }
+    .selected .ramo-check-badge { opacity: 1; transform: scale(1); }
+
+    /* Paso 2 — Colores */
+    .ramo-colores-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (min-width: 560px) { .ramo-colores-grid { grid-template-columns: repeat(3, 1fr); } }
+    .ramo-color-card {
+      position: relative;
+      width: 100%;
+      background: var(--crema);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 1.2rem 0.75rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(42,36,32,0.05);
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+    }
+    .ramo-color-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(42,36,32,0.1); }
+    .ramo-color-card.selected { border-color: var(--tierra); box-shadow: 0 8px 30px rgba(193,127,134,0.22); }
+    .ramo-color-swatch {
+      display: block;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      margin: 0 auto 0.75rem;
+      box-shadow: inset 0 0 0 1px rgba(42,36,32,0.08);
+    }
+    .ramo-color-nombre {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--carbon);
+      margin-bottom: 0.2rem;
+    }
+    .ramo-color-desc { font-size: 0.7rem; color: var(--gris); }
+
+    /* Paso 3 — Ramos de referencia (fotos pendientes) */
+    .ramo-estilos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 560px) { .ramo-estilos-grid { grid-template-columns: repeat(2, 1fr); } }
+    .ramo-estilo-card {
+      position: relative;
+      width: 100%;
+      background: var(--crema);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      overflow: hidden;
+      text-align: left;
+      box-shadow: 0 2px 12px rgba(42,36,32,0.05);
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+    }
+    .ramo-estilo-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(42,36,32,0.1); }
+    .ramo-estilo-card.selected { border-color: var(--tierra); box-shadow: 0 8px 30px rgba(193,127,134,0.22); }
+    .ramo-estilo-photo {
+      aspect-ratio: 4 / 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background:
+        repeating-linear-gradient(135deg, var(--crema-2), var(--crema-2) 10px, rgba(193,127,134,0.07) 10px, rgba(193,127,134,0.07) 20px);
+      color: var(--tierra);
+    }
+    .ramo-estilo-photo svg { opacity: 0.55; }
+    .ramo-estilo-photo span {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gris);
+    }
+    .ramo-estilo-body { padding: 1rem 1.1rem 1.2rem; }
+    .ramo-estilo-nombre {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--carbon);
+      margin-bottom: 0.3rem;
+    }
+    .ramo-estilo-desc { font-size: 0.78rem; color: var(--gris); line-height: 1.55; }
+
+    /* Paso 4 — Flores de temporada (multi-selección) */
+    .ramo-flores-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+    }
+    @media (min-width: 560px) { .ramo-flores-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 860px) { .ramo-flores-grid { grid-template-columns: repeat(4, 1fr); gap: 1.1rem; } }
+    .ramo-flor-card {
+      position: relative;
+      width: 100%;
+      background: var(--crema);
+      border-radius: 4px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(42,36,32,0.05);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .ramo-flor-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(42,36,32,0.1); }
+    .ramo-flor-card.selected { box-shadow: 0 0 0 2px var(--tierra), 0 8px 30px rgba(193,127,134,0.22); }
+    .ramo-flor-img { aspect-ratio: 1 / 1; overflow: hidden; }
+    .ramo-flor-img img { transition: transform 0.7s var(--ease-out); }
+    .ramo-flor-card:hover .ramo-flor-img img { transform: scale(1.06); }
+    .ramo-flor-special .ramo-flor-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--crema-2);
+      color: var(--tierra);
+    }
+    .ramo-flor-nombre {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--carbon);
+      padding: 0.6rem 0.4rem 0.15rem;
+    }
+    .ramo-flor-temporada {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tierra);
+      padding-bottom: 0.7rem;
+    }
+
+    /* Paso 5 — Resumen y envío */
+    .ramo-resumen {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      background: var(--crema-2);
+      border-radius: 6px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .ramo-resumen li {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--carbon);
+    }
+    .ramo-resumen li strong {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--tierra-2);
+      min-width: 110px;
+    }
+    .ramo-field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .ramo-field label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gris);
+    }
+    .ramo-field input, .ramo-field textarea {
+      background: var(--crema);
+      border: 1px solid rgba(193,127,134,0.3);
+      border-radius: 2px;
+      color: var(--carbon);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .ramo-field input::placeholder, .ramo-field textarea::placeholder { color: rgba(42,36,32,0.35); }
+    .ramo-field input:focus, .ramo-field textarea:focus {
+      border-color: var(--tierra);
+      background: var(--tierra-soft);
+    }
+    .ramo-field textarea { resize: vertical; min-height: 90px; }
+    .ramo-field-error { font-size: 0.75rem; color: #c0392b; display: none; margin-top: -0.1rem; }
+
+    /* Navegación de pasos */
+    .ramo-actions { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
+    .ramo-actions .ramo-next, .ramo-actions button[type="submit"] { flex: 1; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.4rem;
+      background: transparent;
+      color: var(--gris);
+      border: 1px solid rgba(193,127,134,0.3);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: border-color 0.3s, color 0.3s;
+      flex: none;
+    }
+    .btn-ghost:hover { border-color: var(--tierra); color: var(--tierra-2); }
+    .ramo-next:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
     /* ─── FOOTER ─────────────────────────────────────────── */
@@ -1231,6 +1543,7 @@
       <li><a href="#talleres">Talleres</a></li>
       <li><a href="#temporada">Flores</a></li>
       <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#disena-tu-ramo">Diseña tu&nbsp;ramo</a></li>
     </ul>
     <a href="#talleres" class="nav-cta">Reservar&nbsp;taller</a>
     <button class="burger" id="burger-btn" aria-label="Abrir menú" aria-expanded="false">
@@ -1247,6 +1560,7 @@
     <a href="#talleres" class="mobile-link">Talleres</a>
     <a href="#temporada" class="mobile-link">Flores</a>
     <a href="#resenas" class="mobile-link">Reseñas</a>
+    <a href="#disena-tu-ramo" class="mobile-link">Diseña tu&nbsp;ramo</a>
   </div>
 
   <!-- ── HERO ─────────────────────────────────────────── -->
@@ -1254,7 +1568,7 @@
     <div class="hero-img">
       <img
         src="assets/hero-ramo-novia.jpg"
-        alt="Ramo de novia en cascada de flores blancas, obra de MirFlores Atelier"
+        alt="Novios de espaldas frente al altar de rosas blancas y verdor de su boda, decoración floral de MirFlores Atelier"
         fetchpriority="high"
         loading="eager"
       />
@@ -1318,17 +1632,17 @@
     <div class="servicios-grid">
       <article class="servicio-card reveal" style="transition-delay:0s">
         <div class="servicio-img">
-          <img src="assets/servicio-bodas.jpg" alt="Ramo de novia en cascada de calas blancas y ramas" loading="lazy" />
+          <img src="assets/servicio-bodas.jpg" alt="Columna floral de rosas y lirios sobre pérgola de madera para ceremonia de boda" loading="lazy" />
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Bodas</span>
           <h3>Bodas &amp;&nbsp;Ceremonia</h3>
-          <p>Desde el ramo de novia hasta la decoración completa del altar, los centros de mesa y el peinado floral. Cada detalle coordinado con tu estilo, tu&nbsp;historia.</p>
+          <p>Desde el ramo de novia hasta la decoración del altar tanto sea religiosa como civil, los centros de mesa, tocados… Cada detalle en armonía con tu estilo, tu&nbsp;historia.</p>
         </div>
       </article>
       <article class="servicio-card reveal" style="transition-delay:0.1s">
         <div class="servicio-img">
-          <img src="assets/servicio-eventos.jpg" alt="Centros de mesa con alliums sobre musgo en evento especial" loading="lazy" />
+          <img src="assets/servicio-eventos.jpg" alt="Centro de mesa con rosas blancas, dalias coral y vela junto a pared de ladrillo" loading="lazy" />
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Eventos</span>
@@ -1338,7 +1652,7 @@
       </article>
       <article class="servicio-card reveal" style="transition-delay:0.2s">
         <div class="servicio-img">
-          <img src="assets/servicio-ramos.jpg" alt="Bouquet silvestre con flores lilas y verdor" loading="lazy" />
+          <img src="assets/servicio-ramos.jpg" alt="Ramillete silvestre de flores moradas en jarrón de cristal bajo una sombrilla de jardín" loading="lazy" />
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Ramos especiales</span>
@@ -1358,84 +1672,84 @@
     <div class="masonry" id="masonry-grid" role="list" aria-label="Galería de trabajos florales">
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 1">
-        <img src="assets/galeria-01.jpg" alt="Composición floral artística en bodas" loading="lazy" />
+        <img src="assets/galeria-01.jpg" alt="Cascada floral amarilla y blanca enmarcando la puerta de piedra de una iglesia" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 2" style="transition-delay:0.05s">
-        <img src="assets/galeria-02.jpg" alt="Ramo nupcial de peonías rosas y eucalipto" loading="lazy" />
+        <img src="assets/galeria-02.jpg" alt="Mesa ceremonial decorada con gerberas de colores y alfombra roja" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 3" style="transition-delay:0.1s">
-        <img src="assets/galeria-03.jpg" alt="Decoración floral de iglesia con ramas y flores blancas" loading="lazy" />
+        <img src="assets/galeria-03.jpg" alt="Camino de mesa con delphinium azul, claveles naranjas y uvas" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 4" style="transition-delay:0.15s">
-        <img src="assets/galeria-04.jpg" alt="Centro de mesa con rosas blancas runner" loading="lazy" />
+        <img src="assets/galeria-04.jpg" alt="Mesa de firmas flanqueada por cestas con flores silvestres en tonos pastel" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 5" style="transition-delay:0.2s">
-        <img src="assets/galeria-05.jpg" alt="Detalle de corona de flores para novia" loading="lazy" />
+        <img src="assets/galeria-05.jpg" alt="Escalinata cubierta de hiedra y flores blancas en la entrada de una ceremonia" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 6" style="transition-delay:0.25s">
-        <img src="assets/galeria-06.jpg" alt="Taller floral en espacio íntimo con participantes" loading="lazy" />
+        <img src="assets/galeria-06.jpg" alt="Puerta monumental de iglesia con cestas de flores de colores a cada lado" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 7" style="transition-delay:0.3s">
-        <img src="assets/galeria-07.jpg" alt="Ramo de anémona y ranúnculo en tonos morados" loading="lazy" />
+        <img src="assets/galeria-07.jpg" alt="Rosas blancas en macetero junto a la entrada de un patio con arcos" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 8" style="transition-delay:0.35s">
-        <img src="assets/galeria-08.jpg" alt="Instalación floral para evento corporativo" loading="lazy" />
+        <img src="assets/galeria-08.jpg" alt="Ceremonia al aire libre con banco floral y vistas a la sierra" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 9" style="transition-delay:0.4s">
-        <img src="assets/galeria-09.jpg" alt="Bouquet silvestre con flores de campo y gypsophila" loading="lazy" />
+        <img src="assets/galeria-09.jpg" alt="Guirnalda floral blanca y verde cayendo sobre una entrada en piedra" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 10" style="transition-delay:0.45s">
-        <img src="assets/galeria-10.jpg" alt="Detalle de dahlia naranja en arreglo otoñal" loading="lazy" />
+        <img src="assets/galeria-10.jpg" alt="Mini centro de mesa con tulipanes naranjas, rosa roja y musgo" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 11" style="transition-delay:0.5s">
-        <img src="assets/galeria-11.jpg" alt="Mesa nupcial con flores blancas y velas" loading="lazy" />
+        <img src="assets/galeria-11.jpg" alt="Rosas blancas y rosadas a los pies de un altar dorado de iglesia" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 12" style="transition-delay:0.55s">
-        <img src="assets/galeria-12.jpg" alt="Arreglo floral para recepción de boda" loading="lazy" />
+        <img src="assets/galeria-12.jpg" alt="Camino de mesa con kniphofia naranja, delphinium azul y flores exóticas" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
@@ -1795,13 +2109,286 @@
     </div>
   </section>
 
-  <!-- ── FABRICA TU RAMO (próximamente) ─────────────────── -->
-  <section id="fabrica-ramo" aria-labelledby="fabrica-ramo-title" class="proximamente-section">
-    <div class="proximamente-inner">
-      <span class="section-label reveal">Muy pronto</span>
-      <h2 id="fabrica-ramo-title" class="section-title section-title-lg reveal">Fabrica tu<br><em>ramo</em></h2>
-      <p class="proximamente-text reveal">Estamos preparando un configurador para que crees tu ramo a tu&nbsp;gusto.</p>
-      <span class="badge-proximamente reveal">Próximamente</span>
+  <!-- ── DISEÑA TU RAMO (configurador) ───────────────────── -->
+  <section id="disena-tu-ramo" aria-labelledby="disena-tu-ramo-title">
+    <div class="ramo-header">
+      <span class="section-label reveal">Configurador floral</span>
+      <h2 id="disena-tu-ramo-title" class="section-title section-title-lg reveal">Diseña tu<br><em>ramo</em></h2>
+      <p class="reveal">Cuéntanos qué buscas en 4 pasos y te preparamos una propuesta a tu&nbsp;medida.</p>
+    </div>
+
+    <div class="ramo-wizard reveal" style="transition-delay:0.1s">
+      <div class="ramo-steps" aria-hidden="true">
+        <span class="ramo-step-dot active" data-step-dot="1">1</span>
+        <span class="ramo-step-line"></span>
+        <span class="ramo-step-dot" data-step-dot="2">2</span>
+        <span class="ramo-step-line"></span>
+        <span class="ramo-step-dot" data-step-dot="3">3</span>
+        <span class="ramo-step-line"></span>
+        <span class="ramo-step-dot" data-step-dot="4">4</span>
+        <span class="ramo-step-line"></span>
+        <span class="ramo-step-dot" data-step-dot="5">5</span>
+      </div>
+      <p class="ramo-step-caption" id="ramo-step-caption" aria-live="polite">Paso 1 de 5 — Ocasión</p>
+
+      <!-- Paso 1 — Ocasión -->
+      <div class="ramo-panel" id="ramo-step-1" data-step="1">
+        <h3 class="ramo-panel-title" id="ramo-step-1-title" tabindex="-1">¿Para qué ocasión es tu&nbsp;ramo?</h3>
+        <p class="ramo-panel-desc">Elige la que mejor encaje. Si no ves la tuya, nos lo cuentas al&nbsp;final.</p>
+        <div class="ramo-chips" role="group" aria-label="Ocasión del ramo">
+          <button type="button" class="ramo-chip" data-value="Boda" aria-pressed="false">Boda</button>
+          <button type="button" class="ramo-chip" data-value="Aniversario" aria-pressed="false">Aniversario</button>
+          <button type="button" class="ramo-chip" data-value="Cumpleaños" aria-pressed="false">Cumpleaños</button>
+          <button type="button" class="ramo-chip" data-value="Nacimiento" aria-pressed="false">Nacimiento</button>
+          <button type="button" class="ramo-chip" data-value="San Valentín" aria-pressed="false">San&nbsp;Valentín</button>
+          <button type="button" class="ramo-chip" data-value="Agradecimiento" aria-pressed="false">Agradecimiento</button>
+          <button type="button" class="ramo-chip" data-value="Condolencias" aria-pressed="false">Condolencias</button>
+          <button type="button" class="ramo-chip" data-value="Sin motivo especial" aria-pressed="false">Sin motivo&nbsp;especial</button>
+        </div>
+        <div class="ramo-actions">
+          <button type="button" class="btn-primary ramo-next" data-next="2" disabled>Siguiente</button>
+        </div>
+      </div>
+
+      <!-- Paso 2 — Gama de colores -->
+      <div class="ramo-panel" id="ramo-step-2" data-step="2" hidden>
+        <h3 class="ramo-panel-title" id="ramo-step-2-title" tabindex="-1">¿Qué gama de colores te&nbsp;imaginas?</h3>
+        <p class="ramo-panel-desc">Elige la paleta que mejor represente el&nbsp;momento.</p>
+        <div class="ramo-colores-grid" role="group" aria-label="Gama de colores">
+          <button type="button" class="ramo-color-card" data-value="Blancos y verdes" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-color-swatch" style="background:linear-gradient(135deg,#F7F3EE,#C9D6C2 60%,#7C9473)"></span>
+            <span class="ramo-color-nombre">Blancos&nbsp;&amp; verdes</span>
+            <span class="ramo-color-desc">Elegante y&nbsp;atemporal</span>
+          </button>
+          <button type="button" class="ramo-color-card" data-value="Rosas y pasteles" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-color-swatch" style="background:linear-gradient(135deg,#F6D9DC,#EFC1C8 55%,#C17F86)"></span>
+            <span class="ramo-color-nombre">Rosas&nbsp;&amp; pasteles</span>
+            <span class="ramo-color-desc">Dulce y&nbsp;romántico</span>
+          </button>
+          <button type="button" class="ramo-color-card" data-value="Tonos cálidos y otoño" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-color-swatch" style="background:linear-gradient(135deg,#F0B27A,#D97D46 55%,#96565E)"></span>
+            <span class="ramo-color-nombre">Tonos&nbsp;cálidos</span>
+            <span class="ramo-color-desc">Cercano y&nbsp;acogedor</span>
+          </button>
+          <button type="button" class="ramo-color-card" data-value="Colores vivos y tropical" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-color-swatch" style="background:linear-gradient(135deg,#F4C43A,#E8622C 50%,#C4396B)"></span>
+            <span class="ramo-color-nombre">Colores&nbsp;vivos</span>
+            <span class="ramo-color-desc">Alegre y&nbsp;atrevido</span>
+          </button>
+          <button type="button" class="ramo-color-card" data-value="Morados y lilas" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-color-swatch" style="background:linear-gradient(135deg,#D9C7EC,#A67FC1 55%,#6C4A85)"></span>
+            <span class="ramo-color-nombre">Morados&nbsp;&amp; lilas</span>
+            <span class="ramo-color-desc">Delicado y&nbsp;místico</span>
+          </button>
+          <button type="button" class="ramo-color-card" data-value="Sorpréndeme, elegid vosotras" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-color-swatch" style="background:linear-gradient(135deg,#C17F86,#96565E 55%,#2A2420)"></span>
+            <span class="ramo-color-nombre">Sorpréndeme</span>
+            <span class="ramo-color-desc">Confío en vuestro&nbsp;criterio</span>
+          </button>
+        </div>
+        <div class="ramo-actions">
+          <button type="button" class="btn-ghost ramo-prev" data-prev="1">Atrás</button>
+          <button type="button" class="btn-primary ramo-next" data-next="3" disabled>Siguiente</button>
+        </div>
+      </div>
+
+      <!-- Paso 3 — Ramos de referencia (PLACEHOLDER: sustituir fotos cuando las envíe la floristería) -->
+      <div class="ramo-panel" id="ramo-step-3" data-step="3" hidden>
+        <h3 class="ramo-panel-title" id="ramo-step-3-title" tabindex="-1">¿Qué estilo de ramo te gusta&nbsp;más?</h3>
+        <p class="ramo-panel-desc">Fotos de referencia muy pronto — de momento, elige por&nbsp;descripción.</p>
+        <div class="ramo-estilos-grid" role="group" aria-label="Estilo de ramo">
+          <button type="button" class="ramo-estilo-card" data-value="Silvestre" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-estilo-photo" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+              <span>Foto próximamente</span>
+            </span>
+            <span class="ramo-estilo-body">
+              <span class="ramo-estilo-nombre">Silvestre</span>
+              <span class="ramo-estilo-desc">Textura suelta, como recién cortado del&nbsp;campo.</span>
+            </span>
+          </button>
+          <button type="button" class="ramo-estilo-card" data-value="Clásico redondo" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-estilo-photo" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+              <span>Foto próximamente</span>
+            </span>
+            <span class="ramo-estilo-body">
+              <span class="ramo-estilo-nombre">Clásico redondo</span>
+              <span class="ramo-estilo-desc">Compacto, simétrico y&nbsp;atemporal.</span>
+            </span>
+          </button>
+          <button type="button" class="ramo-estilo-card" data-value="Cascada" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-estilo-photo" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+              <span>Foto próximamente</span>
+            </span>
+            <span class="ramo-estilo-body">
+              <span class="ramo-estilo-nombre">Cascada</span>
+              <span class="ramo-estilo-desc">Caída natural — ideal para&nbsp;novias.</span>
+            </span>
+          </button>
+          <button type="button" class="ramo-estilo-card" data-value="Compacto minimalista" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-estilo-photo" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+              <span>Foto próximamente</span>
+            </span>
+            <span class="ramo-estilo-body">
+              <span class="ramo-estilo-nombre">Compacto minimalista</span>
+              <span class="ramo-estilo-desc">Pocas flores, mucho&nbsp;carácter.</span>
+            </span>
+          </button>
+          <button type="button" class="ramo-estilo-card" data-value="Escultórico" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-estilo-photo" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+              <span>Foto próximamente</span>
+            </span>
+            <span class="ramo-estilo-body">
+              <span class="ramo-estilo-nombre">Escultórico</span>
+              <span class="ramo-estilo-desc">Formas y volúmenes con&nbsp;personalidad.</span>
+            </span>
+          </button>
+          <button type="button" class="ramo-estilo-card" data-value="Monocromático" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-estilo-photo" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+              <span>Foto próximamente</span>
+            </span>
+            <span class="ramo-estilo-body">
+              <span class="ramo-estilo-nombre">Monocromático</span>
+              <span class="ramo-estilo-desc">Un solo color, muchos&nbsp;matices.</span>
+            </span>
+          </button>
+        </div>
+        <div class="ramo-actions">
+          <button type="button" class="btn-ghost ramo-prev" data-prev="2">Atrás</button>
+          <button type="button" class="btn-primary ramo-next" data-next="4" disabled>Siguiente</button>
+        </div>
+      </div>
+
+      <!-- Paso 4 — Flores de temporada -->
+      <div class="ramo-panel" id="ramo-step-4" data-step="4" hidden>
+        <h3 class="ramo-panel-title" id="ramo-step-4-title" tabindex="-1">¿Qué flores no pueden&nbsp;faltar?</h3>
+        <p class="ramo-panel-desc">Elige tantas como quieras de nuestra selección de&nbsp;temporada.</p>
+        <div class="ramo-flores-grid" role="group" aria-label="Flores de temporada">
+          <button type="button" class="ramo-flor-card" data-value="Peonía" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-peonia.jpg" alt="Peonía rosa de temporada" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Peonía</span>
+            <span class="ramo-flor-temporada">May&nbsp;— Jun</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Cala" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-cala.jpg" alt="Cala blanca elegante" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Cala</span>
+            <span class="ramo-flor-temporada">Ene&nbsp;— Jun</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Anémona" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-anemona.jpg" alt="Anémona morada en flor" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Anémona</span>
+            <span class="ramo-flor-temporada">Feb&nbsp;— Abr</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Rosa" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-rosa.jpg" alt="Rosa clásica en tono crema" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Rosa</span>
+            <span class="ramo-flor-temporada">Todo el&nbsp;año</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Ranúnculo" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-ranunculo.jpg" alt="Ranúnculo amarillo y coral" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Ranúnculo</span>
+            <span class="ramo-flor-temporada">Feb&nbsp;— May</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Tulipán" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-tulipan.jpg" alt="Tulipán rojo de temporada" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Tulipán</span>
+            <span class="ramo-flor-temporada">Mar&nbsp;— May</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Dalia" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-dalia.jpg" alt="Dalia naranja voluminosa" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Dalia</span>
+            <span class="ramo-flor-temporada">Jul&nbsp;— Oct</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Gypsophila" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-gypsophila.jpg" alt="Gypsophila blanca nube" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Gypsophila</span>
+            <span class="ramo-flor-temporada">May&nbsp;— Sep</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Allium" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-allium.jpg" alt="Allium morado esférico" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Allium</span>
+            <span class="ramo-flor-temporada">May&nbsp;— Jul</span>
+          </button>
+          <button type="button" class="ramo-flor-card" data-value="Celósia" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img"><img src="assets/flor-celosia.jpg" alt="Celósia roja con textura aterciopelada" loading="lazy" /></span>
+            <span class="ramo-flor-nombre">Celósia</span>
+            <span class="ramo-flor-temporada">Ago&nbsp;— Nov</span>
+          </button>
+          <button type="button" class="ramo-flor-card ramo-flor-special" data-value="Sorpréndeme, elegid vosotras" aria-pressed="false">
+            <span class="ramo-check-badge" aria-hidden="true">✓</span>
+            <span class="ramo-flor-img" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c1 2 1 4 0 6-1-2-1-4 0-6z"/><path d="M12 21c-4-3-7-7-7-11a7 7 0 0114 0c0 4-3 8-7 11z"/></svg>
+            </span>
+            <span class="ramo-flor-nombre">Sorpréndeme</span>
+            <span class="ramo-flor-temporada">Elegimos&nbsp;nosotras</span>
+          </button>
+        </div>
+        <div class="ramo-actions">
+          <button type="button" class="btn-ghost ramo-prev" data-prev="3">Atrás</button>
+          <button type="button" class="btn-primary ramo-next" data-next="5" disabled>Siguiente</button>
+        </div>
+      </div>
+
+      <!-- Paso 5 — Resumen y envío -->
+      <div class="ramo-panel" id="ramo-step-5" data-step="5" hidden>
+        <h3 class="ramo-panel-title" id="ramo-step-5-title" tabindex="-1">Así queda tu&nbsp;ramo</h3>
+        <p class="ramo-panel-desc">Revisa tu selección y dinos cómo contactarte — te responderemos con una propuesta a tu&nbsp;medida.</p>
+        <ul class="ramo-resumen" id="ramo-resumen">
+          <li><strong>Ocasión</strong><span id="ramo-resumen-ocasion">—</span></li>
+          <li><strong>Colores</strong><span id="ramo-resumen-color">—</span></li>
+          <li><strong>Estilo</strong><span id="ramo-resumen-estilo">—</span></li>
+          <li><strong>Flores</strong><span id="ramo-resumen-flores">—</span></li>
+        </ul>
+        <form id="form-ramo" novalidate>
+          <div class="ramo-field">
+            <label for="ramo-nombre">Nombre *</label>
+            <input type="text" id="ramo-nombre" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required />
+            <span class="ramo-field-error" id="ramo-err-nombre">Por favor, escribe tu nombre.</span>
+          </div>
+          <div class="ramo-field">
+            <label for="ramo-fecha">Fecha deseada (opcional)</label>
+            <input type="text" id="ramo-fecha" name="fecha" placeholder="Ej: 14 de febrero" />
+          </div>
+          <div class="ramo-field">
+            <label for="ramo-notas">Algo más que debamos&nbsp;saber</label>
+            <textarea id="ramo-notas" name="notas" placeholder="Presupuesto orientativo, tamaño del ramo, alergias..."></textarea>
+          </div>
+          <div class="ramo-actions">
+            <button type="button" class="btn-ghost ramo-prev" data-prev="4">Atrás</button>
+            <button type="submit" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+              Enviar por&nbsp;WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -1851,6 +2438,7 @@
           <li><a href="#talleres">Talleres</a></li>
           <li><a href="#temporada">Flores de&nbsp;temporada</a></li>
           <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#disena-tu-ramo">Diseña tu&nbsp;ramo</a></li>
         </ul>
       </div>
       <div>
@@ -2104,6 +2692,129 @@
       var waUrl = 'https://wa.me/34722421637?text=' + encodeURIComponent(text);
       window.open(waUrl, '_blank', 'noopener,noreferrer');
     });
+
+    /* ── Diseña tu ramo — configurador por pasos ──── */
+    var ramoSection = document.getElementById('disena-tu-ramo');
+    if (ramoSection) {
+      var ramoPanels = Array.from(ramoSection.querySelectorAll('.ramo-panel'));
+      var ramoStepDots = Array.from(ramoSection.querySelectorAll('.ramo-step-dot'));
+      var ramoCaption = document.getElementById('ramo-step-caption');
+      var ramoStepNames = ['Ocasión', 'Colores', 'Estilo', 'Flores', 'Resumen'];
+      var ramoTotalSteps = ramoPanels.length;
+      var ramoSelections = { ocasion: '', color: '', estilo: '', flores: [] };
+
+      function ramoUpdateResumen() {
+        var elOcasion = document.getElementById('ramo-resumen-ocasion');
+        var elColor = document.getElementById('ramo-resumen-color');
+        var elEstilo = document.getElementById('ramo-resumen-estilo');
+        var elFlores = document.getElementById('ramo-resumen-flores');
+        if (elOcasion) elOcasion.textContent = ramoSelections.ocasion || '—';
+        if (elColor) elColor.textContent = ramoSelections.color || '—';
+        if (elEstilo) elEstilo.textContent = ramoSelections.estilo || '—';
+        if (elFlores) elFlores.textContent = ramoSelections.flores.length ? ramoSelections.flores.join(', ') : '—';
+      }
+
+      function ramoShowStep(n, moveFocus) {
+        ramoPanels.forEach(function(panel) {
+          panel.hidden = Number(panel.dataset.step) !== n;
+        });
+        ramoStepDots.forEach(function(dot) {
+          var s = Number(dot.dataset.stepDot);
+          dot.classList.toggle('active', s === n);
+          dot.classList.toggle('done', s < n);
+        });
+        if (ramoCaption) ramoCaption.textContent = 'Paso ' + n + ' de ' + ramoTotalSteps + ' — ' + ramoStepNames[n - 1];
+        if (n === ramoTotalSteps) ramoUpdateResumen();
+        if (moveFocus) {
+          var heading = ramoPanels[n - 1].querySelector('.ramo-panel-title');
+          if (heading) heading.focus();
+        }
+      }
+
+      function ramoWireSingleSelect(panelId, key) {
+        var panel = document.getElementById(panelId);
+        if (!panel) return;
+        var buttons = Array.from(panel.querySelectorAll('[data-value]'));
+        var nextBtn = panel.querySelector('.ramo-next');
+        buttons.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            buttons.forEach(function(b) {
+              b.classList.remove('selected');
+              b.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('selected');
+            btn.setAttribute('aria-pressed', 'true');
+            ramoSelections[key] = btn.dataset.value;
+            if (nextBtn) nextBtn.disabled = false;
+          });
+        });
+      }
+      ramoWireSingleSelect('ramo-step-1', 'ocasion');
+      ramoWireSingleSelect('ramo-step-2', 'color');
+      ramoWireSingleSelect('ramo-step-3', 'estilo');
+
+      var ramoFlorPanel = document.getElementById('ramo-step-4');
+      if (ramoFlorPanel) {
+        var ramoFlorBtns = Array.from(ramoFlorPanel.querySelectorAll('[data-value]'));
+        var ramoFlorNext = ramoFlorPanel.querySelector('.ramo-next');
+        ramoFlorBtns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var val = btn.dataset.value;
+            var isSelected = btn.classList.toggle('selected');
+            btn.setAttribute('aria-pressed', String(isSelected));
+            var idx = ramoSelections.flores.indexOf(val);
+            if (isSelected && idx === -1) ramoSelections.flores.push(val);
+            if (!isSelected && idx > -1) ramoSelections.flores.splice(idx, 1);
+            if (ramoFlorNext) ramoFlorNext.disabled = ramoSelections.flores.length === 0;
+          });
+        });
+      }
+
+      ramoSection.querySelectorAll('.ramo-next').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var next = Number(btn.dataset.next);
+          if (next) ramoShowStep(next, true);
+        });
+      });
+      ramoSection.querySelectorAll('.ramo-prev').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var prev = Number(btn.dataset.prev);
+          if (prev) ramoShowStep(prev, true);
+        });
+      });
+
+      var ramoForm = document.getElementById('form-ramo');
+      if (ramoForm) {
+        ramoForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var nombre = document.getElementById('ramo-nombre').value.trim();
+          var fecha = document.getElementById('ramo-fecha').value.trim();
+          var notas = document.getElementById('ramo-notas').value.trim();
+          var errNombre = document.getElementById('ramo-err-nombre');
+
+          if (!nombre) {
+            errNombre.style.display = 'block';
+            document.getElementById('ramo-nombre').focus();
+            return;
+          }
+          errNombre.style.display = 'none';
+
+          var ramoText = 'Hola! Quiero diseñar mi ramo con vosotras 🌸\n\n' +
+            '*Ocasión:* ' + (ramoSelections.ocasion || 'Sin especificar') + '\n' +
+            '*Colores:* ' + (ramoSelections.color || 'Sin especificar') + '\n' +
+            '*Estilo de ramo:* ' + (ramoSelections.estilo || 'Sin especificar') + '\n' +
+            '*Flores favoritas:* ' + (ramoSelections.flores.length ? ramoSelections.flores.join(', ') : 'Sin especificar') + '\n' +
+            (fecha ? '*Fecha deseada:* ' + fecha + '\n' : '') +
+            '*Nombre:* ' + nombre +
+            (notas ? '\n*Notas:* ' + notas : '');
+
+          var ramoWaUrl = 'https://wa.me/34722421637?text=' + encodeURIComponent(ramoText);
+          window.open(ramoWaUrl, '_blank', 'noopener,noreferrer');
+        });
+      }
+
+      ramoShowStep(1, false);
+    }
 
     /* ── SVG stem scroll animation ────────────────── */
     var stemPath = document.getElementById('stem-path');
