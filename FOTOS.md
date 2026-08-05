@@ -2,18 +2,19 @@
 
 Coloca cada foto en la carpeta `assets/` con el nombre exacto indicado.
 
-> **Estado (4 ago 2026):** hero, servicios (bodas/eventos/ramos) y las 12 de galería ya están
-> rellenas con fotos reales que la dueña mandó por WhatsApp (boda + gerberas + centros de mesa).
-> Originales sin recortar en `assets/raw-whatsapp-2026-08-03/` (incluye `NOTAS-CLIENTA.md` con
-> los textos que ella escribió para la web). Solo quedan pendientes `floristas-escalera.webp`
-> (stock) y las 10 `flor-*.jpg` (macros de flor suelta — no había ninguna así en su envío).
+> **Estado (5 ago 2026):** hero, sobre mí, servicios (bodas/eventos/ramos) y las 12 de galería
+> ya están rellenas con fotos y textos reales de la dueña (Miriam), confirmados por ella misma
+> por WhatsApp. Originales sin recortar en `assets/raw-whatsapp-2026-08-03/` (incluye
+> `NOTAS-CLIENTA.md` con el detalle de qué foto/texto va en cada sitio y por qué). Solo quedan
+> pendientes las 10 `flor-*.jpg` (macros de flor suelta — no había ninguna así en su envío) y
+> confirmar con ella la foto "con mi sobrina" que menciona pero no se localizó.
 
 ## Fotos principales
 
 | Archivo             | Descripción                                      |
 |---------------------|--------------------------------------------------|
-| `hero-ramo-novia.jpg`   | Hero: ramo de novia más impactante (cascada, calas...) |
-| `floristas-escalera.jpg` | Sobre mí: las dos floristas sentadas en escalera mármol |
+| `hero-ramo-novia.jpg`   | Hero: retrato de Miriam junto a un arreglo floral colorido |
+| `sobre-mi.jpg` | Sobre mí: Miriam trabajando en un montaje floral |
 | `servicio-bodas.jpg`    | Card bodas: ramo novia blanco cascada o calas rojas |
 | `servicio-eventos.jpg`  | Card eventos: centros de mesa alliums en musgo o rosas runner |
 | `servicio-ramos.jpg`    | Card ramos: bouquet silvestre morado/wildflower |
