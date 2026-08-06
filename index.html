@@ -6,6 +6,8 @@
   <title>MirFlores Atelier — Flores con alma. Bodas, eventos y talleres florales.</title>
   <meta name="description" content="MirFlores Atelier, florista artística en Madrid. Ramos de novia únicos, decoración de bodas y eventos, talleres florales. Hablamos de tus flores." />
   <link rel="canonical" href="https://mirflores.com" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="MirFlores Atelier — Flores con alma." />
@@ -513,6 +515,7 @@
       transform: translateY(-3px);
     }
     .servicio-img {
+      position: relative;
       aspect-ratio: 4/3;
       overflow: hidden;
     }
@@ -520,6 +523,31 @@
       transition: transform 0.7s var(--ease-out);
     }
     .servicio-card:hover .servicio-img img { transform: scale(1.04); }
+
+    /* Carrusel de fotos (card Bodas) */
+    .servicio-carousel-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: servicioCarousel 20s infinite;
+    }
+    .servicio-carousel-img:nth-child(1) { animation-delay: 0s; }
+    .servicio-carousel-img:nth-child(2) { animation-delay: 4s; }
+    .servicio-carousel-img:nth-child(3) { animation-delay: 8s; }
+    .servicio-carousel-img:nth-child(4) { animation-delay: 12s; }
+    .servicio-carousel-img:nth-child(5) { animation-delay: 16s; }
+    @keyframes servicioCarousel {
+      0%, 100% { opacity: 0; }
+      2%, 18% { opacity: 1; }
+      20% { opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .servicio-carousel-img { animation: none; opacity: 0; }
+      .servicio-carousel-img:first-child { opacity: 1; }
+    }
     .servicio-body {
       padding: 1.5rem;
     }
@@ -1496,41 +1524,7 @@
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav id="nav" role="navigation" aria-label="Navegación principal">
     <a href="#" class="nav-logo" aria-label="MirFlores Atelier — Inicio">
-      <!-- Logo dachshund ilustrado -->
-      <div class="nav-logo-img" style="background:var(--crema-2);display:flex;align-items:center;justify-content:center;overflow:hidden;">
-        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" aria-hidden="true" style="display:block;">
-          <!-- Cuerpo del perro salchicha -->
-          <ellipse cx="52" cy="58" rx="28" ry="13" stroke="#2A2420" stroke-width="2.2" fill="none"/>
-          <!-- Cabeza -->
-          <ellipse cx="76" cy="52" rx="11" ry="9" stroke="#2A2420" stroke-width="2.2" fill="none"/>
-          <!-- Orejas caídas -->
-          <path d="M70 47 Q64 36 68 32 Q73 30 78 40" stroke="#2A2420" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <!-- Hocico -->
-          <ellipse cx="84" cy="55" rx="5" ry="3" stroke="#2A2420" stroke-width="1.8" fill="none"/>
-          <!-- Ojo -->
-          <circle cx="78" cy="49" r="1.5" fill="#2A2420"/>
-          <!-- Patitas -->
-          <path d="M36 68 Q34 78 30 80" stroke="#2A2420" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M46 70 Q44 80 40 82" stroke="#2A2420" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M56 70 Q54 80 50 82" stroke="#2A2420" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M65 68 Q64 78 60 80" stroke="#2A2420" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <!-- Cola curvada -->
-          <path d="M24 58 Q14 50 16 42 Q18 35 24 38" stroke="#2A2420" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <!-- Florecitas en el cuerpo -->
-          <circle cx="44" cy="56" r="2.5" fill="#C9A0A0"/>
-          <circle cx="52" cy="54" r="2" fill="#C9A0A0"/>
-          <circle cx="60" cy="57" r="2.5" fill="#C9A0A0"/>
-          <!-- Pétalos pequeños -->
-          <circle cx="44" cy="53" r="1.2" fill="#EDE6DA"/>
-          <circle cx="41" cy="56" r="1.2" fill="#EDE6DA"/>
-          <circle cx="44" cy="59" r="1.2" fill="#EDE6DA"/>
-          <circle cx="47" cy="56" r="1.2" fill="#EDE6DA"/>
-          <circle cx="60" cy="54" r="1.2" fill="#EDE6DA"/>
-          <circle cx="57" cy="57" r="1.2" fill="#EDE6DA"/>
-          <circle cx="60" cy="60" r="1.2" fill="#EDE6DA"/>
-          <circle cx="63" cy="57" r="1.2" fill="#EDE6DA"/>
-        </svg>
-      </div>
+      <img class="nav-logo-img" src="assets/logo.jpg" alt="" style="background:var(--crema-2);" />
       <div>
         <span class="nav-logo-text">MirFlores</span>
         <span class="nav-logo-sub">Atelier</span>
@@ -1633,8 +1627,12 @@
     </div>
     <div class="servicios-grid">
       <article class="servicio-card reveal" style="transition-delay:0s">
-        <div class="servicio-img">
-          <img src="assets/servicio-bodas.jpg" alt="Columna floral de rosas y lirios sobre pérgola de madera para ceremonia de boda" loading="lazy" />
+        <div class="servicio-img servicio-carousel">
+          <img class="servicio-carousel-img" src="assets/servicio-bodas-1.jpg" alt="Columna floral de rosas y lirios sobre pérgola de madera para ceremonia de boda" loading="lazy" />
+          <img class="servicio-carousel-img" src="assets/servicio-bodas-2.jpg" alt="Novios de espaldas frente al altar de rosas blancas y verdor de su boda" loading="lazy" />
+          <img class="servicio-carousel-img" src="assets/servicio-bodas-3.jpg" alt="Mesa ceremonial decorada con gerberas de colores y alfombra roja" loading="lazy" />
+          <img class="servicio-carousel-img" src="assets/servicio-bodas-4.jpg" alt="Rosas blancas y rosadas a los pies de un altar dorado de iglesia" loading="lazy" />
+          <img class="servicio-carousel-img" src="assets/servicio-bodas-5.jpg" alt="Novia con velo entrando a la iglesia junto a su padre" loading="lazy" />
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Bodas</span>
