@@ -524,7 +524,7 @@
     }
     .servicio-card:hover .servicio-img img { transform: scale(1.04); }
 
-    /* Carrusel de fotos (card Bodas) */
+    /* Carrusel de fotos (cards Bodas y Eventos) */
     .servicio-carousel-img {
       position: absolute;
       inset: 0;
@@ -532,17 +532,27 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      animation: servicioCarousel 20s infinite;
     }
-    .servicio-carousel-img:nth-child(1) { animation-delay: 0s; }
-    .servicio-carousel-img:nth-child(2) { animation-delay: 4s; }
-    .servicio-carousel-img:nth-child(3) { animation-delay: 8s; }
-    .servicio-carousel-img:nth-child(4) { animation-delay: 12s; }
-    .servicio-carousel-img:nth-child(5) { animation-delay: 16s; }
-    @keyframes servicioCarousel {
+    .servicio-carousel-5 .servicio-carousel-img { animation: servicioCarousel5 20s infinite; }
+    .servicio-carousel-5 .servicio-carousel-img:nth-child(1) { animation-delay: 0s; }
+    .servicio-carousel-5 .servicio-carousel-img:nth-child(2) { animation-delay: 4s; }
+    .servicio-carousel-5 .servicio-carousel-img:nth-child(3) { animation-delay: 8s; }
+    .servicio-carousel-5 .servicio-carousel-img:nth-child(4) { animation-delay: 12s; }
+    .servicio-carousel-5 .servicio-carousel-img:nth-child(5) { animation-delay: 16s; }
+    @keyframes servicioCarousel5 {
       0%, 100% { opacity: 0; }
       2%, 18% { opacity: 1; }
       20% { opacity: 0; }
+    }
+    .servicio-carousel-4 .servicio-carousel-img { animation: servicioCarousel4 16s infinite; }
+    .servicio-carousel-4 .servicio-carousel-img:nth-child(1) { animation-delay: 0s; }
+    .servicio-carousel-4 .servicio-carousel-img:nth-child(2) { animation-delay: 4s; }
+    .servicio-carousel-4 .servicio-carousel-img:nth-child(3) { animation-delay: 8s; }
+    .servicio-carousel-4 .servicio-carousel-img:nth-child(4) { animation-delay: 12s; }
+    @keyframes servicioCarousel4 {
+      0%, 100% { opacity: 0; }
+      2%, 23% { opacity: 1; }
+      25% { opacity: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
       .servicio-carousel-img { animation: none; opacity: 0; }
@@ -1627,7 +1637,7 @@
     </div>
     <div class="servicios-grid">
       <article class="servicio-card reveal" style="transition-delay:0s">
-        <div class="servicio-img servicio-carousel">
+        <div class="servicio-img servicio-carousel-5">
           <img class="servicio-carousel-img" src="assets/servicio-bodas-1.jpg" alt="Columna floral de rosas y lirios sobre pérgola de madera para ceremonia de boda" loading="lazy" />
           <img class="servicio-carousel-img" src="assets/servicio-bodas-2.jpg" alt="Novios de espaldas frente al altar de rosas blancas y verdor de su boda" loading="lazy" />
           <img class="servicio-carousel-img" src="assets/servicio-bodas-3.jpg" alt="Mesa ceremonial decorada con gerberas de colores y alfombra roja" loading="lazy" />
@@ -1641,8 +1651,11 @@
         </div>
       </article>
       <article class="servicio-card reveal" style="transition-delay:0.1s">
-        <div class="servicio-img">
-          <img src="assets/servicio-eventos.jpg" alt="Centro de mesa con rosas blancas, dalias coral y vela junto a pared de ladrillo" loading="lazy" />
+        <div class="servicio-img servicio-carousel-4">
+          <img class="servicio-carousel-img" src="assets/servicio-eventos-1.jpg" alt="Centro de mesa con rosas blancas, dalias coral y vela junto a pared de ladrillo" loading="lazy" />
+          <img class="servicio-carousel-img" src="assets/servicio-eventos-2.jpg" alt="Mini centro de mesa con tulipanes naranjas, rosa roja y musgo" loading="lazy" />
+          <img class="servicio-carousel-img" src="assets/servicio-eventos-3.jpg" alt="Camino de mesa con delphinium azul, claveles naranjas y uvas" loading="lazy" />
+          <img class="servicio-carousel-img" src="assets/servicio-eventos-4.jpg" alt="Camino de mesa con kniphofia naranja, delphinium azul y flores exóticas" loading="lazy" />
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Eventos</span>
@@ -1652,7 +1665,7 @@
       </article>
       <article class="servicio-card reveal" style="transition-delay:0.2s">
         <div class="servicio-img">
-          <img src="assets/servicio-ramos.jpg" alt="Ramillete silvestre de flores moradas en jarrón de cristal bajo una sombrilla de jardín" loading="lazy" />
+          <img src="assets/servicio-ramos.jpg" alt="Bouquet silvestre con flores lilas y verdor" loading="lazy" />
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Ramos especiales</span>
@@ -1672,84 +1685,84 @@
     <div class="masonry" id="masonry-grid" role="list" aria-label="Galería de trabajos florales">
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 1">
-        <img src="assets/galeria-01.jpg" alt="Cascada floral amarilla y blanca enmarcando la puerta de piedra de una iglesia" loading="lazy" />
+        <img src="assets/galeria-01.jpg" alt="Composición floral artística en bodas" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 2" style="transition-delay:0.05s">
-        <img src="assets/galeria-02.jpg" alt="Mesa ceremonial decorada con gerberas de colores y alfombra roja" loading="lazy" />
+        <img src="assets/galeria-02.jpg" alt="Ramo nupcial de peonías rosas y eucalipto" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 3" style="transition-delay:0.1s">
-        <img src="assets/galeria-03.jpg" alt="Camino de mesa con delphinium azul, claveles naranjas y uvas" loading="lazy" />
+        <img src="assets/galeria-03.jpg" alt="Decoración floral de iglesia con ramas y flores blancas" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 4" style="transition-delay:0.15s">
-        <img src="assets/galeria-04.jpg" alt="Mesa de firmas flanqueada por cestas con flores silvestres en tonos pastel" loading="lazy" />
+        <img src="assets/galeria-04.jpg" alt="Centro de mesa con rosas blancas runner" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 5" style="transition-delay:0.2s">
-        <img src="assets/galeria-05.jpg" alt="Escalinata cubierta de hiedra y flores blancas en la entrada de una ceremonia" loading="lazy" />
+        <img src="assets/galeria-05.jpg" alt="Detalle de corona de flores para novia" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 6" style="transition-delay:0.25s">
-        <img src="assets/galeria-06.jpg" alt="Novia con velo entrando a la iglesia junto a su padre, flanqueada por cestas de flores de colores" loading="lazy" />
+        <img src="assets/galeria-06.jpg" alt="Taller floral en espacio íntimo con participantes" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 7" style="transition-delay:0.3s">
-        <img src="assets/galeria-07.jpg" alt="Rosas blancas en macetero junto a la entrada de un patio con arcos" loading="lazy" />
+        <img src="assets/galeria-07.jpg" alt="Ramo de anémona y ranúnculo en tonos morados" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 8" style="transition-delay:0.35s">
-        <img src="assets/galeria-08.jpg" alt="Ceremonia al aire libre con banco floral y vistas a la sierra" loading="lazy" />
+        <img src="assets/galeria-08.jpg" alt="Instalación floral para evento corporativo" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 9" style="transition-delay:0.4s">
-        <img src="assets/galeria-09.jpg" alt="Guirnalda floral blanca y verde cayendo sobre una entrada en piedra" loading="lazy" />
+        <img src="assets/galeria-09.jpg" alt="Bouquet silvestre con flores de campo y gypsophila" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 10" style="transition-delay:0.45s">
-        <img src="assets/galeria-10.jpg" alt="Mini centro de mesa con tulipanes naranjas, rosa roja y musgo" loading="lazy" />
+        <img src="assets/galeria-10.jpg" alt="Detalle de dahlia naranja en arreglo otoñal" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 11" style="transition-delay:0.5s">
-        <img src="assets/galeria-11.jpg" alt="Rosas blancas y rosadas a los pies de un altar dorado de iglesia" loading="lazy" />
+        <img src="assets/galeria-11.jpg" alt="Mesa nupcial con flores blancas y velas" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <div class="masonry-item reveal" role="listitem" tabindex="0" aria-label="Abrir imagen 12" style="transition-delay:0.55s">
-        <img src="assets/galeria-12.jpg" alt="Camino de mesa con kniphofia naranja, delphinium azul y flores exóticas" loading="lazy" />
+        <img src="assets/galeria-12.jpg" alt="Arreglo floral para recepción de boda" loading="lazy" />
         <div class="masonry-item-overlay" aria-hidden="true">
           <svg width="28" height="28" fill="none" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
