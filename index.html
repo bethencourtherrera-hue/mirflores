@@ -900,93 +900,129 @@
     }
     .btn-secondary:hover { border-color: var(--tierra); color: var(--tierra); }
 
-    /* ─── FLORES TEMPORADA ───────────────────────────────── */
+    /* ─── FLORES TEMPORADA — un año entre flores ─────────── */
     #temporada {
       background: var(--crema-2);
       padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 6rem);
     }
     .temporada-header {
       text-align: center;
-      max-width: 520px;
+      max-width: 640px;
       margin: 0 auto 3rem;
     }
-    .temporada-header p { color: var(--gris); font-size: 0.9rem; margin-top: 0.75rem; }
-    .flores-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    @media (min-width: 600px) { .flores-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 900px) { .flores-grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; } }
-    .flor-card {
-      background: var(--crema);
-      border-radius: 3px;
-      overflow: hidden;
-      text-align: center;
-      box-shadow: 0 2px 12px rgba(42,36,32,0.05);
-      transition: transform 0.4s, box-shadow 0.4s;
-    }
-    .flor-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(42,36,32,0.1); }
-    .flor-img {
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-    }
-    .flor-img img { transition: transform 0.7s var(--ease-out); }
-    .flor-card:hover .flor-img img { transform: scale(1.06); }
-    .flor-card:hover .flor-nombre { color: var(--tierra-2); }
-    .flor-nombre { transition: color 0.3s; }
-    .flor-info {
-      padding: 0.9rem 0.75rem 1rem;
-    }
-    .flor-nombre {
+    .temporada-header p { color: var(--gris); font-size: 0.95rem; line-height: 1.8; margin-top: 1rem; }
+    .temporada-header .temporada-lead {
       font-family: var(--font-display);
       font-style: italic;
       font-weight: 300;
-      font-size: 1.05rem;
+      font-size: clamp(1.15rem, 1rem + 0.8vw, 1.4rem);
+      line-height: 1.5;
       color: var(--carbon);
-      margin-bottom: 0.3rem;
     }
-    .flor-temporada {
-      font-size: 0.67rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .meses {
+      max-width: 820px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(139,128,121,0.28);
+    }
+    .mes { border-bottom: 1px solid rgba(139,128,121,0.28); }
+    .mes summary {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr 1.5rem;
+      align-items: center;
+      gap: 0 0.75rem;
+      min-height: 44px;
+      padding: 1.15rem 0;
+      cursor: pointer;
+      list-style: none;
+    }
+    .mes summary::-webkit-details-marker { display: none; }
+    .mes summary:focus-visible { outline: 2px solid var(--tierra); outline-offset: 4px; }
+    .mes-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.95rem;
       color: var(--tierra);
     }
-    .flor-trigger { cursor: pointer; }
-    .flor-toggle-icon {
+    .mes-head { display: flex; flex-direction: column; gap: 0.15rem; }
+    .mes-nombre {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+      line-height: 1.1;
+      color: var(--carbon);
+      transition: color 0.3s;
+    }
+    .mes-titulo { font-size: 0.8rem; color: var(--gris); line-height: 1.4; }
+    .mes summary:hover .mes-nombre,
+    .mes[open] .mes-nombre { color: var(--tierra-2); }
+    .mes-icono {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 20px; height: 20px;
-      margin: 0.6rem auto 0;
+      width: 22px; height: 22px;
       border: 1px solid var(--tierra);
       border-radius: 50%;
       color: var(--tierra);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       line-height: 1;
       transition: transform 0.35s var(--ease-out), background 0.3s, color 0.3s;
     }
-    .flor-trigger[aria-expanded="true"] .flor-toggle-icon {
-      transform: rotate(45deg);
-      background: var(--tierra);
-      color: var(--crema);
+    .mes[open] .mes-icono { transform: rotate(45deg); background: var(--tierra); color: var(--crema); }
+    .mes-cuerpo { padding: 0 0 1.75rem calc(2.2rem + 0.75rem); max-width: 62ch; }
+    .mes[open] .mes-cuerpo { animation: mesIn 0.45s var(--ease-out); }
+    @keyframes mesIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+    .mes-flores {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tierra);
+      line-height: 1.7;
+      margin-bottom: 1rem;
     }
-    .flor-detail {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.4s var(--ease-out);
+    .mes-cuerpo p { font-size: 0.92rem; line-height: 1.8; color: var(--gris); margin-bottom: 0.9rem; }
+    .mes-cuerpo p.mes-colores {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--carbon);
+      padding-left: 0.9rem;
+      border-left: 2px solid var(--tierra);
     }
-    .flor-detail-inner { overflow: hidden; }
-    .flor-detail-inner p {
-      padding: 0 0.9rem 1rem;
-      font-size: 0.8rem;
-      color: var(--gris);
-      line-height: 1.6;
-      text-align: left;
+    .mes-cuerpo p.mes-colores span {
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tierra);
+      margin-right: 0.4rem;
     }
-    .flor-card.open .flor-detail { grid-template-rows: 1fr; }
+    .temporada-cierre {
+      max-width: 640px;
+      margin: 3.5rem auto 0;
+      text-align: center;
+    }
+    .temporada-cierre h3 {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+      line-height: 1.2;
+      color: var(--carbon);
+      margin-bottom: 1.25rem;
+    }
+    .temporada-cierre p { color: var(--gris); font-size: 0.95rem; line-height: 1.8; margin-bottom: 0.9rem; }
+    .temporada-cierre p.cierre-final {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--carbon);
+    }
+    .temporada-cierre .btn-primary { margin-top: 1.25rem; display: inline-flex; }
+    @media (prefers-reduced-motion: reduce) {
+      .mes[open] .mes-cuerpo { animation: none; }
+    }
 
     /* ─── RESEÑAS ────────────────────────────────────────── */
     #resenas {
@@ -1917,181 +1953,251 @@
   <!-- ── FLORES DE TEMPORADA ───────────────────────────── -->
   <section id="temporada" aria-labelledby="temporada-title">
     <div class="temporada-header">
-      <span class="section-label reveal">Nuestra selección</span>
+      <span class="section-label reveal">Un año entre flores</span>
       <h2 id="temporada-title" class="section-title section-title-lg reveal">Flores&nbsp;de<br><em>temporada</em></h2>
-      <p class="reveal">Trabajamos con flores frescas de temporada y productores locales. Menos huella, más&nbsp;calidad.</p>
+      <p class="temporada-lead reveal">Las flores también tienen su momento. Y quizá parte de su belleza esté precisamente ahí: en saber esperarlas.</p>
+      <p class="reveal">En MirFlores me gusta trabajar, siempre que es posible, con flores nacionales y de temporada. Elegirlas cuando están en su mejor momento nos permite disfrutar de flores más frescas, más bonitas y, sobre todo, dejar que cada ramo tenga algo de la estación en la que fue creado.</p>
+      <p class="reveal">Porque la naturaleza cambia. Y nuestros ramos también deberían hacerlo.</p>
     </div>
-    <div class="flores-grid">
-      <div class="flor-card reveal" style="transition-delay:0s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-peonia" aria-label="Ver más sobre la peonía">
-          <div class="flor-img">
-            <img src="assets/flor-peonia.jpg" alt="Peonía rosa de temporada" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Peonía</p>
-            <p class="flor-temporada">May&nbsp;— Jun</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
+    <div class="meses">
+      <details class="mes reveal" name="mes" id="mes-enero">
+        <summary>
+          <span class="mes-num" aria-hidden="true">01</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Enero</span>
+            <span class="mes-titulo">La delicadeza del invierno</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Tulipanes · Anémonas · Ranúnculos · Amarilis · Narcisos</p>
+          <p>Enero puede parecer un mes silencioso, pero floralmente guarda auténticas maravillas. Los ranúnculos comienzan a enseñarnos sus infinitas capas de pétalos, las anémonas aportan esos centros oscuros tan característicos y los tulipanes hacen algo que me fascina: siguen creciendo y moviéndose una vez colocados en el jarrón.</p>
+          <p class="mes-colores"><span>Colores</span>blancos, crema, rosas empolvados, rojos, violetas, amarillos y burdeos.</p>
+          <p>Me gusta imaginar estas flores en ramos de novia de invierno ligeros y con movimiento, centros delicados y pequeños arreglos para regalar. Y si aparece un buen amarilis, dejarle espacio: tiene suficiente presencia como para convertirse casi en una escultura.</p>
+          <p>No siempre hay que llenar. A veces una flor bonita necesita, simplemente, que la dejemos respirar.</p>
         </div>
-        <div class="flor-detail" id="flor-detail-peonia" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto de la peonía — texto pendiente de la&nbsp;floristería.</p>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-febrero">
+        <summary>
+          <span class="mes-num" aria-hidden="true">02</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Febrero</span>
+            <span class="mes-titulo">Un pequeño anuncio de primavera</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Mimosa · Tulipanes · Anémonas · Ranúnculos</p>
+          <p>Entonces aparece la mimosa y parece que algo empieza a cambiar.</p>
+          <p>Su amarillo luminoso, su aspecto silvestre y esa forma ligeramente desordenada hacen que me resulte irresistible. Junto a tulipanes, anémonas y ranúnculos permite crear un febrero mucho más interesante que el tradicional ramo rojo.</p>
+          <p class="mes-colores"><span>Colores</span>amarillo mimosa, blanco, rosa, rojo profundo, naranja y tonos vino.</p>
+          <p>Con ellas buscaría ramos desenfadados, pequeños centros de mesa, detalles florales y composiciones románticas poco convencionales.</p>
+          <p>Me gusta especialmente cuando la mimosa sobresale y parece haberse escapado del arreglo. No todo tiene que estar exactamente en su sitio para resultar bello.</p>
         </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.06s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-cala" aria-label="Ver más sobre la cala">
-          <div class="flor-img">
-            <img src="assets/flor-cala.jpg" alt="Cala blanca elegante" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Cala</p>
-            <p class="flor-temporada">Ene&nbsp;— Jun</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-marzo">
+        <summary>
+          <span class="mes-num" aria-hidden="true">03</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Marzo</span>
+            <span class="mes-titulo">Flores que también se recuerdan por su aroma</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Fresias · Narcisos · Tulipanes · Ranúnculos · Alhelíes</p>
+          <p>Marzo empieza a oler a primavera.</p>
+          <p>Las flores se vuelven más frescas, ligeras y perfumadas. Las fresias y los alhelíes tienen algo que me encanta: consiguen que una composición no solo se recuerde por cómo era, sino también por cómo olía.</p>
+          <p class="mes-colores"><span>Colores</span>blanco, amarillo, lila, rosa, melocotón, naranja y tonos pastel.</p>
+          <p>Es un mes precioso para ramos de novia naturales, centros de mesa frescos, prendidos, pequeños detalles florales y arreglos para regalar.</p>
+          <p>Porque las flores no deberían limitarse a decorar un lugar. Me gusta pensar que también pueden conseguir que lo recordemos.</p>
         </div>
-        <div class="flor-detail" id="flor-detail-cala" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto de la cala — texto pendiente de la&nbsp;floristería.</p>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-abril">
+        <summary>
+          <span class="mes-num" aria-hidden="true">04</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Abril</span>
+            <span class="mes-titulo">Cuando todo empieza a parecer un jardín</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Lilas · Ranúnculos · Tulipanes · Anémonas · Primeras peonías</p>
+          <p>Abril es uno de esos meses en los que cuesta elegir.</p>
+          <p>Todavía encontramos pequeñas joyas de los meses anteriores y empiezan a llegar las primeras flores de primavera. Entre ellas aparecen tímidamente las peonías, anunciando todo lo que vendrá después.</p>
+          <p class="mes-colores"><span>Colores</span>malvas, blancos, rosas, coral, crema y verdes muy tiernos.</p>
+          <p>Si tuviera que diseñar una boda de abril, intentaría que las flores parecieran crecer casi libremente: ramos de novia con aspecto de jardín, centros poco estructurados, arreglos de bienvenida, escaleras, puertas y decoraciones de ceremonia.</p>
+          <p>Que unas flores queden más altas, otras se escondan y otras parezca que acaban de aparecer allí.</p>
+          <p>Ese pequeño desorden es, muchas veces, lo que hace que una composición resulte natural.</p>
         </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.12s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-anemona" aria-label="Ver más sobre la anémona">
-          <div class="flor-img">
-            <img src="assets/flor-anemona.jpg" alt="Anémona morada en flor" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Anémona</p>
-            <p class="flor-temporada">Feb&nbsp;— Abr</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-mayo">
+        <summary>
+          <span class="mes-num" aria-hidden="true">05</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Mayo</span>
+            <span class="mes-titulo">El momento de las peonías</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Peonías · Rosas de jardín · Lilas · Lisianthus · Primeras hortensias</p>
+          <p>Y llega mayo.</p>
+          <p>Si tuviera que explicar con una sola flor por qué amo este oficio, probablemente podría hacerlo viendo abrirse una peonía. Empieza siendo una pequeña bola cerrada y termina convertida en una flor enorme, desordenada y maravillosa.</p>
+          <p class="mes-colores"><span>Colores</span>blanco, crema, blush, rosa, coral, frambuesa y rojo profundo.</p>
+          <p>Aquí reconozco que me costaría contenerme.</p>
+          <p>Las utilizaría en ramos de novia, centros de mesa, grandes jarrones, mesas imperiales y composiciones para ceremonias, combinándolas con flores más pequeñas y verdes que les permitan conservar movimiento.</p>
+          <p>Son flores generosas. Y precisamente por eso tampoco necesitan demasiada compañía.</p>
         </div>
-        <div class="flor-detail" id="flor-detail-anemona" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto de la anémona — texto pendiente de la&nbsp;floristería.</p>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-junio">
+        <summary>
+          <span class="mes-num" aria-hidden="true">06</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Junio</span>
+            <span class="mes-titulo">Volumen sin perder ligereza</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Hortensias · Peonías tardías · Delphinium · Lavanda · Rosas</p>
+          <p>Junio empieza a cambiar el lenguaje de las flores.</p>
+          <p>Nos despedimos poco a poco de las peonías mientras las hortensias ganan protagonismo. Me encanta combinar su volumen con flores altas y ligeras como el delphinium: una aporta cuerpo y la otra rompe la composición y la hace respirar.</p>
+          <p class="mes-colores"><span>Colores</span>azules, lavandas, blancos, rosas, verdes y amarillos suaves.</p>
+          <p>Son maravillosas para grandes centros, mesas imperiales, columnas, entradas, decoración de iglesias y ceremonias, especialmente cuando necesitamos crear volumen sin construir una masa compacta de flor.</p>
+          <p>Grande no tiene por qué significar pesado.</p>
         </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.18s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-rosa" aria-label="Ver más sobre la rosa">
-          <div class="flor-img">
-            <img src="assets/flor-rosa.jpg" alt="Rosa clásica en tono crema" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Rosa</p>
-            <p class="flor-temporada">Todo el&nbsp;año</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-julio">
+        <summary>
+          <span class="mes-num" aria-hidden="true">07</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Julio</span>
+            <span class="mes-titulo">Que parezca recién recogido del jardín</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Dalias · Zinnias · Cosmos · Hortensias · Delphinium</p>
+          <p>En pleno verano me apetece que las flores parezcan más libres que nunca.</p>
+          <p>Dalias, cosmos y zinnias tienen tamaños, formas y alturas diferentes y precisamente ahí está su encanto.</p>
+          <p class="mes-colores"><span>Colores</span>melocotón, amarillo, rosa, naranja, blanco, rojo, fucsia y multitud de tonos intermedios.</p>
+          <p>Me encantan para bodas llenas de color, ramos de novia desenfadados, centros de mesa, caminos florales y composiciones para mesas largas.</p>
+          <p>Intentaría que unas flores sobresaliesen, otras se escondiesen y otras casi mirasen hacia otro lado.</p>
+          <p>Que apenas se note la mano que las ha colocado y dé la sensación de que ellas mismas han decidido crecer así.</p>
         </div>
-        <div class="flor-detail" id="flor-detail-rosa" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto de la rosa — texto pendiente de la&nbsp;floristería.</p>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-agosto">
+        <summary>
+          <span class="mes-num" aria-hidden="true">08</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Agosto</span>
+            <span class="mes-titulo">El momento de atreverse</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Dalias · Cosmos · Zinnias · Hortensias · Celosías</p>
+          <p>Agosto es exuberante.</p>
+          <p>Las dalias pueden ser pequeñas, enormes, redondas, puntiagudas, delicadas o rotundas. Hay variedades tan especiales que una sola flor puede cambiar completamente una composición.</p>
+          <p class="mes-colores"><span>Colores</span>terracotas, melocotones, rosas, burdeos, cremas, amarillos y naranjas.</p>
+          <p>Este es el momento de atreverse un poco más: ramos de novia con personalidad, centros muy orgánicos, grandes composiciones para eventos y arreglos donde el color tenga verdadero protagonismo.</p>
+          <p>A veces encuentro una dalia tan bonita que todo el arreglo empieza a construirse alrededor de ella.</p>
+          <p>Y eso también forma parte de trabajar con flores: dejar que alguna vez sean ellas las que manden.</p>
         </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.24s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-ranunculo" aria-label="Ver más sobre el ranúnculo">
-          <div class="flor-img">
-            <img src="assets/flor-ranunculo.jpg" alt="Ranúnculo amarillo y coral" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Ranúnculo</p>
-            <p class="flor-temporada">Feb&nbsp;— May</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-septiembre">
+        <summary>
+          <span class="mes-num" aria-hidden="true">09</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Septiembre</span>
+            <span class="mes-titulo">Cuando dos estaciones se encuentran</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Dalias · Cosmos · Hortensias · Celosías · Primeros crisantemos</p>
+          <p>Septiembre tiene algo especial.</p>
+          <p>Todavía conserva flores del verano, pero empiezan a apetecer colores más profundos y nuevas texturas.</p>
+          <p class="mes-colores"><span>Colores</span>vino, teja, rosa viejo, crema, verde, naranja, ciruela y burdeos.</p>
+          <p>Quizá sea uno de los meses que más juego me da para ramos de novia, mesas, grandes jarrones, rincones especiales y arreglos de bienvenida.</p>
+          <p>Empiezo a introducir ramas y tonos otoñales entre flores todavía estivales.</p>
+          <p>No es completamente verano ni todavía otoño. Y justamente ahí reside su belleza.</p>
         </div>
-        <div class="flor-detail" id="flor-detail-ranunculo" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto del ranúnculo — texto pendiente de la&nbsp;floristería.</p>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-octubre">
+        <summary>
+          <span class="mes-num" aria-hidden="true">10</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Octubre</span>
+            <span class="mes-titulo">Las ramas también son flores</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Dalias tardías · Crisantemos · Hortensias · Cosmos · Ramas y frutos</p>
+          <p>En octubre las ramas empiezan a pedirme su sitio.</p>
+          <p>Ya no pienso únicamente en flores. Aparecen hojas, bayas, frutos, semillas y ramas con formas maravillosas que pueden convertirse en una parte fundamental del arreglo.</p>
+          <p class="mes-colores"><span>Colores</span>burdeos, mostaza, cobre, rosa envejecido, verde oscuro, teja y crema.</p>
+          <p>Me encanta trabajarlas en grandes jarrones, centros de mesa, entradas, decoraciones de ceremonia y composiciones más escultóricas.</p>
+          <p>Es un mes perfecto para trabajar de una forma algo más artística y menos convencional.</p>
+          <p>Porque una rama bonita puede emocionarme exactamente igual que una flor.</p>
         </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.3s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-tulipan" aria-label="Ver más sobre el tulipán">
-          <div class="flor-img">
-            <img src="assets/flor-tulipan.jpg" alt="Tulipán rojo de temporada" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Tulipán</p>
-            <p class="flor-temporada">Mar&nbsp;— May</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-noviembre">
+        <summary>
+          <span class="mes-num" aria-hidden="true">11</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Noviembre</span>
+            <span class="mes-titulo">La belleza menos evidente</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Crisantemos especiales · Hortensias envejecidas · Amarilis · Ramas de otoño</p>
+          <p>Noviembre me gusta por una razón muy particular: permite descubrir belleza donde quizá no esperábamos encontrarla.</p>
+          <p>Una hortensia envejecida puede adquirir una mezcla imposible de verde, vino y malva. Y existen crisantemos extraordinarios que poco tienen que ver con la imagen tradicional que solemos tener de esta flor.</p>
+          <p class="mes-colores"><span>Colores</span>vino, verde envejecido, malva, crema, cobre y rojo profundo.</p>
+          <p>Los llevaría a grandes jarrones, centros sofisticados, decoraciones de eventos y arreglos para casa, dejando que las texturas y los colores tengan más importancia que la cantidad.</p>
+          <p>No siempre necesito la flor más perfecta.</p>
+          <p>Muchas veces prefiero aquella que tiene algo diferente que contar.</p>
         </div>
-        <div class="flor-detail" id="flor-detail-tulipan" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto del tulipán — texto pendiente de la&nbsp;floristería.</p>
-          </div>
+      </details>
+      <details class="mes reveal" name="mes" id="mes-diciembre">
+        <summary>
+          <span class="mes-num" aria-hidden="true">12</span>
+          <span class="mes-head">
+            <span class="mes-nombre">Diciembre</span>
+            <span class="mes-titulo">Cuando todo puede convertirse en protagonista</span>
+          </span>
+          <span class="mes-icono" aria-hidden="true">+</span>
+        </summary>
+        <div class="mes-cuerpo">
+          <p class="mes-flores">Amarilis · Heléboros · Ilex · Narcisos tempranos · Verdes de invierno</p>
+          <p>Diciembre invita a mirar las flores de otra manera.</p>
+          <p>Los amarilis son casi escultóricos; las pequeñas bayas del ilex aportan color y los verdes, ramas y texturas dejan de ser simples acompañantes.</p>
+          <p class="mes-colores"><span>Colores</span>blanco, rojo profundo, verde, granate y crema.</p>
+          <p>Entonces las flores comparten protagonismo con todo lo demás.</p>
+          <p>Las imagino en coronas naturales, centros de Navidad, mesas, puertas, grandes jarrones y decoraciones para casas y empresas, buscando una Navidad elegante y natural, sin necesidad de recurrir siempre a lo evidente.</p>
+          <p>Porque una composición puede ser navideña sin tener que gritar que lo es.</p>
         </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.36s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-dalia" aria-label="Ver más sobre la dalia">
-          <div class="flor-img">
-            <img src="assets/flor-dalia.jpg" alt="Dalia naranja voluminosa" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Dalia</p>
-            <p class="flor-temporada">Jul&nbsp;— Oct</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
-        </div>
-        <div class="flor-detail" id="flor-detail-dalia" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto de la dalia — texto pendiente de la&nbsp;floristería.</p>
-          </div>
-        </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.42s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-gypsophila" aria-label="Ver más sobre la gypsophila">
-          <div class="flor-img">
-            <img src="assets/flor-gypsophila.jpg" alt="Gypsophila blanca nube" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Gypsophila</p>
-            <p class="flor-temporada">May&nbsp;— Sep</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
-        </div>
-        <div class="flor-detail" id="flor-detail-gypsophila" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto de la gypsophila — texto pendiente de la&nbsp;floristería.</p>
-          </div>
-        </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.48s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-allium" aria-label="Ver más sobre el allium">
-          <div class="flor-img">
-            <img src="assets/flor-allium.jpg" alt="Allium morado esférico" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Allium</p>
-            <p class="flor-temporada">May&nbsp;— Jul</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
-        </div>
-        <div class="flor-detail" id="flor-detail-allium" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto del allium — texto pendiente de la&nbsp;floristería.</p>
-          </div>
-        </div>
-      </div>
-      <div class="flor-card reveal" style="transition-delay:0.54s">
-        <div class="flor-trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="flor-detail-celosia" aria-label="Ver más sobre la celósia">
-          <div class="flor-img">
-            <img src="assets/flor-celosia.jpg" alt="Celósia roja con textura aterciopelada" loading="lazy" />
-          </div>
-          <div class="flor-info">
-            <p class="flor-nombre">Celósia</p>
-            <p class="flor-temporada">Ago&nbsp;— Nov</p>
-            <span class="flor-toggle-icon" aria-hidden="true">+</span>
-          </div>
-        </div>
-        <div class="flor-detail" id="flor-detail-celosia" aria-hidden="true">
-          <div class="flor-detail-inner">
-            <p>Aquí irá la descripción y el contexto de la celósia — texto pendiente de la&nbsp;floristería.</p>
-          </div>
-        </div>
-      </div>
+      </details>
+    </div>
+    <div class="temporada-cierre reveal">
+      <h3>¿Y si la flor que me enamora no está de temporada?</h3>
+      <p>No pasa nada.</p>
+      <p>Para mí, diseñar un arreglo floral no consiste en escoger flores de una lista y colocarlas juntas. Consiste en entender qué queremos transmitir.</p>
+      <p>Si una determinada variedad no está en su mejor momento, podemos buscar otra que nos dé su color, su movimiento, su textura o su carácter.</p>
+      <p>Y muchas veces esas pequeñas decisiones inesperadas son precisamente las que terminan haciendo que un arreglo sea único.</p>
+      <p>No siempre podemos elegir qué flor estará disponible. Y quizá eso sea precisamente lo bonito.</p>
+      <p>En MirFlores prefiero escuchar a la naturaleza, trabajar con lo mejor que nos ofrece cada momento y dejar que cada estación haga diferente cada ramo.</p>
+      <p>Porque las flores, como tantas cosas bonitas, tienen su momento.</p>
+      <p class="cierre-final">Y merece la pena esperarlo.</p>
+      <a href="https://wa.me/34722421637?text=Hola%2C%20me%20gustar%C3%ADa%20un%20ramo%20de%20temporada%20%F0%9F%8C%B8" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+        Cuéntame qué&nbsp;imaginas
+      </a>
     </div>
   </section>
 
@@ -2619,22 +2725,9 @@
       if (e.key === 'ArrowRight') nextLb();
     });
 
-    /* ── Flores de temporada — acordeón ───────────── */
-    var florTriggers = document.querySelectorAll('.flor-trigger');
-    function toggleFlor(trigger) {
-      var card = trigger.closest('.flor-card');
-      var detail = document.getElementById(trigger.getAttribute('aria-controls'));
-      var isOpen = trigger.getAttribute('aria-expanded') === 'true';
-      trigger.setAttribute('aria-expanded', String(!isOpen));
-      if (detail) detail.setAttribute('aria-hidden', String(isOpen));
-      card.classList.toggle('open', !isOpen);
-    }
-    florTriggers.forEach(function(trigger) {
-      trigger.addEventListener('click', function() { toggleFlor(trigger); });
-      trigger.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFlor(trigger); }
-      });
-    });
+    /* ── Flores de temporada — abre el mes actual ──── */
+    var mesActual = document.getElementById('mes-' + ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][new Date().getMonth()]);
+    if (mesActual) mesActual.open = true;
 
     /* ── Talleres — tabs ───────────────────────────── */
     var tallerTabs = Array.from(document.querySelectorAll('.taller-tab'));
