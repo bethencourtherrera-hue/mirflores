@@ -798,6 +798,34 @@
     .taller-item-placeholder:hover { border-top-color: rgba(193,127,134,0.15); }
     .taller-item-placeholder:hover .taller-nombre { color: rgba(247,243,238,0.55); }
 
+    /* Calendario de talleres */
+    .cal { max-width: 460px; margin-top: 2rem; padding-top: 1.75rem; border-top: 1px solid rgba(193,127,134,0.15); }
+    .cal-titulo-seccion { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 1.3rem; color: var(--crema); margin-bottom: 1rem; }
+    .cal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
+    .cal-mes { font-family: var(--font-display); font-size: 1.15rem; color: var(--crema); text-transform: capitalize; }
+    .cal-nav { display: flex; gap: 0.4rem; }
+    .cal-nav button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(193,127,134,0.3); color: var(--crema); font-size: 1rem; line-height: 1; transition: background 0.3s, border-color 0.3s; }
+    .cal-nav button:hover:not(:disabled) { border-color: var(--tierra); background: rgba(193,127,134,0.15); }
+    .cal-nav button:disabled { opacity: 0.25; cursor: default; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-dow { text-align: center; font-size: 0.65rem; letter-spacing: 0.08em; color: rgba(247,243,238,0.4); padding: 0.25rem 0; text-transform: uppercase; }
+    .cal-dia { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: rgba(247,243,238,0.5); border-radius: 50%; border: 1px solid transparent; font-family: var(--font-body); }
+    .cal-dia.hoy { border-color: rgba(247,243,238,0.35); }
+    .cal-dia.libre { color: rgba(247,243,238,0.3); }
+    button.cal-dia.con-taller { background: var(--tierra); color: var(--crema); font-weight: 500; cursor: pointer; transition: background 0.3s; }
+    button.cal-dia.con-taller:hover { background: var(--tierra-2); }
+    button.cal-dia.con-taller.sel { background: var(--crema); color: var(--carbon); }
+    button.cal-dia.con-taller:focus-visible, .cal-nav button:focus-visible, .cal-wa:focus-visible { outline: 2px solid var(--crema); outline-offset: 2px; }
+    .cal-detalle { margin-top: 1.25rem; min-height: 4rem; }
+    .cal-hint { color: rgba(247,243,238,0.55); font-size: 0.85rem; line-height: 1.7; }
+    .cal-fecha { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--crema); margin-bottom: 0.75rem; }
+    .cal-sesion { border-top: 1px solid rgba(193,127,134,0.15); padding: 0.9rem 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+    .cal-sesion-info { color: var(--crema); font-size: 0.9rem; line-height: 1.4; }
+    .cal-sesion-info small { display: block; color: rgba(247,243,238,0.5); font-size: 0.72rem; letter-spacing: 0.05em; margin-top: 0.15rem; }
+    .cal-wa { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--tierra); color: var(--crema); font-size: 0.75rem; letter-spacing: 0.06em; padding: 0.7rem 1.1rem; border-radius: 24px; min-height: 44px; transition: background 0.3s; text-decoration: none; }
+    .cal-wa:hover { background: var(--tierra-2); }
+    @media (prefers-reduced-motion: reduce) { button.cal-dia.con-taller, .cal-nav button, .cal-wa { transition: none; } }
+
     /* Formulario */
     .form-title {
       font-family: var(--font-display);
@@ -1879,6 +1907,19 @@
                 <div class="taller-duracion">3h</div>
               </li>
             </ul>
+
+            <div class="cal" id="cal-talleres">
+              <p class="cal-titulo-seccion">Calendario de talleres</p>
+              <div class="cal-head">
+                <div class="cal-mes" id="cal-mes" aria-live="polite"></div>
+                <div class="cal-nav">
+                  <button type="button" id="cal-prev" aria-label="Mes anterior">&larr;</button>
+                  <button type="button" id="cal-next" aria-label="Mes siguiente">&rarr;</button>
+                </div>
+              </div>
+              <div class="cal-grid" id="cal-grid"></div>
+              <div class="cal-detalle" id="cal-detalle" aria-live="polite"></div>
+            </div>
           </div>
 
           <div class="taller-panel" id="panel-medida" role="tabpanel" aria-labelledby="tab-medida" hidden>
@@ -2801,6 +2842,167 @@
         }
       });
     });
+
+    /* ── Calendario de talleres ────────────────────
+       Para añadir fechas, rellena este array. Formato:
+       { fecha: 'AAAA-MM-DD', taller: 'Taller de ramos', hora: '17:00', plazas: 8 }
+       (plazas es opcional). Las fechas pasadas se ocultan solas. */
+    var TALLERES_FECHAS = [
+    ];
+    (function() {
+      var WA = '34722421637';
+      var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      var DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+      var DOW = ['L','M','X','J','V','S','D'];
+      var WA_ICON = 'M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z';
+      var gridEl = document.getElementById('cal-grid');
+      var mesEl = document.getElementById('cal-mes');
+      var prevBtn = document.getElementById('cal-prev');
+      var nextBtn = document.getElementById('cal-next');
+      var detalleEl = document.getElementById('cal-detalle');
+      if (!gridEl || !mesEl || !prevBtn || !nextBtn || !detalleEl) return;
+
+      var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+      function keyOf(y, m, d) { return y + '-' + pad(m + 1) + '-' + pad(d); }
+      function parseKey(k) { var p = k.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+      function fechaLarga(k) {
+        var d = parseKey(k);
+        return DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()] + ' de ' + d.getFullYear();
+      }
+
+      var porDia = {};
+      var proximas = [];
+      TALLERES_FECHAS.forEach(function(e) {
+        if (!e || !/^\d{4}-\d{2}-\d{2}$/.test(e.fecha)) return;
+        if (parseKey(e.fecha) < hoy) return;
+        (porDia[e.fecha] = porDia[e.fecha] || []).push(e);
+        proximas.push(e.fecha);
+      });
+      proximas.sort();
+
+      var minIdx = hoy.getFullYear() * 12 + hoy.getMonth();
+      var ultima = proximas.length ? parseKey(proximas[proximas.length - 1]) : hoy;
+      var maxIdx = Math.max(minIdx + 12, ultima.getFullYear() * 12 + ultima.getMonth());
+      var primera = proximas.length ? parseKey(proximas[0]) : hoy;
+      var viewIdx = primera.getFullYear() * 12 + primera.getMonth();
+      var seleccionado = proximas.length ? proximas[0] : null;
+
+      function crearWa(texto, etiqueta) {
+        var a = document.createElement('a');
+        a.className = 'cal-wa';
+        a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(texto);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        var ns = 'http://www.w3.org/2000/svg';
+        var svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('width', '16'); svg.setAttribute('height', '16');
+        svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('fill', 'currentColor');
+        svg.setAttribute('aria-hidden', 'true');
+        var path = document.createElementNS(ns, 'path');
+        path.setAttribute('d', WA_ICON);
+        svg.appendChild(path);
+        a.appendChild(svg);
+        a.appendChild(document.createTextNode(etiqueta));
+        return a;
+      }
+
+      function renderDetalle() {
+        detalleEl.textContent = '';
+        if (seleccionado && porDia[seleccionado]) {
+          var h = document.createElement('p');
+          h.className = 'cal-fecha';
+          h.textContent = fechaLarga(seleccionado).charAt(0).toUpperCase() + fechaLarga(seleccionado).slice(1);
+          detalleEl.appendChild(h);
+          porDia[seleccionado].forEach(function(e) {
+            var nombre = e.taller || 'taller floral';
+            var row = document.createElement('div');
+            row.className = 'cal-sesion';
+            var info = document.createElement('div');
+            info.className = 'cal-sesion-info';
+            info.appendChild(document.createTextNode(e.taller || 'Taller floral'));
+            var extra = [];
+            if (e.hora) extra.push(e.hora + ' h');
+            if (e.plazas) extra.push(e.plazas + ' plazas');
+            if (extra.length) {
+              var sm = document.createElement('small');
+              sm.textContent = extra.join(' · ');
+              info.appendChild(sm);
+            }
+            row.appendChild(info);
+            row.appendChild(crearWa('Hola, me gustaría reservar plaza en el taller: ' + nombre + ' (' + fechaLarga(seleccionado) + (e.hora ? ', ' + e.hora + ' h' : '') + ') 🌸', 'Reservar por WhatsApp'));
+            detalleEl.appendChild(row);
+          });
+          return;
+        }
+        var p = document.createElement('p');
+        p.className = 'cal-hint';
+        if (proximas.length) {
+          p.textContent = 'Elige un día marcado para ver el taller y reservar tu plaza.';
+          detalleEl.appendChild(p);
+          return;
+        }
+        p.textContent = 'Estamos fijando las próximas fechas. Escríbenos y te avisamos en cuanto las tengamos.';
+        detalleEl.appendChild(p);
+        var wrap = document.createElement('div');
+        wrap.style.marginTop = '1rem';
+        wrap.appendChild(crearWa('Hola, me gustaría que me avisarais cuando haya nuevas fechas de talleres 🌸', 'Avísame por WhatsApp'));
+        detalleEl.appendChild(wrap);
+      }
+
+      function seleccionar(key) {
+        seleccionado = key;
+        renderGrid(key);
+        renderDetalle();
+      }
+
+      function renderGrid(enfocar) {
+        var y = Math.floor(viewIdx / 12), m = viewIdx % 12;
+        mesEl.textContent = MESES[m] + ' ' + y;
+        prevBtn.disabled = viewIdx <= minIdx;
+        nextBtn.disabled = viewIdx >= maxIdx;
+        gridEl.textContent = '';
+        DOW.forEach(function(d) {
+          var c = document.createElement('div');
+          c.className = 'cal-dow';
+          c.setAttribute('aria-hidden', 'true');
+          c.textContent = d;
+          gridEl.appendChild(c);
+        });
+        var offset = (new Date(y, m, 1).getDay() + 6) % 7;
+        var total = new Date(y, m + 1, 0).getDate();
+        for (var i = 0; i < offset; i++) gridEl.appendChild(document.createElement('div'));
+        for (var d = 1; d <= total; d++) {
+          var k = keyOf(y, m, d);
+          var ev = porDia[k];
+          var cell;
+          if (ev) {
+            cell = document.createElement('button');
+            cell.type = 'button';
+            cell.className = 'cal-dia con-taller' + (k === seleccionado ? ' sel' : '');
+            cell.setAttribute('aria-pressed', String(k === seleccionado));
+            cell.setAttribute('aria-label', fechaLarga(k) + ': ' + ev.map(function(e) { return e.taller || 'Taller floral'; }).join(', '));
+            cell.dataset.key = k;
+            cell.addEventListener('click', seleccionar.bind(null, k));
+          } else {
+            cell = document.createElement('div');
+            cell.className = 'cal-dia libre';
+          }
+          if (new Date(y, m, d).getTime() === hoy.getTime()) cell.className += ' hoy';
+          cell.appendChild(document.createTextNode(String(d)));
+          gridEl.appendChild(cell);
+        }
+        if (enfocar) {
+          var f = gridEl.querySelector('[data-key="' + enfocar + '"]');
+          if (f) f.focus();
+        }
+      }
+
+      prevBtn.addEventListener('click', function() { if (viewIdx > minIdx) { viewIdx--; renderGrid(); } });
+      nextBtn.addEventListener('click', function() { if (viewIdx < maxIdx) { viewIdx++; renderGrid(); } });
+      renderGrid();
+      renderDetalle();
+    })();
 
     /* ── Formulario talleres → WhatsApp ───────────── */
     var form = document.getElementById('form-talleres');
