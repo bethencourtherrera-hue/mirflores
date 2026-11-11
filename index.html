@@ -168,7 +168,7 @@
 
     .nav-links {
       display: none;
-      gap: 2rem;
+      gap: clamp(0.9rem, 1.9vw, 2rem);
       list-style: none;
     }
     @media (min-width: 768px) {
@@ -395,6 +395,61 @@
     }
     /* Acento rosa en el énfasis de los títulos */
     .section-title em { color: var(--tierra-2); }
+
+    /* ─── BODAS (carruseles) ─────────────────────────────── */
+    #bodas {
+      background: var(--crema-2);
+      padding: clamp(4rem, 10vw, 7rem) 0 clamp(4rem, 10vw, 7rem) clamp(1.5rem, 6vw, 6rem);
+      overflow: hidden;
+    }
+    .bodas-header { max-width: 640px; padding-right: clamp(1.5rem, 6vw, 6rem); margin-bottom: 3rem; }
+    .bodas-header p { color: var(--gris); font-size: 0.95rem; line-height: 1.8; margin-top: 1.25rem; }
+    .bodas-bloques { display: flex; flex-direction: column; gap: clamp(2.5rem, 6vw, 4rem); }
+    .boda-head {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+      padding-right: clamp(1.5rem, 6vw, 6rem); margin-bottom: 1rem;
+    }
+    .boda-titulo {
+      font-family: var(--font-display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.15; color: var(--carbon);
+    }
+    .boda-desc { color: var(--gris); font-size: 0.85rem; line-height: 1.6; margin-top: 0.3rem; max-width: 46ch; }
+    .boda-flechas { display: none; gap: 0.4rem; flex-shrink: 0; }
+    @media (min-width: 768px) { .boda-flechas { display: flex; } }
+    .boda-flecha {
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(193,127,134,0.45);
+      color: var(--tierra-2); font-size: 1rem; line-height: 1; transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .boda-flecha:hover:not(:disabled) { background: var(--tierra); border-color: var(--tierra); color: var(--crema); }
+    .boda-flecha:disabled { opacity: 0.3; cursor: default; }
+    .boda-carrusel {
+      list-style: none; display: flex; gap: 0.75rem; overflow-x: auto; overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      padding: 0 clamp(1.5rem, 6vw, 6rem) 0 0; scroll-padding-left: 0;
+    }
+    .boda-carrusel::-webkit-scrollbar { display: none; }
+    .boda-carrusel:focus-visible { outline: 2px solid var(--tierra); outline-offset: 4px; }
+    .boda-slide {
+      flex: 0 0 74%; max-width: 340px; aspect-ratio: 4/5; scroll-snap-align: start;
+      border-radius: 2px; overflow: hidden; background: var(--crema);
+    }
+    @media (min-width: 768px) { .boda-slide { flex-basis: 300px; max-width: none; } }
+    .boda-slide img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; display: block; }
+    .boda-carrusel:not(.boda-people) .boda-slide img { object-position: 50% 50%; }
+    .bodas-cta { padding: 3rem clamp(1.5rem, 6vw, 6rem) 0 0; }
+
+    /* ─── BLOG ───────────────────────────────────────────── */
+    #blog { padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 6vw, 6rem); }
+    .blog-header { max-width: 1000px; margin: 0 auto 2.5rem; }
+    .blog-lista { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; }
+    .blog-post { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: center; }
+    @media (min-width: 768px) { .blog-post { grid-template-columns: 5fr 6fr; gap: 3.5rem; } }
+    .blog-foto { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; display: block; }
+    .blog-mes { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tierra-2); margin-bottom: 0.6rem; }
+    .blog-titulo { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.15; color: var(--carbon); margin-bottom: 1rem; }
+    .blog-texto p + p, .blog-texto .blog-titulo + p { margin-top: 0.9rem; }
+    .blog-texto p:not(.blog-mes) { color: var(--gris); font-size: 0.95rem; line-height: 1.85; }
+    @media (prefers-reduced-motion: reduce) { .boda-carrusel { scroll-behavior: auto; } }
 
     /* ─── SOBRE MÍ ───────────────────────────────────────── */
     #sobre {
@@ -1618,11 +1673,13 @@
       </div>
     </a>
     <ul class="nav-links">
+      <li><a href="#bodas">Bodas</a></li>
       <li><a href="#sobre">Sobre&nbsp;mí</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#talleres">Talleres</a></li>
       <li><a href="#temporada">Flores</a></li>
+      <li><a href="#blog">Blog</a></li>
       <li><a href="#resenas">Reseñas</a></li>
       <li><a href="#disena-tu-ramo">Diseña tu&nbsp;ramo</a></li>
     </ul>
@@ -1635,11 +1692,13 @@
   <!-- ── MOBILE MENU ──────────────────────────────────── -->
   <div id="mobile-menu" role="dialog" aria-label="Menú de navegación" aria-modal="true">
     <button class="mobile-close" id="mobile-close" aria-label="Cerrar menú">✕</button>
+    <a href="#bodas" class="mobile-link">Bodas</a>
     <a href="#sobre" class="mobile-link">Sobre&nbsp;mí</a>
     <a href="#servicios" class="mobile-link">Servicios</a>
     <a href="#galeria" class="mobile-link">Galería</a>
     <a href="#talleres" class="mobile-link">Talleres</a>
     <a href="#temporada" class="mobile-link">Flores</a>
+    <a href="#blog" class="mobile-link">Blog</a>
     <a href="#resenas" class="mobile-link">Reseñas</a>
     <a href="#disena-tu-ramo" class="mobile-link">Diseña tu&nbsp;ramo</a>
   </div>
@@ -1663,6 +1722,118 @@
     <div class="hero-scroll" aria-hidden="true">
       <div class="hero-scroll-line"></div>
       <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ── BODAS ─────────────────────────────────────────── -->
+  <section id="bodas" aria-labelledby="bodas-title">
+    <div class="bodas-header">
+      <span class="section-label reveal">Bodas</span>
+      <h2 id="bodas-title" class="section-title section-title-lg reveal">Tu boda,<br><em>en&nbsp;flores</em></h2>
+      <p class="reveal">Ramos de novia, ceremonias, banquetes y esos pequeños momentos que hacen irrepetible un día. Desliza para ver algunas de nuestras&nbsp;bodas.</p>
+    </div>
+    <div class="bodas-bloques">
+      <div class="boda-bloque reveal">
+        <div class="boda-head">
+          <div>
+            <h3 class="boda-titulo" id="boda-novias-t">Novias</h3>
+            <p class="boda-desc">Cada novia a su manera. Flores que acompañan su historia y su estilo.</p>
+          </div>
+          <div class="boda-flechas" aria-hidden="true">
+            <button type="button" class="boda-flecha" data-dir="-1" tabindex="-1" aria-label="Anterior">&larr;</button>
+            <button type="button" class="boda-flecha" data-dir="1" tabindex="-1" aria-label="Siguiente">&rarr;</button>
+          </div>
+        </div>
+        <ul class="boda-carrusel boda-people" role="region" aria-roledescription="carrusel" aria-labelledby="boda-novias-t" tabindex="0">
+            <li class="boda-slide"><img src="assets/bodas/novias-01.jpg" width="799" height="1200" alt="Novia de perfil con un largo velo entre árboles" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/novias-02.jpg" width="798" height="1200" alt="Novia en penumbra, de perfil, con la luz de una ventana en el rostro" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/novias-03.jpg" width="738" height="1200" alt="Novia junto a una ventana con cortinas blancas sujetando un ramo de espigas" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/novias-04.jpg" width="892" height="1200" alt="Novia con capa blanca y un ramo cascada de flores colgantes" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/novias-05.jpg" width="675" height="1200" alt="Novia sonriendo con un ramo de calas naranjas frente a una puerta de madera" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/novias-06.jpg" width="781" height="1200" alt="Novia entre hiedra sosteniendo un ramo de flores burdeos" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/novias-07.jpg" width="770" height="1200" alt="Novia junto a un coche clásico con un ramo de flores blancas" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/novias-08.jpg" width="900" height="1200" alt="Novios abrazados en la entrada de piedra de una iglesia" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/novias-09.jpg" width="771" height="1200" alt="Novia en la celebración con una flor de anturio blanca en la mano" loading="lazy" decoding="async" /></li>
+        </ul>
+      </div>
+      <div class="boda-bloque reveal">
+        <div class="boda-head">
+          <div>
+            <h3 class="boda-titulo" id="boda-parejas-t">Parejas</h3>
+            <p class="boda-desc">Dos personas, un mismo día. Flores que se quedan en la memoria.</p>
+          </div>
+          <div class="boda-flechas" aria-hidden="true">
+            <button type="button" class="boda-flecha" data-dir="-1" tabindex="-1" aria-label="Anterior">&larr;</button>
+            <button type="button" class="boda-flecha" data-dir="1" tabindex="-1" aria-label="Siguiente">&rarr;</button>
+          </div>
+        </div>
+        <ul class="boda-carrusel boda-people" role="region" aria-roledescription="carrusel" aria-labelledby="boda-parejas-t" tabindex="0">
+            <li class="boda-slide"><img src="assets/bodas/parejas-01.jpg" width="800" height="1200" alt="Novios entre columnas de piedra, ella con un velo largo" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-02.jpg" width="900" height="1200" alt="Novios sonriendo abrazados con el velo y las cortinas blancas al viento" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-03.jpg" width="900" height="1200" alt="Novios abrazados al atardecer entre árboles, ella con un ramo silvestre" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-04.jpg" width="900" height="1200" alt="Novios caminando de espaldas por un jardín, con flores sobre la cola del vestido" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-05.jpg" width="900" height="1200" alt="Novios abrazados en una carretera bordeada de árboles con el velo al viento" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-06.jpg" width="795" height="1200" alt="Novios besándose en la escalinata de una casa rosada" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-07.jpg" width="976" height="1200" alt="Novios besándose en un campo de trigo dorado" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-08.jpg" width="899" height="1200" alt="Novios frente a frente en un jardín, ella con un ramo naranja" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-09.jpg" width="827" height="1200" alt="Novia de espaldas con velo largo caminando hacia el novio" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/parejas-10.jpg" width="798" height="1200" alt="Pareja abrazada, él con traje rosa y ella con un ramo rojo y blanco" loading="lazy" decoding="async" /></li>
+        </ul>
+      </div>
+      <div class="boda-bloque reveal">
+        <div class="boda-head">
+          <div>
+            <h3 class="boda-titulo" id="boda-ramos-t">Ramos de novia</h3>
+            <p class="boda-desc">Ramos únicos, hechos a medida: silvestres, románticos, de calas o de peonías.</p>
+          </div>
+          <div class="boda-flechas" aria-hidden="true">
+            <button type="button" class="boda-flecha" data-dir="-1" tabindex="-1" aria-label="Anterior">&larr;</button>
+            <button type="button" class="boda-flecha" data-dir="1" tabindex="-1" aria-label="Siguiente">&rarr;</button>
+          </div>
+        </div>
+        <ul class="boda-carrusel " role="region" aria-roledescription="carrusel" aria-labelledby="boda-ramos-t" tabindex="0">
+            <li class="boda-slide"><img src="assets/bodas/ramos-01.jpg" width="916" height="1200" alt="Ramo de peonías rosas y burdeos con follaje oscuro" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-02.jpg" width="802" height="1200" alt="Ramo redondo de rosas color melocotón" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-03.jpg" width="915" height="1200" alt="Ramo silvestre de flores moradas, anémonas y flores del campo" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-04.jpg" width="1041" height="1200" alt="Ramo cascada blanco de flores delicadas sobre un vestido de novia" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-05.jpg" width="798" height="1200" alt="Ramo de rosas blancas con pequeñas margaritas" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-06.jpg" width="900" height="1200" alt="Ramo cascada de calas oscuras, orquídeas blancas y amaranto verde" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-07.jpg" width="811" height="1101" alt="Ramo de calas blancas y rosas rosadas" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-08.jpg" width="799" height="1200" alt="Ramo de calas burdeos con hierbas y cinta" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-09.jpg" width="900" height="1200" alt="Ramo silvestre de flores blancas y ramitas burdeos" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/ramos-10.jpg" width="807" height="1200" alt="Ramo de calas naranjas sobre el vestido de la novia" loading="lazy" decoding="async" /></li>
+        </ul>
+      </div>
+      <div class="boda-bloque reveal">
+        <div class="boda-head">
+          <div>
+            <h3 class="boda-titulo" id="boda-momentos-t">Momentos especiales</h3>
+            <p class="boda-desc">Los pequeños detalles que hacen irrepetible un día: pétalos, velas, copas y mucho cariño.</p>
+          </div>
+          <div class="boda-flechas" aria-hidden="true">
+            <button type="button" class="boda-flecha" data-dir="-1" tabindex="-1" aria-label="Anterior">&larr;</button>
+            <button type="button" class="boda-flecha" data-dir="1" tabindex="-1" aria-label="Siguiente">&rarr;</button>
+          </div>
+        </div>
+        <ul class="boda-carrusel " role="region" aria-roledescription="carrusel" aria-labelledby="boda-momentos-t" tabindex="0">
+            <li class="boda-slide"><img src="assets/bodas/momentos-01.jpg" width="675" height="1200" alt="Niña de arras con corona de flores y lazo amarillo" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-02.jpg" width="900" height="1200" alt="Vestido blanco con flores de colores esparcidas sobre la cola" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-03.jpg" width="900" height="1200" alt="Conos de papel de libro llenos de pétalos rosados" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-04.jpg" width="900" height="1200" alt="Coche clásico rojo con los novios en un camino de árboles" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-05.jpg" width="900" height="1200" alt="Coche clásico negro con los faros encendidos en una avenida de árboles" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-06.jpg" width="900" height="1200" alt="Torre de copas de champán sobre un lecho de musgo" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-07.jpg" width="804" height="1200" alt="Altar con velas blancas y anémonas" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-08.jpg" width="900" height="1200" alt="Conos de pétalos de rosa en una cesta" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-09.jpg" width="869" height="1200" alt="Prendido de rosas blancas en la solapa del novio" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide"><img src="assets/bodas/momentos-10.jpg" width="900" height="1200" alt="Cinta bordada con flores sobre piedras blancas" loading="lazy" decoding="async" /></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bodas-cta reveal">
+      <a href="https://wa.me/34722421637?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20de%20mi%20boda%20%F0%9F%8C%B8" target="_blank" rel="noopener noreferrer" class="btn-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A12 12 0 003.49 20.52L2 22l1.52-1.49A12 12 0 0020.52 3.48zM12 22a10 10 0 01-5.19-1.45l-.37-.22-3.8.99 1-3.72-.24-.38A10 10 0 1112 22zm5.54-7.47c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07a8.2 8.2 0 01-2.42-1.5 9.1 9.1 0 01-1.67-2.09c-.17-.3 0-.46.13-.61l.44-.51c.14-.17.18-.3.27-.5.09-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.05 2.84 1.2 3.04c.14.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.12.56-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+        Cuéntame tu&nbsp;boda
+      </a>
     </div>
   </section>
 
@@ -2303,6 +2474,39 @@
     </div>
   </section>
 
+  <!-- ── BLOG ──────────────────────────────────────────── -->
+  <section id="blog" aria-labelledby="blog-title">
+    <div class="blog-header">
+      <span class="section-label reveal">Diario</span>
+      <h2 id="blog-title" class="section-title section-title-lg reveal">Un mes entre<br><em>flores</em></h2>
+    </div>
+    <div class="blog-lista">
+      <!--
+        PLANTILLA PARA UNA ENTRADA NUEVA (copiar, pegar ARRIBA de las demás y cambiar los textos).
+        La foto va en assets/blog/AAAA-MM.jpg (por ejemplo assets/blog/2026-12.jpg).
+
+        <article class="blog-post reveal">
+          <img class="blog-foto" src="assets/blog/AAAA-MM.jpg" width="900" height="1200" alt="Describe la foto" loading="lazy" />
+          <div class="blog-texto">
+            <p class="blog-mes">Diciembre 2026</p>
+            <h3 class="blog-titulo">Título de la entrada</h3>
+            <p>Primer párrafo.</p>
+            <p>Segundo párrafo (opcional).</p>
+          </div>
+        </article>
+      -->
+      <article class="blog-post reveal">
+        <img class="blog-foto" src="assets/blog/2026-11.jpg" width="486" height="795" alt="Pareja de novios paseando entre hojas de otoño, él con traje rosa y ella con un ramo" loading="lazy" />
+        <div class="blog-texto">
+          <p class="blog-mes">Noviembre 2026</p>
+          <h3 class="blog-titulo">La belleza menos evidente</h3>
+          <p>Noviembre me gusta por una razón muy particular: permite descubrir belleza donde quizá no esperábamos encontrarla.</p>
+          <p>No siempre necesito la flor más perfecta. Muchas veces prefiero aquella que tiene algo diferente que contar.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- ── RESEÑAS ───────────────────────────────────────── -->
   <section id="resenas" aria-labelledby="resenas-title">
     <div class="resenas-header">
@@ -2872,6 +3076,31 @@
           selectTallerTab(next);
         }
       });
+    });
+
+    /* ── Bodas — flechas de los carruseles ─────────── */
+    document.querySelectorAll('.boda-bloque').forEach(function(bloque) {
+      var track = bloque.querySelector('.boda-carrusel');
+      var prev = bloque.querySelector('[data-dir="-1"]');
+      var next = bloque.querySelector('[data-dir="1"]');
+      if (!track || !prev || !next) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function paso() {
+        var slide = track.querySelector('.boda-slide');
+        return slide ? slide.getBoundingClientRect().width + 12 : track.clientWidth * 0.8;
+      }
+      function actualiza() {
+        prev.disabled = track.scrollLeft <= 4;
+        next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      }
+      [prev, next].forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          track.scrollBy({ left: Number(btn.dataset.dir) * paso() * 2, behavior: reduce ? 'auto' : 'smooth' });
+        });
+      });
+      track.addEventListener('scroll', actualiza, { passive: true });
+      window.addEventListener('resize', actualiza);
+      actualiza();
     });
 
     /* ── Calendario de talleres ────────────────────
