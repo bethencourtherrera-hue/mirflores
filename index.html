@@ -306,6 +306,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 1rem;
     }
+    .hero-sub { text-wrap: balance; }
     .hero-sub {
       font-family: var(--font-body);
       font-weight: 300;
@@ -434,7 +435,7 @@
       border-radius: 2px; overflow: hidden; background: var(--crema);
     }
     @media (min-width: 768px) { .boda-slide { height: 480px; } }
-    .boda-slide img { height: 100%; width: auto; max-width: none; display: block; }
+    .boda-slide img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; }
     .bodas-cta { padding: 3rem clamp(1.5rem, 6vw, 6rem) 0 0; }
 
     /* ─── BLOG ───────────────────────────────────────────── */
@@ -1713,7 +1714,7 @@
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <h1 class="hero-title">Flores<br>con alma</h1>
-      <p class="hero-sub">Porque los sueños se cumplen, flores.<br>Tú pones la historia, nosotros la diseñamos y juntas<br>la hacemos&nbsp;realidad.</p>
+      <p class="hero-sub">Porque los sueños se cumplen, flores.<br>Tú pones la historia, nosotros la diseñamos y juntas la hacemos&nbsp;realidad.</p>
       <a href="#bodas" class="btn-outline-white">Ver&nbsp;bodas</a>
     </div>
     <div class="hero-scroll" aria-hidden="true">
@@ -1742,18 +1743,18 @@
           </div>
         </div>
         <ul class="boda-carrusel boda-people" role="region" aria-roledescription="carrusel" aria-labelledby="boda-novias-t" tabindex="0">
-            <li class="boda-slide"><img src="assets/bodas/novias-01.jpg" width="674" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-02.jpg" width="798" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-03.jpg" width="675" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-04.jpg" width="771" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-05.jpg" width="770" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-06.jpg" width="675" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-07.jpg" width="1800" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-08.jpg" width="781" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-09.jpg" width="675" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-10.jpg" width="1600" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-11.jpg" width="800" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/novias-12.jpg" width="675" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/novias-01.jpg" width="674" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.665"><img src="assets/bodas/novias-02.jpg" width="798" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/novias-03.jpg" width="675" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.642"><img src="assets/bodas/novias-04.jpg" width="771" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.642"><img src="assets/bodas/novias-05.jpg" width="770" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/novias-06.jpg" width="675" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/novias-07.jpg" width="1800" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.651"><img src="assets/bodas/novias-08.jpg" width="781" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/novias-09.jpg" width="675" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/novias-10.jpg" width="1600" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.667"><img src="assets/bodas/novias-11.jpg" width="800" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/novias-12.jpg" width="675" height="1200" alt="Novia con su ramo, foto de una boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
         </ul>
       </div>
       <div class="boda-bloque reveal">
@@ -1768,26 +1769,26 @@
           </div>
         </div>
         <ul class="boda-carrusel boda-people" role="region" aria-roledescription="carrusel" aria-labelledby="boda-parejas-t" tabindex="0">
-            <li class="boda-slide"><img src="assets/bodas/parejas-01.jpg" width="800" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-02.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-03.jpg" width="675" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-04.jpg" width="731" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-05.jpg" width="1800" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-06.jpg" width="916" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-07.jpg" width="812" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-08.jpg" width="675" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-09.jpg" width="675" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-10.jpg" width="923" height="1003" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-11.jpg" width="2048" height="923" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-12.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-13.jpg" width="699" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-14.jpg" width="754" height="1000" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-15.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-16.jpg" width="675" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-17.jpg" width="798" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-18.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-19.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/parejas-20.jpg" width="827" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.667"><img src="assets/bodas/parejas-01.jpg" width="800" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/parejas-02.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/parejas-03.jpg" width="675" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/parejas-04.jpg" width="731" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/parejas-05.jpg" width="1800" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.763"><img src="assets/bodas/parejas-06.jpg" width="916" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.677"><img src="assets/bodas/parejas-07.jpg" width="812" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/parejas-08.jpg" width="675" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/parejas-09.jpg" width="675" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/parejas-10.jpg" width="923" height="1003" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/parejas-11.jpg" width="2048" height="923" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/parejas-12.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/parejas-13.jpg" width="699" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.754"><img src="assets/bodas/parejas-14.jpg" width="754" height="1000" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/parejas-15.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/parejas-16.jpg" width="675" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.665"><img src="assets/bodas/parejas-17.jpg" width="798" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/parejas-18.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/parejas-19.jpg" width="900" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.689"><img src="assets/bodas/parejas-20.jpg" width="827" height="1200" alt="Pareja de novios con flores de MirFlores Atelier" loading="lazy" decoding="async" /></li>
         </ul>
       </div>
       <div class="boda-bloque reveal">
@@ -1802,28 +1803,28 @@
           </div>
         </div>
         <ul class="boda-carrusel " role="region" aria-roledescription="carrusel" aria-labelledby="boda-ramos-t" tabindex="0">
-            <li class="boda-slide"><img src="assets/bodas/ramos-01.jpg" width="800" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-02.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-03.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-04.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-05.jpg" width="664" height="1170" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-06.jpg" width="798" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-07.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-08.jpg" width="861" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-09.jpg" width="915" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-10.jpg" width="827" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-11.jpg" width="952" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-12.jpg" width="675" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-13.jpg" width="796" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-14.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-15.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-16.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-17.jpg" width="765" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-18.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-19.jpg" width="1024" height="683" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-20.jpg" width="675" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-21.jpg" width="735" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/ramos-22.jpg" width="800" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.667"><img src="assets/bodas/ramos-01.jpg" width="800" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/ramos-02.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/ramos-03.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/ramos-04.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/ramos-05.jpg" width="664" height="1170" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.665"><img src="assets/bodas/ramos-06.jpg" width="798" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/ramos-07.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.718"><img src="assets/bodas/ramos-08.jpg" width="861" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.762"><img src="assets/bodas/ramos-09.jpg" width="915" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.689"><img src="assets/bodas/ramos-10.jpg" width="827" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/ramos-11.jpg" width="952" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/ramos-12.jpg" width="675" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.663"><img src="assets/bodas/ramos-13.jpg" width="796" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/ramos-14.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/ramos-15.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/ramos-16.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.637"><img src="assets/bodas/ramos-17.jpg" width="765" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/ramos-18.jpg" width="900" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/ramos-19.jpg" width="1024" height="683" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/ramos-20.jpg" width="675" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/ramos-21.jpg" width="735" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.667"><img src="assets/bodas/ramos-22.jpg" width="800" height="1200" alt="Ramo de novia hecho a medida por MirFlores Atelier" loading="lazy" decoding="async" /></li>
         </ul>
       </div>
       <div class="boda-bloque reveal">
@@ -1838,26 +1839,26 @@
           </div>
         </div>
         <ul class="boda-carrusel " role="region" aria-roledescription="carrusel" aria-labelledby="boda-iglesias-t" tabindex="0">
-            <li class="boda-slide"><img src="assets/bodas/iglesias-01.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-02.jpg" width="898" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-03.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-04.jpg" width="875" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-05.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-06.jpg" width="918" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-07.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-08.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-09.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-10.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-11.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-12.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-13.jpg" width="809" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-14.jpg" width="792" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-15.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-16.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-17.jpg" width="796" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-18.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-19.jpg" width="520" height="490" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/iglesias-20.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-01.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.748"><img src="assets/bodas/iglesias-02.jpg" width="898" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-03.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.729"><img src="assets/bodas/iglesias-04.jpg" width="875" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-05.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.765"><img src="assets/bodas/iglesias-06.jpg" width="918" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-07.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-08.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-09.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-10.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-11.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-12.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.674"><img src="assets/bodas/iglesias-13.jpg" width="809" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.660"><img src="assets/bodas/iglesias-14.jpg" width="792" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-15.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-16.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.663"><img src="assets/bodas/iglesias-17.jpg" width="796" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-18.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/iglesias-19.jpg" width="520" height="490" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/iglesias-20.jpg" width="900" height="1200" alt="Decoración floral para una ceremonia religiosa o civil" loading="lazy" decoding="async" /></li>
         </ul>
       </div>
       <div class="boda-bloque reveal">
@@ -1872,30 +1873,30 @@
           </div>
         </div>
         <ul class="boda-carrusel " role="region" aria-roledescription="carrusel" aria-labelledby="boda-celebracion-t" tabindex="0">
-            <li class="boda-slide"><img src="assets/bodas/celebracion-01.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-02.jpg" width="876" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-03.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-04.jpg" width="1600" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-05.jpg" width="675" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-06.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-07.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-08.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-09.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-10.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-11.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-12.jpg" width="940" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-13.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-14.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-15.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-16.jpg" width="675" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-17.jpg" width="945" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/celebracion-18.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-01.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.730"><img src="assets/bodas/celebracion-02.jpg" width="876" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-03.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/celebracion-04.jpg" width="1600" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/celebracion-05.jpg" width="675" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-06.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-07.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-08.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-09.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-10.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-11.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/celebracion-12.jpg" width="940" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-13.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-14.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-15.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/celebracion-16.jpg" width="675" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/celebracion-17.jpg" width="945" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/celebracion-18.jpg" width="900" height="1200" alt="Decoración floral para la celebración de una boda" loading="lazy" decoding="async" /></li>
         </ul>
       </div>
       <div class="boda-bloque reveal">
         <div class="boda-head">
           <div>
-            <h3 class="boda-titulo" id="boda-momentos-t">Momentos especiales</h3>
+            <h3 class="boda-titulo" id="boda-momentos-t">Detalles especiales</h3>
             <p class="boda-desc">Los pequeños detalles que hacen irrepetible un día: pétalos, velas, copas y mucho cariño.</p>
           </div>
           <div class="boda-flechas" aria-hidden="true">
@@ -1904,29 +1905,29 @@
           </div>
         </div>
         <ul class="boda-carrusel " role="region" aria-roledescription="carrusel" aria-labelledby="boda-momentos-t" tabindex="0">
-            <li class="boda-slide"><img src="assets/bodas/momentos-01.jpg" width="675" height="1200" alt="Niña de arras con corona de flores y lazo amarillo" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-02.jpg" width="900" height="1200" alt="Vestido blanco con flores de colores esparcidas sobre la cola" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-03.jpg" width="900" height="1200" alt="Conos de papel de libro llenos de pétalos rosados" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-04.jpg" width="900" height="1200" alt="Coche clásico rojo con los novios en un camino de árboles" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-05.jpg" width="900" height="1200" alt="Coche clásico negro con los faros encendidos en una avenida de árboles" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-06.jpg" width="900" height="1200" alt="Torre de copas de champán sobre un lecho de musgo" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-07.jpg" width="804" height="1200" alt="Altar con velas blancas y anémonas" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-08.jpg" width="900" height="1200" alt="Conos de pétalos de rosa en una cesta" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-09.jpg" width="869" height="1200" alt="Prendido de rosas blancas en la solapa del novio" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-10.jpg" width="900" height="1200" alt="Cinta bordada con flores sobre piedras blancas" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-11.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-12.jpg" width="923" height="945" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-13.jpg" width="928" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-14.jpg" width="965" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-15.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-16.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-17.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-18.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-19.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-20.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-21.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-22.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/momentos-23.jpg" width="823" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/momentos-01.jpg" width="675" height="1200" alt="Niña de arras con corona de flores y lazo amarillo" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-02.jpg" width="900" height="1200" alt="Vestido blanco con flores de colores esparcidas sobre la cola" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-03.jpg" width="900" height="1200" alt="Conos de papel de libro llenos de pétalos rosados" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-04.jpg" width="900" height="1200" alt="Coche clásico rojo con los novios en un camino de árboles" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-05.jpg" width="900" height="1200" alt="Coche clásico negro con los faros encendidos en una avenida de árboles" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-06.jpg" width="900" height="1200" alt="Torre de copas de champán sobre un lecho de musgo" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.670"><img src="assets/bodas/momentos-07.jpg" width="804" height="1200" alt="Altar con velas blancas y anémonas" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-08.jpg" width="900" height="1200" alt="Conos de pétalos de rosa en una cesta" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.724"><img src="assets/bodas/momentos-09.jpg" width="869" height="1200" alt="Prendido de rosas blancas en la solapa del novio" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-10.jpg" width="900" height="1200" alt="Cinta bordada con flores sobre piedras blancas" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-11.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/momentos-12.jpg" width="923" height="945" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.773"><img src="assets/bodas/momentos-13.jpg" width="928" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/momentos-14.jpg" width="965" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-15.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-16.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-17.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-18.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-19.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-20.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-21.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/momentos-22.jpg" width="900" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.686"><img src="assets/bodas/momentos-23.jpg" width="823" height="1200" alt="Detalle floral y decoración de boda de MirFlores Atelier" loading="lazy" decoding="async" /></li>
         </ul>
       </div>
       <div class="boda-bloque reveal">
@@ -1941,18 +1942,18 @@
           </div>
         </div>
         <ul class="boda-carrusel " role="region" aria-roledescription="carrusel" aria-labelledby="boda-arreglos-t" tabindex="0">
-            <li class="boda-slide"><img src="assets/bodas/arreglos-01.jpg" width="867" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-02.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-03.jpg" width="838" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-04.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-05.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-06.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-07.jpg" width="947" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-08.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-09.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-10.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-11.jpg" width="675" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
-            <li class="boda-slide"><img src="assets/bodas/arreglos-12.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.723"><img src="assets/bodas/arreglos-01.jpg" width="867" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/arreglos-02.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.698"><img src="assets/bodas/arreglos-03.jpg" width="838" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/arreglos-04.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/arreglos-05.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/arreglos-06.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.780"><img src="assets/bodas/arreglos-07.jpg" width="947" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/arreglos-08.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/arreglos-09.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/arreglos-10.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.620"><img src="assets/bodas/arreglos-11.jpg" width="675" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
+            <li class="boda-slide" style="aspect-ratio:0.750"><img src="assets/bodas/arreglos-12.jpg" width="900" height="1200" alt="Arreglo floral de temporada de MirFlores Atelier" loading="lazy" decoding="async" /></li>
         </ul>
       </div>
     </div>
@@ -2021,7 +2022,7 @@
   <!-- ── BLOG DEL MES ─────────────────────────────────── -->
   <section id="blog" aria-labelledby="blog-title">
     <div class="blog-header">
-      <span class="section-label reveal">Diario</span>
+      <span class="section-label reveal">Diario pausado</span>
       <h2 id="blog-title" class="section-title section-title-lg reveal">Entre flores<br><em>y&nbsp;palabras</em></h2>
       <p class="reveal">Un cuaderno de estaciones, historias y pequeños instantes que merecen&nbsp;permanecer.</p>
     </div>
@@ -2209,7 +2210,14 @@
               <li class="taller-item">
                 <div class="taller-nombre">
                   Taller de coronas navideñas
-                  <small>Viernes 20 y sábado 28 de noviembre · 75&nbsp;€</small>
+                  <small>Viernes 20 de noviembre · 75&nbsp;€</small>
+                </div>
+                <div class="taller-duracion">8&nbsp;plazas</div>
+              </li>
+              <li class="taller-item">
+                <div class="taller-nombre">
+                  Taller de coronas de adviento
+                  <small>Sábado 28 de noviembre · 75&nbsp;€</small>
                 </div>
                 <div class="taller-duracion">8&nbsp;plazas</div>
               </li>
@@ -2324,6 +2332,7 @@
             <select id="f-taller" name="taller" required>
               <option value="" disabled selected>Elige un taller</option>
               <option value="Taller de coronas navideñas">Taller de coronas navideñas</option>
+              <option value="Taller de coronas de adviento">Taller de coronas de adviento</option>
               <option value="Taller de guirnalda navideña">Taller de guirnalda navideña</option>
               <option value="Taller cómo vestir una mesa en Navidad">Taller cómo vestir una mesa en Navidad</option>
               <option value="Taller cómo crear tu propio ramo de Navidad">Taller cómo crear tu propio ramo de Navidad</option>
@@ -3205,7 +3214,7 @@
     var TALLERES_FECHAS = [
       { fecha: '2026-11-20', taller: 'Taller de coronas navideñas', hora: '18:00', plazas: 8, reservadas: 0, precio: 75, pago: '' },
       { fecha: '2026-11-26', taller: 'Taller de guirnalda navideña', hora: '18:00', plazas: 8, reservadas: 0, precio: 65, pago: '' },
-      { fecha: '2026-11-28', taller: 'Taller de coronas navideñas', hora: '11:00', plazas: 8, reservadas: 0, precio: 75, pago: '' }
+      { fecha: '2026-11-28', taller: 'Taller de coronas de adviento', hora: '11:00', plazas: 8, reservadas: 0, precio: 75, pago: '' }
     ];
     (function() {
       var WA = '34722421637';
