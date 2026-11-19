@@ -669,6 +669,11 @@
     @media (min-width: 900px) {
       .masonry { columns: 3; column-gap: 1rem; }
     }
+    /* Columnas explícitas (las reparte el JS equilibrando alturas; evita que
+       Safari/iOS balancee distinto y deje un hueco al final). Sin JS: columns. */
+    .masonry.is-cols { display: flex; columns: auto; gap: 0.75rem; align-items: flex-start; }
+    .masonry.is-cols .masonry-col { flex: 1 1 0; min-width: 0; }
+    @media (min-width: 900px) { .masonry.is-cols { gap: 1rem; } }
     .masonry-item {
       break-inside: avoid;
       margin-bottom: 0.75rem;
@@ -3077,6 +3082,72 @@
       });
     }, { threshold: 0.12 });
     revealEls.forEach(function(el) { observer.observe(el); });
+
+    /* ── Galería: reparto en columnas con alturas equilibradas ── */
+    (function () {
+      var grid = document.getElementById('masonry-grid');
+      if (!grid) return;
+      var items = Array.from(grid.querySelectorAll('.masonry-item'));
+      var ratios = items.map(function (it) {
+        var im = it.querySelector('img');
+        return (+im.getAttribute('height')) / (+im.getAttribute('width'));
+      });
+      var built = 0;
+
+      function split(n, heights) {
+        // Búsqueda exhaustiva (ramificar y podar): minimiza la columna más alta
+        // manteniendo el orden original dentro de cada columna.
+        var best = Infinity, bestAsg = null, asg = new Array(heights.length), tot = new Array(n).fill(0);
+        var sum = heights.reduce(function (a, b) { return a + b; }, 0), lower = sum / n;
+        (function dfs(i) {
+          if (i === heights.length) {
+            var mx = Math.max.apply(null, tot);
+            if (mx < best - 0.01) { best = mx; bestAsg = asg.slice(); }
+            return;
+          }
+          var seen = [];
+          for (var c = 0; c < n; c++) {
+            if (i === 0 && c > 0) break;
+            if (seen.indexOf(tot[c]) !== -1) continue;
+            seen.push(tot[c]);
+            if (tot[c] + heights[i] >= best) continue;
+            tot[c] += heights[i]; asg[i] = c;
+            dfs(i + 1);
+            tot[c] -= heights[i];
+            if (best <= lower + 1) return;
+          }
+        })(0);
+        return bestAsg;
+      }
+
+      function build() {
+        var n = window.innerWidth >= 900 ? 3 : 2;
+        var W = grid.clientWidth || window.innerWidth;
+        if (n === built && Math.abs(W - build.w) < 1) return;
+        var gap = parseFloat(getComputedStyle(grid).columnGap) || 12;
+        if (grid.classList.contains('is-cols')) gap = parseFloat(getComputedStyle(grid).gap) || gap;
+        var colW = (W - gap * (n - 1)) / n;
+        var heights = ratios.map(function (r) { return colW * r + gap; });
+        var asg = split(n, heights);
+        if (!asg) return;
+        var cols = [];
+        grid.classList.add('is-cols');
+        for (var c = 0; c < n; c++) {
+          var col = document.createElement('div');
+          col.className = 'masonry-col';
+          col.setAttribute('role', 'presentation');
+          cols.push(col);
+        }
+        items.forEach(function (it, i) { cols[asg[i]].appendChild(it); });
+        grid.textContent = '';
+        cols.forEach(function (col) { grid.appendChild(col); });
+        built = n; build.w = W;
+      }
+
+      build();
+      var t;
+      window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(build, 150); });
+    })();
 
     /* ── Galería lightbox ─────────────────────────── */
     var galleryItems = Array.from(document.querySelectorAll('.masonry-item'));
