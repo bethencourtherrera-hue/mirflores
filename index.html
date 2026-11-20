@@ -3269,9 +3269,9 @@
        { fecha: 'AAAA-MM-DD', taller: 'Taller de ramos', hora: '17:00', plazas: 8, reservadas: 0, precio: 75, pago: 'https://buy.stripe.com/...' }
        (plazas, reservadas, precio y pago son opcionales; reservadas descuenta plazas a mano y pago es el enlace de Stripe). Las fechas pasadas se ocultan solas. */
     var TALLERES_FECHAS = [
-      { fecha: '2026-11-20', taller: 'Taller de coronas navideñas', hora: '18:00', plazas: 8, reservadas: 0, precio: 75, pago: 'https://buy.stripe.com/7sYfZjdvma1tevd9zd2VG00' },
-      { fecha: '2026-11-26', taller: 'Taller de coronas de adviento', hora: '18:00', plazas: 8, reservadas: 0, precio: 90, pago: 'https://buy.stripe.com/5kQbJ376Y2z172LeTx2VG01' },
-      { fecha: '2026-12-03', taller: 'Taller de centros de mesa', hora: '18:00', plazas: 8, reservadas: 0, precio: 85 }
+      { fecha: '2026-11-20', taller: 'Taller de coronas navideñas', hora: '18:00', plazas: 8, reservadas: 8, precio: 75, pago: 'https://buy.stripe.com/7sYfZjdvma1tevd9zd2VG00' },
+      { fecha: '2026-11-26', taller: 'Taller de coronas de adviento', hora: '18:30', lugar: 'Kappu Kokoro', plazas: 8, reservadas: 0, precio: 75, pago: 'https://buy.stripe.com/5kQbJ376Y2z172LeTx2VG01' },
+      { fecha: '2026-12-03', taller: 'Taller de centros de mesa', hora: '18:30', lugar: 'Kappu Kokoro', plazas: 8, reservadas: 0, precio: 85, pago: 'https://buy.stripe.com/fZufZj1MEa1tbj1aDh2VG04' }
     ];
     (function() {
       var WA = '34722421637';
@@ -3348,6 +3348,7 @@
             var extra = [];
             if (e.hora) extra.push(e.hora + ' h');
             if (e.plazas) { var quedan = e.plazas - (e.reservadas || 0); extra.push(quedan <= 0 ? 'completo' : (quedan === 1 ? 'queda 1 plaza' : 'quedan ' + quedan + ' plazas')); }
+            if (e.lugar) extra.push(e.lugar);
             if (e.precio) extra.push(e.precio + ' €');
             if (extra.length) {
               var sm = document.createElement('small');
